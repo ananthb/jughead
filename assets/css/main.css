@@ -168,7 +168,7 @@ pre code {
 }
 
 /* Header */
-header {
+.site-header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -176,7 +176,7 @@ header {
   line-height: 2.5em;
 }
 
-header .main {
+.site-header .main {
   font-size: 1.5rem;
 }
 

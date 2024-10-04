@@ -38,7 +38,7 @@
 
   <!-- Feather Icons -->
   {{- if or (isset .Site.Params "social") $autoColourScheme -}}
-  <link rel="preload" href="{{ absURL " feather-icons/feather-sprite.svg" }}" as="image" />
+  <link rel="preload" href='{{ absURL "feather-icons/feather-sprite.svg" }}' as="image" />
   {{- end -}}
 
   {{- $mainStyle := resources.Get "css/main.css" -}}
