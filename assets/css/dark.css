@@ -3,12 +3,6 @@ body {
   background-color: #202124;
 }
 
-::-moz-selection {
-  background: blue;
-  color: #fff;
-  text-shadow: none;
-}
-
 ::selection {
   background: red;
   color: #fff;
