@@ -34,36 +34,18 @@
   <!-- Twitter Cards: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards -->
   {{- template "_internal/twitter_cards.html" . -}}
 
-  {{- $autoColourScheme := and (ne .Site.Params.colourScheme "light") (ne .Site.Params.colourScheme "dark") -}}
-
   <!-- Feather Icons -->
-  {{- if or (isset .Site.Params "social") $autoColourScheme -}}
+  {{- if isset .Site.Params "social" -}}
   <link rel="preload" href='{{ absURL "feather-icons/feather-sprite.svg" }}' as="image" />
   {{- end -}}
 
-  {{- $mainStyle := resources.Get "css/main.css" -}}
+  {{- $simpleCSS := resources.Get "css/simple.css" -}}
   {{- if hugo.IsProduction -}}
-  {{- $css := $mainStyle | minify | fingerprint "sha512" -}}
+  {{- $css := $simpleCSS | minify | fingerprint "sha512" -}}
   <link rel="stylesheet" type="text/css" media="screen" href="{{ $css.Permalink }}"
     integrity="{{ $css.Data.Integrity }}" />
   {{- else -}}
-  <link rel="stylesheet" type="text/css" media="screen" href="{{ $mainStyle.Permalink }}" />
-  {{- end -}}
-
-  <!-- Dark Mode
-    If mode is not light or dark, load dark.css with media query.
-    JavaScript takes care of toggling scheme based on user preferences.
-  -->
-  {{- if $autoColourScheme -}}
-  {{- $darkStyle := resources.Get "css/dark.css" -}}
-  {{- if hugo.IsProduction -}}
-  {{- $dcss := $darkStyle | minify | fingerprint "sha512" -}}
-  <link id="dark-mode-style" rel="stylesheet" type="text/css" href="{{ $dcss.Permalink }}"
-    integrity="{{ $dcss.Data.Integrity }}" media="(prefers-color-scheme: dark)" />
-  {{- else -}}
-  <link id="dark-mode-style" rel="stylesheet" type="text/css" href="{{ $darkStyle.Permalink }}"
-    media="(prefers-color-scheme: dark)" />
-  {{- end -}}
+  <link rel="stylesheet" type="text/css" media="screen" href="{{ $simpleCSS.Permalink }}" />
   {{- end -}}
 
   <!-- Mathjax support -->
