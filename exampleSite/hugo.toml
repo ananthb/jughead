@@ -4,6 +4,12 @@ title = "Jughead"
 copyright = "© Ananth Bhaskararaman"
 enableGitInfo = true
 
+# theme as module
+[module]
+replacements = "github.com/ananthb/jughead -> ../.."
+[[module.imports]]
+path = "github.com/ananthb/jughead"
+
 # Code highlighting
 pygmentsstyle = "monokai"
 pygmentscodefences = true

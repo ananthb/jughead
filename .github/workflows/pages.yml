@@ -23,7 +23,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.129.0
+      HUGO_VERSION: 0.140.2
     steps:
       - name: Install Hugo CLI
         run: |
@@ -46,9 +46,8 @@ jobs:
 
       - name: Build with Hugo
         run: |
-          cd exampleSite
-          hugo \
-            --theme ../.. \
+          hugo build \
+            --source exampleSite
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
