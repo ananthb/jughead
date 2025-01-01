@@ -47,7 +47,7 @@ jobs:
       - name: Build with Hugo
         run: |
           hugo build \
-            --source exampleSite
+            --source exampleSite \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
