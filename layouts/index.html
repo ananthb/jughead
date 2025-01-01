@@ -3,25 +3,25 @@
 {{ partial "head.html" . }}
 
 <body>
-  <div class="content">
-    {{ partial "header.html" . }}
-    <main class="list">
-      <div class="site-description">
-        {{- if isset .Site.Params "subtitle" -}}
-        <p>{{ .Site.Params.Subtitle | markdownify }}</p>
-        {{- end -}}
-      </div>
-      <ul>
-        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-        {{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) 20 }}
-        {{ range $paginator.Pages }}
-        {{ template "partials/postslist.html" . }}
-        {{ end }}
-      </ul>
-      {{ template "partials/paginator.html" . }}
-    </main>
-    {{ partial "footer.html" . }}
-  </div>
+        {{ partial "header.html" . }}
+        <main class="list">
+                <div class="site-description">
+                        {{- if isset .Site.Params "subtitle" -}}
+                        <p>{{ .Site.Params.Subtitle | markdownify }}</p>
+                        {{- end -}}
+                </div>
+                <ul>
+                        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+                        {{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
+                        {{ range $paginator.Pages }}
+                        {{ template "partials/postslist.html" . }}
+                        {{ end }}
+                </ul>
+                <section>
+                        {{ template "partials/paginator.html" . }}
+                </section>
+        </main>
+        {{ partial "footer.html" . }}
 </body>
 
 </html>

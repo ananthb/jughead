@@ -5,21 +5,22 @@
 <h1 class="page-title">Articles</h1>
 {{ end }}
 
-
 <ul class="posts">
-  {{- range .Data.Pages -}}
-  {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
-  <li class="post">
-    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    <span class="meta">
-      <time datetime='{{ dateFormat "2006-02-02 15:04" .Date }}'>{{ dateFormat "Jan 2, 2006" .Date }}</time>
-      <span class="reading-time-label">⏲ {{ .ReadingTime }} min.</span>
-      {{ if .Draft }}
-      <span class="draft-label">DRAFT</span>
-      {{ end }}
-    </span>
-  </li>
-  {{- end -}}
-  {{- end -}}
+        {{- range .Data.Pages -}}
+        {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
+        <li class="post">
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <span>
+                        <time datetime='{{ dateFormat "2006-02-02 15:04" .Date }}'>
+                                <i>{{ dateFormat "Jan 2, 2006" .Date}}</i>
+                        </time>
+                        <small> ({{ .ReadingTime }} min. read)</small>
+                        {{ if .Draft }}
+                        <mark>DRAFT</mark>
+                        {{ end }}
+                </span>
+        </li>
+        {{- end -}}
+        {{- end -}}
 </ul>
 {{ end }}

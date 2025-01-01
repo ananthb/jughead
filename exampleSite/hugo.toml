@@ -17,9 +17,8 @@ pygmentscodefencesguesssyntax = true
 
 # Site parameters
 [params]
-# Set to light or dark to force either theme.
-# Leave unset for automatic theme detection and a toggle in the header.
-# colourScheme = "light"
+# Choose a colour scheme from the Pico CSS palate: https://picocss.com/docs/colors.
+colourScheme = "blue"
 attribution = true    # show theme attribution in the footer
 subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/ananthb/jughead)"
 

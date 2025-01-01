@@ -1,21 +1,22 @@
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  {{- $title := ( .Title ) -}}
-  {{- $siteTitle := ( .Site.Title ) -}}
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        {{- $title := ( .Title ) -}}
+        {{- $siteTitle := ( .Site.Title ) -}}
 
-  {{- if .IsHome -}}
-  <title>{{ $siteTitle }} | Home</title>
-  {{- else -}}
-  <title>{{ $title }} - {{ $siteTitle }}</title>
-  {{- end -}}
+        {{- if .IsHome -}}
+        <title>{{ $siteTitle }} | Home</title>
+        {{- else -}}
+        <title>{{ $title }} - {{ $siteTitle }}</title>
+        {{- end -}}
 
-  {{- if isset .Site.Params "favicon" -}}
-  <link rel="icon" type="image/png" href="{{ .Site.Params.favicon }}" />
-  {{- end -}}
+        {{- if isset .Site.Params "favicon" -}}
+        <link rel="icon" type="image/png" href="{{ .Site.Params.favicon }}" />
+        {{- end -}}
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="{{- with .Description -}}{{ . }}{{- else -}}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="{{- with .Description -}}{{ . }}{{- else -}}
+    
     {{- if .IsPage -}}
     {{ .Summary }}
     {{- else -}}
@@ -23,62 +24,60 @@
     {{- end -}}
     {{- end -}}" />
 
-  {{- with .OutputFormats.Get "rss" -}}
-  {{ printf `
-  <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-  {{ end -}}
+        {{- with .OutputFormats.Get "rss" -}}
+        {{ printf `
+        <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+        {{ end -}}
 
-  <!-- Open Graph: https://ogp.me/ -->
-  {{- template "_internal/opengraph.html" . -}}
+        <!-- Open Graph: https://ogp.me/ -->
+        {{- template "_internal/opengraph.html" . -}}
 
-  <!-- Twitter Cards: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards -->
-  {{- template "_internal/twitter_cards.html" . -}}
+        <!-- Twitter Cards: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards -->
+        {{- template "_internal/twitter_cards.html" . -}}
 
-  {{- $autoColourScheme := and (ne .Site.Params.colourScheme "light") (ne .Site.Params.colourScheme "dark") -}}
+        <!-- Feather Icons -->
+        {{- if isset .Site.Params "social" -}}
+        <link rel="preload" href='{{ absURL "feather-icons/feather-sprite.svg" }}' as="image" />
+        {{- end -}}
 
-  <!-- Feather Icons -->
-  {{- if or (isset .Site.Params "social") $autoColourScheme -}}
-  <link rel="preload" href='{{ absURL "feather-icons/feather-sprite.svg" }}' as="image" />
-  {{- end -}}
+        {{- $picoCssFile := "picocss/pico.classless.css" -}}
+        {{- with .Site.Params.colourScheme -}}
+        {{ $picoCssFile = printf "picocss/pico.classless.%s.css" . -}}
+        {{- end -}}
+        {{- $mainStyle := resources.Get $picoCssFile -}}
+        {{- if hugo.IsProduction -}}
+        {{- $css := $mainStyle | minify | fingerprint "sha512" -}}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ $css.Permalink }}"
+                integrity="{{ $css.Data.Integrity }}" />
+        {{- else -}}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ $mainStyle.Permalink }}" />
+        {{- end -}}
 
-  {{- $mainStyle := resources.Get "css/main.css" -}}
-  {{- if hugo.IsProduction -}}
-  {{- $css := $mainStyle | minify | fingerprint "sha512" -}}
-  <link rel="stylesheet" type="text/css" media="screen" href="{{ $css.Permalink }}"
-    integrity="{{ $css.Data.Integrity }}" />
-  {{- else -}}
-  <link rel="stylesheet" type="text/css" media="screen" href="{{ $mainStyle.Permalink }}" />
-  {{- end -}}
+        <!-- Mathjax support -->
+        {{- if (.Params.mathjax) -}}
+        {{- partial "mathjax.html" -}}
+        {{- end }}
 
-  <!-- Dark Mode
-    If mode is not light or dark, load dark.css with media query.
-    JavaScript takes care of toggling scheme based on user preferences.
-  -->
-  {{- if $autoColourScheme -}}
-  {{- $darkStyle := resources.Get "css/dark.css" -}}
-  {{- if hugo.IsProduction -}}
-  {{- $dcss := $darkStyle | minify | fingerprint "sha512" -}}
-  <link id="dark-mode-style" rel="stylesheet" type="text/css" href="{{ $dcss.Permalink }}"
-    integrity="{{ $dcss.Data.Integrity }}" media="(prefers-color-scheme: dark)" />
-  {{- else -}}
-  <link id="dark-mode-style" rel="stylesheet" type="text/css" href="{{ $darkStyle.Permalink }}"
-    media="(prefers-color-scheme: dark)" />
-  {{- end -}}
-  {{- end -}}
+        <!-- KaTeX support -->
+        {{- if (.Params.katex) -}}
+        {{- partial "katex.html" -}}
+        {{- end }}
 
-  <!-- Mathjax support -->
-  {{- if (.Params.mathjax) -}}
-  {{- partial "mathjax.html" -}}
-  {{- end }}
+        <!-- MermaidJS -->
+        {{- if (.Params.mermaid) -}}
+        {{- partial "mermaid.html" -}}
+        {{- end -}}
 
-  <!-- KaTeX support -->
-  {{- if (.Params.katex) -}}
-  {{- partial "katex.html" -}}
-  {{- end }}
-
-  <!-- MermaidJS -->
-  {{- if (.Params.mermaid) -}}
-  {{- partial "mermaid.html" -}}
-  {{- end -}}
-
+        <style>
+                /* Feather icons */
+                .feather {
+                        width: 24px;
+                        height: 24px;
+                        stroke: currentColor;
+                        stroke-width: 2;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        fill: none;
+                }
+        </style>
 </head>

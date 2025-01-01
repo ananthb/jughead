@@ -6,17 +6,15 @@
 {{ end }}
 
 <ul class="posts">
-  {{- range .Data.Pages -}}
-  {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
-  <li class="post">
-    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    {{ if .Draft }}
-    <span class="meta">
-      <span class="draft-label">DRAFT</span>
-    </span>
-    {{ end }}
-  </li>
-  {{- end -}}
-  {{- end -}}
+        {{- range .Data.Pages -}}
+        {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
+        <li class="post">
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                {{ if .Draft }}
+                <span><mark>DRAFT</mark></span>
+                {{ end }}
+        </li>
+        {{- end -}}
+        {{- end -}}
 </ul>
 {{ end }}

@@ -1,17 +1,21 @@
 {{ define "main" }}
 <h1 class="page-title">
-  {{ if isset .Data "Term" -}}
-  Entries tagged - "{{ .Data.Term }}"
-  {{- else -}}
-  Posts
-  {{- end }}
+        {{ if isset .Data "Term" -}}
+        Entries tagged - "{{ .Data.Term }}"
+        {{- else -}}
+        Posts
+        {{- end }}
 </h1>
 
 <ul class="posts">
-  {{- range .Data.Pages -}}
-  {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
-  {{ template "partials/postslist.html" . }}
-  {{- end -}}
-  {{- end -}}
+        {{ $paginator := .Paginate .Data.Pages }}
+        {{ range $paginator.Pages }}
+        {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
+        {{ template "partials/postslist.html" . }}
+        {{- end -}}
+        {{- end -}}
 </ul>
+<section>
+        {{ template "partials/paginator.html" . }}
+</section>
 {{ end }}
