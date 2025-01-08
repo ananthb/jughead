@@ -1,6 +1,7 @@
 <footer>
+        {{ with .Site.Params.Social }}
         <section>
-                {{- range $i, $key := .Site.Params.Social -}}
+                {{- range $i, $key := . -}}
                 {{- if $i -}}<span>|</span>{{- end -}}
                 <a href="{{ $key.url }}" rel="me" title="{{ $key.name }}">
                         <svg class="feather">
@@ -9,15 +10,10 @@
                 </a>
                 {{- end -}}
         </section>
-        <section class="grid">
+        {{- end -}}
+        <section>
                 <p>
                         <small>{{ dateFormat "2006" now }} {{ with .Site.Copyright }}{{ . }}{{ end }}.</small>
-                        {{- if .Site.Params.Attribution -}}
-                        <small>
-                                Built with <a href="https://gohugo.io">Hugo</a> &
-                                <a href="https://github.com/ananthb/jughead">Jughead</a>.
-                        </small>
-                        {{- end -}}
                         {{ with .GitInfo }}
                         <small>
                                 Commit

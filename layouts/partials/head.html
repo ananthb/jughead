@@ -1,30 +1,30 @@
 <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        {{- $title := ( .Title ) -}}
-        {{- $siteTitle := ( .Site.Title ) -}}
-
-        {{- if .IsHome -}}
-        <title>{{ $siteTitle }} | Home</title>
-        {{- else -}}
-        <title>{{ $title }} - {{ $siteTitle }}</title>
-        {{- end -}}
-
-        {{- if isset .Site.Params "favicon" -}}
-        <link rel="icon" type="image/png" href="{{ .Site.Params.favicon }}" />
-        {{- end -}}
-
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="{{- with .Description -}}{{ . }}{{- else -}}
-    
-    {{- if .IsPage -}}
-    {{ .Summary }}
-    {{- else -}}
-    {{- with .Site.Params.description -}}{{ . }}{{- end -}}
-    {{- end -}}
-    {{- end -}}" />
 
-        {{- with .OutputFormats.Get "rss" -}}
+        <title>
+                {{- if .IsHome -}}
+                {{- .Site.Title -}}
+                {{- else -}}
+                {{- .Title -}}
+                {{- end -}}
+        </title>
+
+        {{- with .Site.Params.favicon -}}
+        <link rel="icon" type="image/png" href="{{ . }}" />
+        {{- end }}
+
+        {{ $description := .Description -}}
+        {{- if not $description -}}
+        {{- if .IsPage -}}
+        {{- $description = .Summary -}}
+        {{- else -}}
+        {{- $description = .Site.Params.description -}}
+        {{- end -}}
+        {{- end -}}
+        <meta name="description" content="{{ $description }}" />
+
+        {{ with .OutputFormats.Get "rss" }}
         {{ printf `
         <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
         {{ end -}}
@@ -40,44 +40,36 @@
         <link rel="preload" href='{{ absURL "feather-icons/feather-sprite.svg" }}' as="image" />
         {{- end -}}
 
+        {{/* Load regular or coloured Pico CSS file */}}
         {{- $picoCssFile := "picocss/pico.classless.css" -}}
         {{- with .Site.Params.colourScheme -}}
         {{ $picoCssFile = printf "picocss/pico.classless.%s.css" . -}}
         {{- end -}}
-        {{- $mainStyle := resources.Get $picoCssFile -}}
+
+        {{ $styles := slice (resources.GetMatch "css/**.css") (resources.Get $picoCssFile) }}
+
         {{- if hugo.IsProduction -}}
-        {{- $css := $mainStyle | minify | fingerprint "sha512" -}}
+        {{- $css := $styles | resources.Concat "main.css" | minify | fingerprint "sha512" -}}
         <link rel="stylesheet" type="text/css" media="screen" href="{{ $css.Permalink }}"
                 integrity="{{ $css.Data.Integrity }}" />
-        {{- else -}}
-        <link rel="stylesheet" type="text/css" media="screen" href="{{ $mainStyle.Permalink }}" />
+        {{ else }}
+        {{- range $styles }}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ .Permalink }}" />
+        {{ end -}}
         {{- end -}}
 
         <!-- Mathjax support -->
         {{- if (.Params.mathjax) -}}
-        {{- partial "mathjax.html" -}}
-        {{- end }}
+        {{ partial "mathjax.html" }}
+        {{- end -}}
 
         <!-- KaTeX support -->
         {{- if (.Params.katex) -}}
-        {{- partial "katex.html" -}}
-        {{- end }}
+        {{ partial "katex.html" }}
+        {{- end -}}
 
         <!-- MermaidJS -->
         {{- if (.Params.mermaid) -}}
-        {{- partial "mermaid.html" -}}
+        {{ partial "mermaid.html" }}
         {{- end -}}
-
-        <style>
-                /* Feather icons */
-                .feather {
-                        width: 24px;
-                        height: 24px;
-                        stroke: currentColor;
-                        stroke-width: 2;
-                        stroke-linecap: round;
-                        stroke-linejoin: round;
-                        fill: none;
-                }
-        </style>
 </head>

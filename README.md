@@ -77,9 +77,7 @@ pygmentscodefencesguesssyntax = true
 
 [params]
 # Choose a colour scheme from one of the Pico CSS colurs.
-colourScheme = "teal"
-# Show your love for Hugo and Jughead!
-attribution = true
+colourScheme = "blue"
 # Add a subtitle on the home page.
 subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/ananthb/jughead)"
 
