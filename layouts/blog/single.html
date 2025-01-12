@@ -2,7 +2,7 @@
 <article>
         <header>
                 <h1>{{ .Title }}</h1>
-                <div>
+                <section>
                         Posted on
                         <time datetime='{{ dateFormat "2006-02-02 15:04" .Date }}'>
                                 {{ dateFormat "Jan 02, 2006" .Date}}
@@ -10,16 +10,16 @@
                         {{ if .Draft }}
                         <mark>DRAFT</mark>
                         {{ end }}
-                </div>
-                <div>
-                        {{ printf "Estimated reading time: %d minutes" .ReadingTime }}
-                </div>
-                {{ if isset .Params "tldr" -}}
-                <div>
+                        <p>{{ printf "Estimated reading time: %d minutes" .ReadingTime }}</p>
+                        {{ if isset .Params "tldr" -}}
                         <strong>tl;dr:</strong>
-                        {{ .Params.tldr }}
-                </div>
-                {{- end }}
+                        <p>{{ .Params.tldr }}</p>
+                        {{- end }}
+                </section>
+
+                <section>
+                        {{ .TableOfContents }}
+                </section>
         </header>
 
         <main>{{ .Content }}</main>
@@ -32,7 +32,9 @@
                         <ul>
                                 {{ range .Params.tags }}
                                 <li>
-                                        <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
+                                        <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>
+                                                {{ . }}
+                                        </a>
                                 </li>
                                 {{ end }}
                         </ul>
