@@ -13,13 +13,42 @@
         {{- end -}}
         <section>
                 <p>
-                        <small>{{ dateFormat "2006" now }} {{ with .Site.Copyright }}{{ . }}{{ end }}.</small>
+                        {{- /*
+                          Copyright years range from the year of the oldest page
+                          to the year of the newest one.
+                        */ -}}
+                        {{ $currentYear := now.Year -}}
+                        {{- $copyrightYears := slice -}}
+                        {{- $seenYears := dict -}}
+
+                        {{- range .Site.RegularPages.ByDate -}}
+                          {{- $year := string .Date.Year -}}
+                          {{- if not (index $seenYears $year) -}}
+                            {{- $copyrightYears = $copyrightYears | append $year -}}
+                            {{- $seenYears = merge $seenYears (dict $year true) -}} 
+                          {{- end -}}
+                        {{- end -}}
+
+                        {{- /* If there are more than 5 years, shorten the list */ -}}
+                        {{- if gt (len $copyrightYears) 5 -}}
+                          {{- $copyrightYears = (slice
+                            (index $copyrightYears 0)
+                            "..."
+                            (index $copyrightYears (sub (len $copyrightYears) 3))
+                            (index $copyrightYears (sub (len $copyrightYears) 2))
+                            (index $copyrightYears (sub (len $copyrightYears) 1))
+                          ) -}}
+                        {{- end }}
+
+                        <small>
+                                {{ delimit $copyrightYears ", " " & " }} {{ with .Site.Copyright }}{{ . }}{{ end }}.
+                        </small>
                         {{ with .GitInfo }}
                         <small>
                                 Commit
-                                {{ if $.Site.Params.github_repo }}
+                                {{ if $.Site.Params.siteRepo }}
                                 <a target="_blank"
-                                        href="https://github.com/{{ $.Site.Params.github_repo }}/commit/{{ .Hash }}">
+                                        href="https://github.com/{{ $.Site.Params.siteRepo }}/commit/{{ .Hash }}">
                                         {{ .AbbreviatedHash }}
                                 </a>
                                 {{ else }}

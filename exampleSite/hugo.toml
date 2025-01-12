@@ -7,6 +7,9 @@ enableGitInfo = true
 # theme as module
 [module]
 replacements = "github.com/ananthb/jughead -> ../.."
+[module.hugoVersion]
+min = "0.120.0" 
+extended = true
 [[module.imports]]
 path = "github.com/ananthb/jughead"
 
@@ -19,15 +22,20 @@ pygmentscodefencesguesssyntax = true
 [params]
 # Choose a colour scheme from the Pico CSS palate: https://picocss.com/docs/colors.
 colourScheme = "blue"
-subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/ananthb/jughead)"
+subtitle = "Portfolio and blog theme for Hugo."
 
-description = "Demo site for Jughead, a minimal and clean blog theme for Hugo."
+description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
 
-# If enableGitInfo is true and this is set, a link to the commit will be shown in the footer.
-github_repo = "ananthb/jughead"  # Site GitHub repository
+# Display a link to the commit that built this site in your footer.
+# Requires
+# Your website to be publicly hosted in GitHub and
+# enableGitInfo = true
+siteRepo = "ananthb/jughead"  # Site GitHub repository
 
 # Follow setup instructions at https://utteranc.es.
-utterances = "ananthb/jughead"  # Utterances GitHub repository for comments
+# Name of the GitHub repository that will store comments
+# in `owner/name` format.
+utterancesRepo = "ananthb/jughead"
 
 # Social Tags
 [[params.social]]
@@ -48,16 +56,6 @@ icon = "linkedin"
 url = "https://www.linkedin.com/in/ananth-bhaskararaman-2b4227316"
 
 [[menu.main]]
-name = "Posts"
-url = "/posts"
+name = "Blog"
+url = "/blog"
 weight = 1
-
-[[menu.main]]
-name = "About"
-url = "/about"
-weight = 2
-
-[[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 3

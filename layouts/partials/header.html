@@ -1,7 +1,7 @@
 <header>
         <nav>
                 <ul>
-                        <a href="{{ absURL "" }}">{{ .Site.Title }}</a>
+                        <h1><a href="{{ absURL "" }}">{{ .Site.Title }}</a></h1>
                 </ul>
                 <ul>
                         {{ range .Site.Menus.main }}
@@ -9,4 +9,7 @@
                         {{ end }}
                 </ul>
         </nav>
+        {{- if isset .Site.Params "subtitle" -}}
+        <p>{{ .Site.Params.Subtitle | markdownify }}</p>
+        {{- end -}}
 </header>

@@ -1,0 +1,61 @@
+{{ define "main" }}
+<article>
+        <header>
+                <h1>{{ .Title }}</h1>
+                <div>
+                        Posted on
+                        <time datetime='{{ dateFormat "2006-02-02 15:04" .Date }}'>
+                                {{ dateFormat "Jan 02, 2006" .Date}}
+                        </time>
+                        {{ if .Draft }}
+                        <mark>DRAFT</mark>
+                        {{ end }}
+                </div>
+                <div>
+                        {{ printf "Estimated reading time: %d minutes" .ReadingTime }}
+                </div>
+                {{ if isset .Params "tldr" -}}
+                <div>
+                        <strong>tl;dr:</strong>
+                        {{ .Params.tldr }}
+                </div>
+                {{- end }}
+        </header>
+
+        <main>{{ .Content }}</main>
+
+        <footer>
+                {{ if ne .Type "page" }}
+                {{ if gt .Params.tags 0 }}
+                <h4>Tags</h4>
+                <nav>
+                        <ul>
+                                {{ range .Params.tags }}
+                                <li>
+                                        <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
+                                </li>
+                                {{ end }}
+                        </ul>
+                </nav>
+                {{ end }}
+                {{ end }}
+                {{ if not .Params.comments }}
+                <section>
+                        {{ with .Site.Params.utterancesRepo }}
+                        <script src="https://utteranc.es/client.js" 
+                                repo="{{ . }}" issue-term="og:title" theme="preferred-color-scheme"
+                                crossorigin="anonymous" async></script>
+                        <noscript>
+                                No JavaScript? Read comments from the GitHub
+                                <a href="https://github.com/{{ . }}/issues?q=is%3Aissue+is%3Aopen+{{ $.Page.Title }}">
+                                        issue
+                                </a>
+                                directly.
+                        </noscript>
+                        {{ end }}
+                </section>
+                {{ end }}
+        </footer>
+</article>
+
+{{ end }}

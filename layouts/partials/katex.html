@@ -1,10 +1,37 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" />
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body);"></script>
+{{- range resources.Match "katex/fonts/*.woff2" }}
+<link rel="preload" href="{{ .Permalink }}" as="font" type="font/woff2" />
+{{- end }}
 
-<!-- inline KaTeX -->
-<script>
+{{- $katexCss := resources.Get "katex/katex.css" -}}
+{{- if hugo.IsProduction -}}
+{{- $katexCss = $katexCss | minify | fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $katexCss.Permalink }}" integrity={{ $katexCss.Data.Integrity }} /> 
+{{- else }}
+<link rel="stylesheet" href="{{ $katexCss.Permalink }}" />
+{{- end -}}
+
+{{- $katexJs := resources.Get "katex/katex.mjs" -}}
+{{- $katexAutoRenderJs := resources.Get "katex/contrib/auto-render.mjs" -}}
+
+<script type="importmap">
+  {{- if hugo.IsProduction -}}
+  {
+    "integrity": {
+      "{{ $katexJs.RelPermalink }}": "{{ $katexJs.Data.Integrity }}",
+      "{{ $katexAutoRenderJs.RelPermalink }}": "{{ $katexAutoRenderJs.Data.Integrity }}"
+    }
+  }
+  {{- end -}}
+</script>
+
+<script type="module">
+  {{- if hugo.IsProduction -}}
+  {{- $katexJs = $katexJs | minify | fingerprint "sha512" -}}
+  {{- $katexAutoRenderJs = $katexAutoRenderJs | minify | fingerprint "sha512" -}}
+  {{- end -}}
+
+  import katex from {{ $katexJs.RelPermalink }};
+  import renderMathInElement from {{ $katexAutoRenderJs.RelPermalink }};
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
       delimiters: [

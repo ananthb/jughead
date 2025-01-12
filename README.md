@@ -1,6 +1,8 @@
-# Jughead - A Hugo theme
+# Jughead - Portfolio & Blog Theme for Hugo
 
-Jughead is a minimal and clean theme for hugo with a markdown-ish UI.
+Jughead is a simple and powerful portfolio and blog theme for Hugo.
+Its responsive and loads fast on all devices.
+It supports comments, diagrams, and math formulae.
 
 ## [Demo](https://ananthb.github.io/jughead)
 
@@ -15,10 +17,10 @@ Jughead is a minimal and clean theme for hugo with a markdown-ish UI.
 
 ## Features
 
-- Reading time indicators
-- Comments powered by [utterances](https://utteranc.es)
-- [MermaidJS](https://mermaid.js.org) diagrams
-- [MathJax](https://www.mathjax.org) & [KaTeX](https://katex.org) rendering
+- Comments powered by [utterances](https://utteranc.es).
+- [MermaidJS](https://mermaid.js.org) diagrams.
+- [KaTeX](https://katex.org) for rendering math formulae.
+- Reading time indicators.
 
 ## Installation
 
@@ -47,16 +49,14 @@ tags: [tag names] (optional)
 ---
 ```
 
-Toggle MermaidJS, MathJax, and KaTeX support in your post frontmatter.
+Toggle MermaidJS and KaTeX support in your post frontmatter.
 Set `mermaid` to `true` to enable MermaidJS support,
-`mathjax` to `true` to enable MathJax support,
 and `katex` to `true` to enable KaTeX support.
 
 ```yml
 ---
 title: Diagrams & Equations
 mermaid: true
-mathjax: true
 katex: true
 ---
 ```
@@ -68,7 +68,7 @@ baseURL = "https://ananthb.github.io/jughead/"
 languageCode = "en-in"
 title = "Jughead"
 copyright = "© Your Name Here"
-paginate = 3
+paginate = 10
 
 # Code Highlight
 pygmentsstyle = "monokai"
@@ -101,24 +101,9 @@ url = "https://gitlab.com/ananthb/"
 # Main menu Items
 
 [[menu.main]]
-name = "Home"
-url = "/"
+name = "Blog"
+url = "/blog"
 weight = 1
-
-[[menu.main]]
-name = "Posts"
-url = "/posts"
-weight = 2
-
-[[menu.main]]
-name = "About"
-url = "/about"
-weight = 3
-
-[[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 4
 ```
 
 ## [License](LICENSE)

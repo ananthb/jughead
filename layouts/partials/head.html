@@ -58,11 +58,6 @@
         {{ end -}}
         {{- end -}}
 
-        <!-- Mathjax support -->
-        {{- if (.Params.mathjax) -}}
-        {{ partial "mathjax.html" }}
-        {{- end -}}
-
         <!-- KaTeX support -->
         {{- if (.Params.katex) -}}
         {{ partial "katex.html" }}

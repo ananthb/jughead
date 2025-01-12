@@ -1,25 +1,25 @@
 <!doctype html>
-<html lang="{{ .Site.Language.Lang | default " en" }}">
+<html lang='{{ .Site.Language.Lang | default "en" }}'>
 {{ partial "head.html" . }}
 
 <body>
         {{ partial "header.html" . }}
-        <main class="list">
-                <div class="site-description">
-                        {{- if isset .Site.Params "subtitle" -}}
-                        <p>{{ .Site.Params.Subtitle | markdownify }}</p>
-                        {{- end -}}
-                </div>
-                <ul>
-                        {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-                        {{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
-                        {{ range $paginator.Pages }}
-                        {{ template "partials/postslist.html" . }}
-                        {{ end }}
-                </ul>
-                <div>
-                        {{ template "partials/paginator.html" . }}
-                </div>
+        <main>
+                {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+                {{ $paginator := .Paginate (where $pages "Params.featured" "eq" true) }}
+                {{ if $paginator.TotalPages }}
+                <section>
+                        <h2>Featured</h2>
+                        <ul>
+                                {{ range $paginator.Pages }}
+                                {{ template "partials/postslist.html" . }}
+                                {{ end }}
+                        </ul>
+                        <div>
+                                {{ template "partials/paginator.html" $paginator }}
+                        </div>
+                </section>
+                {{ end }}
         </main>
         {{ partial "footer.html" . }}
 </body>

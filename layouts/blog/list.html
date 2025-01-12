@@ -1,0 +1,27 @@
+{{ define "main" }}
+<h1>
+{{- if isset .Data "Term" -}}
+Entries tagged - "{{ .Data.Term }}"
+{{ else }}
+{{- with .Title -}}{{ . }}{{- else -}}{{ .Section | title }}{{- end -}}
+{{- end -}}
+</h1>
+
+<section>
+<h2>Posts</h2>
+        <ul>
+                {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
+                {{ range $paginator.Pages }}
+                {{ template "partials/postslist.html" . }}
+                {{ end }}
+        </ul>
+</section>
+
+<section>
+        {{ template "partials/paginator.html" $paginator }}
+ 
+        {{ with .Site.Taxonomies.tags.Page }}
+        <a href="{{ .Permalink }}">TAGS</a>
+        {{ end }}
+</section>
+{{ end }}

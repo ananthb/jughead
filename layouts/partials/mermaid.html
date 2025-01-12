@@ -1,5 +1,35 @@
-<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>
+{{- $mermaidChunksEsms := resources.Match "mermaid/chunks/mermaid.esm/*.mjs" -}}
+{{- $mermaidJs := resources.Get "mermaid/mermaid.esm.mjs" -}}
+
+{{- if hugo.IsProduction -}}
+{{- $mermaidJs = $mermaidJs | minify | fingerprint "sha512" -}}
+{{- $minChunks := slice -}}
+{{- range $mermaidChunksEsms -}}
+{{- $chunk := . | minify | fingerprint "sha512" -}}
+{{- $minChunks = append $minChunks $chunk -}}
+{{- end -}}
+{{- $mermaidChunksEsms = $minChunks -}}
+{{- end -}}
+
+<script type="importmap">
+  {{- if hugo.IsProduction -}}
+  {
+    "integrity": {
+      "{{ $mermaidJs.RelPermalink }}": "{{ $mermaidJs.Data.Integrity }}",
+      {{- range $mermaidChunksEsms -}}
+      "{{ .RelPermalink }}": "{{ .Data.Integrity }}",
+      {{- end -}}
+    }
+  }
+  {{- end -}}
+</script>
+
+<script type="module">
+  import mermaid from {{ $mermaidJs.RelPermalink }};
+  {{- range $mermaidChunksEsms -}}
+  import "{{ .RelPermalink }}";
+  {{ end -}}
+
   let theme = "default";
   if (
     window.matchMedia &&

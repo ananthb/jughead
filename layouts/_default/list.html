@@ -1,20 +1,21 @@
 {{ define "main" }}
-{{ if isset .Data "Term" }}
-<h1>Entries tagged - "{{ .Data.Term }}"</h1>
+<h1>
+{{- if isset .Data "Term" -}}
+Entries tagged - "{{ .Data.Term }}"
 {{ else }}
-<h1 class="page-title">Posts</h1>
-{{ end }}
+{{- with .Title -}}{{ . }}{{- else -}}{{ .Section | title }}{{- end -}}
+{{- end -}}
+</h1>
 
-<ul class="posts">
-        {{- range .Data.Pages -}}
-        {{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
-        <li class="post">
-                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                {{ if .Draft }}
-                <span><mark>DRAFT</mark></span>
+<section>
+        <ul>
+                {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
+                {{ range $paginator.Pages }}
+                {{ template "partials/postslist.html" . }}
                 {{ end }}
-        </li>
-        {{- end -}}
-        {{- end -}}
-</ul>
+        </ul>
+</section>
+<section>
+        {{ template "partials/paginator.html" $paginator }}
+</section>
 {{ end }}
