@@ -10,8 +10,12 @@ It supports comments, diagrams, and math formulae.
 
 <summary>Screenshots</summary>
 
-![Theme](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot.png)
-![Dark mode](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-dark.png)
+![Full Page](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot.png)
+![Full Page Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-dark.png)
+![Home Page](https://raw.githubusercontent.com/ananthb/jughead/main/images/homepage.png)
+![Home Page](https://raw.githubusercontent.com/ananthb/jughead/main/images/homepage-dark.png)
+![Mobile](https://raw.githubusercontent.com/ananthb/jughead/main/images/mobile.png)
+![Mobile Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/mobile-dark.png)
 
 </details>
 
