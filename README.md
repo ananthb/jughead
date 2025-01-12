@@ -14,8 +14,8 @@ It supports comments, diagrams, and math formulae.
 ![Full Page Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-dark.png)
 ![Home Page](https://raw.githubusercontent.com/ananthb/jughead/main/images/homepage.png)
 ![Home Page](https://raw.githubusercontent.com/ananthb/jughead/main/images/homepage-dark.png)
-![Mobile](https://raw.githubusercontent.com/ananthb/jughead/main/images/mobile.png)
-![Mobile Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/mobile-dark.png)
+![Mobile](https://raw.githubusercontent.com/ananthb/jughead/main/images/mobile.png | width=200)
+![Mobile Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/mobile-dark.png| width=200)
 
 </details>
 
