@@ -1,24 +1,10 @@
-{{- $mermaidChunksEsms := resources.Match "mermaid/chunks/mermaid.esm/*.mjs" -}}
 {{- $mermaidJs := resources.Get "mermaid/mermaid.esm.mjs" -}}
-
-{{- if hugo.IsProduction -}}
-{{- $mermaidJs = $mermaidJs | minify | fingerprint "sha512" -}}
-{{- $minChunks := slice -}}
-{{- range $mermaidChunksEsms -}}
-{{- $chunk := . | fingerprint "sha512" -}}
-{{- $minChunks = append $chunk $minChunks -}}
-{{- end -}}
-{{- $mermaidChunksEsms = $minChunks -}}
-{{- end -}}
-
 <script type="importmap">
   {{- if hugo.IsProduction -}}
+  {{- $mermaidJs = $mermaidJs | minify | fingerprint "sha512" -}}
   {
     "integrity": {
       "{{ $mermaidJs.RelPermalink }}": "{{ $mermaidJs.Data.Integrity }}",
-      {{- range $mermaidChunksEsms -}}
-      "{{ .RelPermalink }}": "{{ .Data.Integrity }}",
-      {{- end -}}
     }
   }
   {{- end -}}
@@ -26,7 +12,7 @@
 
 <script type="module">
   import mermaid from {{ $mermaidJs.RelPermalink }};
-  {{- range $mermaidChunksEsms -}}
+  {{- range resources.Match "mermaid/chunks/mermaid.esm/*.mjs" -}}
   import "{{ .RelPermalink }}";
   {{ end -}}
 
