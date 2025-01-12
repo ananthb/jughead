@@ -6,7 +6,7 @@
 {{- $minChunks := slice -}}
 {{- range $mermaidChunksEsms -}}
 {{- $chunk := . | minify | fingerprint "sha512" -}}
-{{- $minChunks = append $minChunks $chunk -}}
+{{- $minChunks = append $chunk $minChunks -}}
 {{- end -}}
 {{- $mermaidChunksEsms = $minChunks -}}
 {{- end -}}
