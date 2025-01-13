@@ -15,10 +15,10 @@ Source code for the demo site is available in [https://github.com/ananthb/jughea
 
 <summary>Screenshots</summary>
 
-![Full Page](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot.png)
-![Full Page Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-dark.png)
-![Home Page](https://raw.githubusercontent.com/ananthb/jughead/main/images/homepage.png)
-![Home Page](https://raw.githubusercontent.com/ananthb/jughead/main/images/homepage-dark.png)
+![Home](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot.png)
+![Home Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-dark.png)
+![Typography](https://raw.githubusercontent.com/ananthb/jughead/main/images/typography.png)
+![Typography Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/typography-dark.png)
 ![Mobile](https://raw.githubusercontent.com/ananthb/jughead/main/images/mobile.png)
 ![Mobile Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/mobile-dark.png)
 
