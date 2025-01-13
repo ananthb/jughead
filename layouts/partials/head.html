@@ -10,9 +10,7 @@
                 {{- end -}}
         </title>
 
-        {{- with .Site.Params.favicon -}}
-        <link rel="icon" type="image/png" href="{{ . }}" />
-        {{- end }}
+        {{- partial "favicons.html" . -}}
 
         {{ $description := .Description -}}
         {{- if not $description -}}
@@ -46,7 +44,7 @@
         {{ $picoCssFile = printf "picocss/pico.classless.%s.css" . -}}
         {{- end -}}
 
-        {{ $styles := slice (resources.GetMatch "css/**.css") (resources.Get $picoCssFile) }}
+        {{ $styles := append (resources.Get $picoCssFile) (resources.Match "css/**.css") }}
 
         {{- if hugo.IsProduction -}}
         {{- $css := $styles | resources.Concat "main.css" | minify | fingerprint "sha512" -}}

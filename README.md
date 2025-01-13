@@ -1,5 +1,7 @@
 # Jughead - Portfolio & Blog Theme for Hugo
 
+![logo](images/logo.png)
+
 Jughead is a simple and powerful portfolio and blog theme for Hugo.
 Its responsive and loads fast on all devices.
 It supports comments, diagrams, and math formulae.
@@ -83,6 +85,9 @@ pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
 [params]
+# Add a logo to your site by placing an image in the assets directory
+# and setting the path here. Preferably a square png image.
+logo = "images/logo.png"
 # Choose a colour scheme from one of the Pico CSS colurs.
 colourScheme = "blue"
 # Add a subtitle on the home page.

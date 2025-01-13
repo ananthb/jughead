@@ -20,6 +20,9 @@ pygmentscodefencesguesssyntax = true
 
 # Site parameters
 [params]
+# Add a logo to your site by placing an image in the assets directory
+# and setting the path here. Preferably a square png image.
+logo = "logo.png"
 # Choose a colour scheme from the Pico CSS palate: https://picocss.com/docs/colors.
 colourScheme = "blue"
 subtitle = "Portfolio and blog theme for Hugo."
@@ -27,9 +30,7 @@ subtitle = "Portfolio and blog theme for Hugo."
 description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
 
 # Display a link to the commit that built this site in your footer.
-# Requires
-# Your website to be publicly hosted in GitHub and
-# enableGitInfo = true
+# Requires enableGitInfo = true, and for your website to be public on GitHub.
 siteRepo = "ananthb/jughead"  # Site GitHub repository
 
 # Follow setup instructions at https://utteranc.es.

@@ -12,7 +12,7 @@ Entries tagged - "{{ .Data.Term }}"
         <ul>
                 {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
                 {{ range $paginator.Pages }}
-                {{ template "partials/postslist.html" . }}
+                {{ template "partials/pageslist.html" . }}
                 {{ end }}
         </ul>
 </section>
