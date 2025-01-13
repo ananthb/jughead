@@ -7,7 +7,7 @@ It supports comments, diagrams, and math formulae.
 ## Demo
 
 Check out the demo site here: [https://ananthb.github.io/jughead](https://ananthb.github.io/jughead).
-Source code for the demo site is available in [exampleSite](exampleSite).
+Source code for the demo site is available in [https://github.com/ananthb/jughead/tree/main/exampleSite](exampleSite).
 
 <details>
 
