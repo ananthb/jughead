@@ -4,7 +4,10 @@ Jughead is a simple and powerful portfolio and blog theme for Hugo.
 Its responsive and loads fast on all devices.
 It supports comments, diagrams, and math formulae.
 
-## [Demo](https://ananthb.github.io/jughead)
+## Demo
+
+Check out the demo site here: [https://ananthb.github.io/jughead](https://ananthb.github.io/jughead).
+Source code for the demo site is available in [exampleSite](exampleSite).
 
 <details>
 
