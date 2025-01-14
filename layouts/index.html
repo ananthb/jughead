@@ -5,19 +5,19 @@
 <body>
         {{ partial "header.html" . }}
         <main>
-                {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-                {{ $paginator := .Paginate (where $pages "Params.featured" "eq" true) }}
-                {{ if $paginator.TotalPages }}
+                {{- $pages := first 3 (
+                  where
+                    (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
+                  "Params.featured" "eq" true 
+                ) -}}
+                {{- if gt (len $pages) 0 }}
                 <section>
                         <h2>Featured</h2>
                         <ul>
-                                {{ range $paginator.Pages }}
+                                {{ range $pages }}
                                 {{ template "partials/pageslist.html" . }}
                                 {{ end }}
                         </ul>
-                        <div>
-                                {{ template "partials/paginator.html" $paginator }}
-                        </div>
                 </section>
                 {{ end }}
         </main>
