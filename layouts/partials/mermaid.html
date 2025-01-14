@@ -4,7 +4,7 @@
   {{- $mermaidJs = $mermaidJs | minify | fingerprint "sha512" -}}
   {
     "integrity": {
-      "{{ $mermaidJs.RelPermalink }}": "{{ $mermaidJs.Data.Integrity }}",
+      "{{ $mermaidJs.RelPermalink }}": "{{ $mermaidJs.Data.Integrity }}"
     }
   }
   {{- end -}}
