@@ -1,9 +1,11 @@
 {{ define "main" }}
-{{ if isset .Data "Term" }}
-<h1>{{ .Data.Singular | title }} "{{ .Data.Term }}"</h1>
-{{ else }}
-<h1>Pages</h1>
-{{ end }}
+<h1>
+        {{- if isset .Data "Term" -}}
+        {{- .Data.Singular | title }} "{{ .Data.Term | title -}}"</h1>
+        {{- else -}}
+        Pages
+        {{- end -}}
+</h1>
 
 <section>
         <ul>

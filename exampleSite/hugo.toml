@@ -1,7 +1,7 @@
 baseURL = "https://example.com"
 languageCode = "en-in"
 title = "Jughead"
-copyright = "© Ananth Bhaskararaman"
+copyright = "Ananth Bhaskararaman"
 enableGitInfo = true
 
 # theme as module
@@ -32,6 +32,21 @@ description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
 # Display a link to the commit that built this site in your footer.
 # Requires enableGitInfo = true, and for your website to be public on GitHub.
 siteRepo = "ananthb/jughead"  # Site GitHub repository
+
+# Configure the Giscus comment system.
+[params.giscus]
+repo = "ananthb/jughead"
+repoID = "R_kgDOKs2pMQ"
+category = "Announcements"
+categoryID = "DIC_kwDOKs2pMc4Cl_Uy"
+mapping = "og:title"
+strict = "1"
+reactionsEnabled = "1"
+emitMetadata = "0"
+inputPosition = "bottom"
+theme = "preferred_color_scheme"
+lang = "en"
+loading = "lazy"
 
 # Follow setup instructions at https://utteranc.es.
 # Name of the GitHub repository that will store comments

@@ -8,7 +8,17 @@ Entries tagged - "{{ .Data.Term }}"
 </h1>
 
 <section>
-<h2>Posts</h2>
+<h2>Featured</h2>
+        <ul>
+                {{ $featured := (where .Data.Pages.ByDate.Reverse "Params.featured" "eq" true) }}
+                {{ range collections.First 3 $featured }}
+                {{ template "partials/pageslist.html" . }}
+                {{ end }}
+        </ul>
+</section>
+
+<section>
+<h2>New</h2>
         <ul>
                 {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
                 {{ range $paginator.Pages }}
@@ -19,9 +29,5 @@ Entries tagged - "{{ .Data.Term }}"
 
 <section>
         {{ template "partials/paginator.html" $paginator }}
- 
-        {{ with .Site.Taxonomies.tags.Page }}
-        <a href="{{ .Permalink }}">TAGS</a>
-        {{ end }}
 </section>
 {{ end }}

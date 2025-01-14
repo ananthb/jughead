@@ -26,7 +26,7 @@ Source code for the demo site is available in [https://github.com/ananthb/jughea
 
 ## Features
 
-- Comments powered by [utterances](https://utteranc.es).
+- Comments powered by [giscus](https://giscus.app).
 - [MermaidJS](https://mermaid.js.org) diagrams.
 - [KaTeX](https://katex.org) for rendering math formulae.
 - Reading time indicators.

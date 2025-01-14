@@ -28,14 +28,16 @@
         <footer>
                 {{ if ne .Type "page" }}
                 {{ if gt .Params.tags 0 }}
-                <h4>Tags</h4>
+                <small><strong>Tags</strong></small>
                 <nav>
                         <ul>
                                 {{ range .Params.tags }}
                                 <li>
-                                        <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>
-                                                {{ . }}
-                                        </a>
+                                        <small>
+                                                <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>
+                                                        {{ . | title }}
+                                                </a>
+                                        </small>
                                 </li>
                                 {{ end }}
                         </ul>
@@ -44,14 +46,27 @@
                 {{ end }}
                 {{ if not .Params.comments }}
                 <section>
-                        {{ with .Site.Params.utterancesRepo }}
-                        <script src="https://utteranc.es/client.js" 
-                                repo="{{ . }}" issue-term="og:title" theme="preferred-color-scheme"
-                                crossorigin="anonymous" async></script>
+                        {{ with .Site.Params.giscus }}
+                        <script src="https://giscus.app/client.js"
+                                data-repo="{{ .repo }}"
+                                data-repo-id="{{ .repoID }}"
+                                data-category="{{ .category }}"
+                                data-category-id="{{ .categoryID }}"
+                                data-mapping="{{ .mapping }}"
+                                data-strict="{{ .strict }}"
+                                data-reactions-enabled="{{ .reactionsEnabled }}"
+                                data-emit-metadata="{{ .emitMetadata }}"
+                                data-input-position="{{ .inputPosition }}"
+                                data-theme="{{ .theme }}"
+                                data-lang="{{ .lang }}"
+                                data-loading="{{ .lazy }}"
+                                crossorigin="anonymous"
+                                async>
+                        </script>
                         <noscript>
                                 No JavaScript? Read comments from the GitHub
-                                <a href="https://github.com/{{ . }}/issues?q=is%3Aissue+is%3Aopen+{{ $.Page.Title }}">
-                                        issue
+                                <a href="https://github.com/{{ .repo }}/discussions?discussions_q={{ $.Page.Title }}">
+                                        Discussion
                                 </a>
                                 directly.
                         </noscript>

@@ -1,4 +1,19 @@
 <footer>
+        <section>
+                <small><strong>Explore Tags</strong></small>
+                <nav>
+                <ul>
+                        {{ range .Site.Taxonomies.tags }}
+                        <li>
+                                <small>
+                                        <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+                                </small>
+                        </li>
+                        {{ end }}
+                </ul>
+                </nav>
+        </section>
+        
         {{ with .Site.Params.Social }}
         <section>
                 {{- range $i, $key := . -}}
@@ -11,6 +26,7 @@
                 {{- end -}}
         </section>
         {{- end -}}
+
         <section>
                 <p>
                         {{- /*
@@ -41,7 +57,11 @@
                         {{- end }}
 
                         <small>
-                                {{ delimit $copyrightYears ", " " & " }} {{ with .Site.Copyright }}{{ . }}{{ end }}.
+                                ©
+                                {{ delimit $copyrightYears ", " " & " }} 
+                                {{ with .Site.Copyright -}}
+                                {{- . -}}
+                                {{- end -}}.
                         </small>
                         {{ with .GitInfo }}
                         <small>
