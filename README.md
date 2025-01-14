@@ -38,25 +38,15 @@ Add jughead to your hugo config files in the modules section.
 ```toml
 [module]
 [[module.imports]]
-path = 'github.com/ananthb/jughead'
+path = "github.com/ananthb/jughead"
 ```
 
 For more information read the official [setup guide](https://gohugo.io/installation).
 
 ## Writing Posts
 
-Create a new `.md` file in the *content/posts* folder
-
-```yml
----
-title: Title of the post
-description:
-date:
-tldr: (optional)
-draft: true/false (optional)
-tags: [tag names] (optional)
----
-```
+Use `hugo new posts/my-first-post.md` to create a new post.
+Edit the frontmatter and write your post in markdown.
 
 Toggle MermaidJS and KaTeX support in your post frontmatter.
 Set `mermaid` to `true` to enable MermaidJS support,
@@ -78,6 +68,7 @@ languageCode = "en-in"
 title = "Jughead"
 copyright = "© Your Name Here"
 paginate = 10
+enableGitInfo = true
 
 # Code Highlight
 pygmentsstyle = "monokai"
@@ -93,8 +84,18 @@ colourScheme = "blue"
 # Add a subtitle on the home page.
 subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/ananthb/jughead)"
 
-# Social Tags
+siteRepo = "your-github-org/your-site-repo"
 
+# Comments
+# Get these values by filling out the form on https://giscus.app
+[params.giscus]
+repo = "your-github-org/your-comments-repo"
+repoID = "your-github-repo-id"
+category = "your-announcement-category"
+categoryID = "your-announcement-category-id"
+...
+
+# Social Tags
 [[params.social]]
 name = "GitHub"
 icon = "github"
@@ -111,7 +112,6 @@ icon = "gitlab"
 url = "https://gitlab.com/ananthb/"
 
 # Main menu Items
-
 [[menu.main]]
 name = "Blog"
 url = "/blog"

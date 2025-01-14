@@ -11,10 +11,8 @@
                         <mark>DRAFT</mark>
                         {{ end }}
                         <p>{{ printf "Estimated reading time: %d minutes" .ReadingTime }}</p>
-                        {{ if isset .Params "tldr" -}}
                         <strong>tl;dr:</strong>
-                        <p>{{ .Params.tldr }}</p>
-                        {{- end }}
+                        <p>{{ .Summary }}</p>
                 </section>
 
                 {{ if in .TableOfContents "li" }}
@@ -50,18 +48,42 @@
                 <section>
                         {{ with .Site.Params.giscus }}
                         <script src="https://giscus.app/client.js"
-                                data-repo="{{ .repo }}"
-                                data-repo-id="{{ .repoID }}"
-                                data-category="{{ .category }}"
-                                data-category-id="{{ .categoryID }}"
-                                data-mapping="{{ .mapping }}"
-                                data-strict="{{ .strict }}"
-                                data-reactions-enabled="{{ .reactionsEnabled }}"
-                                data-emit-metadata="{{ .emitMetadata }}"
-                                data-input-position="{{ .inputPosition }}"
-                                data-theme="{{ .theme }}"
-                                data-lang="{{ .lang }}"
-                                data-loading="{{ .lazy }}"
+                                {{ with .repo -}}
+                                data-repo="{{ . }}"
+                                {{- end }}
+                                {{ with .repoID -}}
+                                data-repo-id="{{ . }}"
+                                {{- end }}
+                                {{ with .category -}}
+                                data-category="{{ . }}"
+                                {{- end }}
+                                {{ with .categoryID -}}
+                                data-category-id="{{ . }}"
+                                {{- end }}
+                                {{ with .mapping -}}
+                                data-mapping="{{ . }}"
+                                {{- end }}
+                                {{ with .reactionsEnabled -}}
+                                data-strict="{{ . }}"
+                                {{- end }}
+                                {{ with .emitMetadata -}}
+                                data-reactions-enabled="{{ . }}"
+                                {{- end }}
+                                {{ with .omitMetadata -}}
+                                data-emit-metadata="{{ . }}"
+                                {{- end }}
+                                {{ with .inputPosition -}}
+                                data-input-position="{{ . }}"
+                                {{- end }}
+                                {{ with .theme -}}
+                                data-theme="{{ . }}"
+                                {{- end }}
+                                {{ with .lang -}}
+                                data-lang="{{ . }}"
+                                {{- end }}
+                                {{ with .lazy -}}
+                                data-loading="{{ . }}"
+                                {{- end }}
                                 crossorigin="anonymous"
                                 async>
                         </script>
