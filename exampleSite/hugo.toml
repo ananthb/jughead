@@ -37,8 +37,8 @@ siteRepo = "ananthb/jughead"  # Site GitHub repository
 [params.giscus]
 repo = "ananthb/jughead"
 repoID = "R_kgDOKs2pMQ"
-category = "Announcements"
-categoryID = "DIC_kwDOKs2pMc4Cl_Uy"
+category = "Comments"
+categoryID = 'DIC_kwDOKs2pMc4Cl_sd'
 mapping = "og:title"
 strict = "1"
 reactionsEnabled = "1"
