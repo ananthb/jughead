@@ -17,10 +17,12 @@
                         {{- end }}
                 </section>
 
+                {{ if in .TableOfContents "li" }}
                 <section>
                         <h2>Table of Contents</h2>
                         <aside>{{ .TableOfContents }}</aside>
                 </section>
+                {{ end }}
         </header>
 
         <main>{{ .Content }}</main>
