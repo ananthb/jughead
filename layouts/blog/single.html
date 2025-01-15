@@ -63,13 +63,13 @@
                                 {{ with .mapping -}}
                                 data-mapping="{{ . }}"
                                 {{- end }}
-                                {{ with .reactionsEnabled -}}
+                                {{ with .strict -}}
                                 data-strict="{{ . }}"
                                 {{- end }}
-                                {{ with .emitMetadata -}}
+                                {{ with .reactionsEnabled -}}
                                 data-reactions-enabled="{{ . }}"
                                 {{- end }}
-                                {{ with .omitMetadata -}}
+                                {{ with .emitMetadata -}}
                                 data-emit-metadata="{{ . }}"
                                 {{- end }}
                                 {{ with .inputPosition -}}
@@ -81,7 +81,7 @@
                                 {{ with .lang -}}
                                 data-lang="{{ . }}"
                                 {{- end }}
-                                {{ with .lazy -}}
+                                {{ with .loading -}}
                                 data-loading="{{ . }}"
                                 {{- end }}
                                 crossorigin="anonymous"
