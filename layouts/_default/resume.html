@@ -1,0 +1,17 @@
+{{- define "main" -}}
+  {{- with .Site.Params.jsonResumeRegistrySlug -}}
+    {{- $resumeJsonUrl := printf "https://registry.jsonresume.org/%s.json" . -}}
+    {{- with resources.GetRemote $resumeJsonUrl -}}
+      {{- $resume := . | transform.Unmarshal -}}
+      <article>
+        <header>
+          {{ partial "resume/basics.html" $resume }}
+        </header>
+
+        <main></main>
+
+        <footer></footer>
+      </article>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

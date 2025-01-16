@@ -1,33 +1,33 @@
 {{ define "main" }}
-<h1>
-{{- if isset .Data "Term" -}}
-Entries tagged - "{{ .Data.Term }}"
-{{ else }}
-{{- with .Title -}}{{ . }}{{- else -}}{{ .Section | title }}{{- end -}}
-{{- end -}}
-</h1>
+  <h1>
+    {{- if isset .Data "Term" -}}
+      Entries tagged - "{{ .Data.Term }}"
+    {{ else }}
+      {{- with .Title -}}{{ . }}{{- else -}}{{ .Section | title }}{{- end -}}
+    {{- end -}}
+  </h1>
 
-<section>
-<h2>Featured</h2>
-        <ul>
-                {{ $featured := (where .Data.Pages.ByDate.Reverse "Params.featured" "eq" true) }}
-                {{ range collections.First 3 $featured }}
-                {{ template "partials/pageslist.html" . }}
-                {{ end }}
-        </ul>
-</section>
+  <section>
+    <h2>Featured</h2>
+    <ul>
+      {{ $featured := (where .Data.Pages.ByDate.Reverse "Params.featured" "eq" true) }}
+      {{ range collections.First 3 $featured }}
+        {{ template "partials/pageslist.html" . }}
+      {{ end }}
+    </ul>
+  </section>
 
-<section>
-<h2>New</h2>
-        <ul>
-                {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
-                {{ range $paginator.Pages }}
-                {{ template "partials/pageslist.html" . }}
-                {{ end }}
-        </ul>
-</section>
+  <section>
+    <h2>New</h2>
+    <ul>
+      {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
+      {{ range $paginator.Pages }}
+        {{ template "partials/pageslist.html" . }}
+      {{ end }}
+    </ul>
+  </section>
 
-<section>
-        {{ template "partials/paginator.html" $paginator }}
-</section>
+  <section>
+    {{ template "partials/paginator.html" $paginator }}
+  </section>
 {{ end }}

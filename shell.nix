@@ -5,5 +5,7 @@ pkgs.mkShell {
 
   buildInputs = with pkgs; [
     hugo
+    nodePackages.prettier
+    prettier-plugin-go-template
   ];
 }

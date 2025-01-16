@@ -1,27 +1,38 @@
 <!doctype html>
-<html lang='{{ .Site.Language.Lang | default "en" }}'>
-{{ partial "head.html" . }}
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+  {{ partial "head.html" . }}
 
-<body>
-        {{ partial "header.html" . }}
-        <main>
-                {{- $pages := first 3 (
-                  where
-                    (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
-                  "Params.featured" "eq" true 
-                ) -}}
-                {{- if gt (len $pages) 0 }}
-                <section>
-                        <h2>Featured</h2>
-                        <ul>
-                                {{ range $pages }}
-                                {{ template "partials/pageslist.html" . }}
-                                {{ end }}
-                        </ul>
-                </section>
-                {{ end }}
-        </main>
-        {{ partial "footer.html" . }}
-</body>
 
+  <body>
+    {{ partial "header.html" . }}
+    <main>
+      <section>
+        {{- with .Site.Params.jsonResumeRegistrySlug -}}
+          {{- $resumeJsonUrl := printf "https://registry.jsonresume.org/%s.json" . -}}
+          {{- with resources.GetRemote $resumeJsonUrl -}}
+            {{- $resume := . | transform.Unmarshal -}}
+            {{- partial "resume/basics.html" $resume -}}
+          {{- end -}}
+        {{- end -}}
+      </section>
+
+      {{- $pages := first 3 (
+        where
+        (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
+        "Params.featured" "eq" true
+        )
+      -}}
+      {{- if gt (len $pages) 0 }}
+        <section>
+          <h2>Featured</h2>
+          <ul>
+            {{ range $pages }}
+              {{ template "partials/pageslist.html" . }}
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+  </body>
 </html>

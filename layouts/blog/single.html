@@ -1,103 +1,105 @@
 {{ define "main" }}
-<article>
-        <header>
-                <h1>{{ .Title }}</h1>
-                <section>
-                        Posted on
-                        <time datetime='{{ dateFormat "2006-02-02 15:04" .Date }}'>
-                                {{ dateFormat "Jan 02, 2006" .Date}}
-                        </time>
-                        {{ if .Draft }}
-                        <mark>DRAFT</mark>
-                        {{ end }}
-                        <p>{{ printf "Estimated reading time: %d minutes" .ReadingTime }}</p>
-                        <strong>tl;dr:</strong>
-                        <p>{{ .Summary }}</p>
-                </section>
+  <article>
+    <header>
+      <h1>{{ .Title }}</h1>
+      <section>
+        Posted on
+        <time datetime="{{ dateFormat "2006-02-02 15:04" .Date }}">
+          {{ dateFormat "Jan 02, 2006" .Date }}
+        </time>
+        {{ if .Draft }}
+          <mark>DRAFT</mark>
+        {{ end }}
+        <p>{{ printf "Estimated reading time: %d minutes" .ReadingTime }}</p>
+        <strong>tl;dr:</strong>
+        <p>{{ .Summary }}</p>
+      </section>
 
-                {{ if in .TableOfContents "li" }}
-                <section>
-                        <h2>Table of Contents</h2>
-                        <aside>{{ .TableOfContents }}</aside>
-                </section>
-                {{ end }}
-        </header>
+      {{ if in .TableOfContents "li" }}
+        <section>
+          <h2>Table of Contents</h2>
+          <aside>{{ .TableOfContents }}</aside>
+        </section>
+      {{ end }}
+    </header>
 
-        <main>{{ .Content }}</main>
+    <main>{{ .Content }}</main>
 
-        <footer>
-                {{ if ne .Type "page" }}
-                {{ if gt .Params.tags 0 }}
-                <small><strong>Tags</strong></small>
-                <nav>
-                        <ul>
-                                {{ range .Params.tags }}
-                                <li>
-                                        <small>
-                                                <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>
-                                                        {{ . | title }}
-                                                </a>
-                                        </small>
-                                </li>
-                                {{ end }}
-                        </ul>
-                </nav>
-                {{ end }}
-                {{ end }}
-                {{ if not .Params.comments }}
-                <section>
-                        {{ with .Site.Params.giscus }}
-                        <script src="https://giscus.app/client.js"
-                                {{ with .repo -}}
-                                data-repo="{{ . }}"
-                                {{- end }}
-                                {{ with .repoID -}}
-                                data-repo-id="{{ . }}"
-                                {{- end }}
-                                {{ with .category -}}
-                                data-category="{{ . }}"
-                                {{- end }}
-                                {{ with .categoryID -}}
-                                data-category-id="{{ . }}"
-                                {{- end }}
-                                {{ with .mapping -}}
-                                data-mapping="{{ . }}"
-                                {{- end }}
-                                {{ with .strict -}}
-                                data-strict="{{ . }}"
-                                {{- end }}
-                                {{ with .reactionsEnabled -}}
-                                data-reactions-enabled="{{ . }}"
-                                {{- end }}
-                                {{ with .emitMetadata -}}
-                                data-emit-metadata="{{ . }}"
-                                {{- end }}
-                                {{ with .inputPosition -}}
-                                data-input-position="{{ . }}"
-                                {{- end }}
-                                {{ with .theme -}}
-                                data-theme="{{ . }}"
-                                {{- end }}
-                                {{ with .lang -}}
-                                data-lang="{{ . }}"
-                                {{- end }}
-                                {{ with .loading -}}
-                                data-loading="{{ . }}"
-                                {{- end }}
-                                crossorigin="anonymous"
-                                async>
-                        </script>
-                        <noscript>
-                                No JavaScript? Read comments from the GitHub
-                                <a href="https://github.com/{{ .repo }}/discussions?discussions_q={{ $.Page.Title }}">
-                                        Discussion
-                                </a>
-                                directly.
-                        </noscript>
-                        {{ end }}
-                </section>
-                {{ end }}
-        </footer>
-</article>
-
+    <footer>
+      {{ if ne .Type "page" }}
+        {{ if gt .Params.tags 0 }}
+          <small><strong>Tags</strong></small>
+          <nav>
+            <ul>
+              {{ range .Params.tags }}
+                <li>
+                  <small>
+                    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">
+                      {{ . | title }}
+                    </a>
+                  </small>
+                </li>
+              {{ end }}
+            </ul>
+          </nav>
+        {{ end }}
+      {{ end }}
+      {{ if not .Params.comments }}
+        <section>
+          {{ with .Site.Params.giscus }}
+            <script
+              src="https://giscus.app/client.js"
+              {{ with .repo -}}
+                data-repo="{{ . }}"
+              {{- end }}
+              {{ with .repoId -}}
+                data-repo-id="{{ . }}"
+              {{- end }}
+              {{ with .category -}}
+                data-category="{{ . }}"
+              {{- end }}
+              {{ with .categoryId -}}
+                data-category-id="{{ . }}"
+              {{- end }}
+              {{ with .mapping -}}
+                data-mapping="{{ . }}"
+              {{- end }}
+              {{ with .strict -}}
+                data-strict="{{ . }}"
+              {{- end }}
+              {{ with .reactionsEnabled -}}
+                data-reactions-enabled="{{ . }}"
+              {{- end }}
+              {{ with .emitMetadata -}}
+                data-emit-metadata="{{ . }}"
+              {{- end }}
+              {{ with .inputPosition -}}
+                data-input-position="{{ . }}"
+              {{- end }}
+              {{ with .theme -}}
+                data-theme="{{ . }}"
+              {{- end }}
+              {{ with .lang -}}
+                data-lang="{{ . }}"
+              {{- end }}
+              {{ with .loading -}}
+                data-loading="{{ . }}"
+              {{- end }}
+              crossorigin="anonymous"
+              async
+            ></script>
+            <noscript>
+              No JavaScript? Read comments from the GitHub
+              <a
+                href="https://github.com/{{ .repo }}/discussions?discussions_q={{ $.Page.Title }}"
+              >
+                Discussion
+              </a>
+              directly.
+            </noscript>
+          {{ end }}
+        </section>
+      {{ end }}
+    </footer>
+  </article>
 {{ end }}

@@ -1,0 +1,52 @@
+{{- with .basics -}}
+  {{- with .name -}}
+    <h1>{{ . }}</h1>
+  {{ end -}}
+  {{- with .label -}}
+    <p>{{ . }}</p>
+  {{ end -}}
+  {{- with .image }}
+    <img src="{{ . }}" {{ with $.basics.name }}alt="{{ . }}"{{ end }} />
+  {{ end -}}
+  <nav>
+    <ul>
+      {{ with .email }}
+        <li>
+          <a href="mailto:{{ . }}" rel="me" title="Email">
+            {{ partial "feather.html" "mail" }}
+            {{ . }}
+          </a>
+        </li>
+      {{ end }}
+      {{ with .phone }}
+        <li>
+          <a href="tel:{{ . }}" rel="me" title="Phone">
+            {{ partial "feather.html" "phone" }}
+            {{ . }}
+          </a>
+        </li>
+      {{ end }}
+      {{ with .url }}
+        <li>
+          <a href="{{ . }}" rel="me" title="Website">
+            {{ partial "feather.html" "link" }}
+            {{ . }}
+          </a>
+        </li>
+      {{ end }}
+
+    </ul>
+    {{- with .profiles -}}
+      <ul>
+        {{- range . }}
+          <li>
+            <a href="{{ .url }}" rel="me" title="{{ .network }}">
+              {{ partial "feather.html" (.network | lower ) }}
+              {{ .username }}
+            </a>
+          </li>
+        {{- end }}
+      </ul>
+    {{ end }}
+  </nav>
+{{- end -}}

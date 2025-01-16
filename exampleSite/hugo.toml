@@ -1,7 +1,6 @@
-baseURL = "https://example.com"
 languageCode = "en-in"
 title = "Jughead"
-copyright = "Ananth Bhaskararaman"
+copyright = "John Doe"
 enableGitInfo = true
 
 # theme as module
@@ -29,6 +28,9 @@ subtitle = "Portfolio and blog theme for Hugo."
 
 description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
 
+# Your JSON Resume Registry slug. This is the part of the URL after https://registry.jsonresume.org/.
+jsonResumeRegistrySlug = "ananthb"
+
 # Display a link to the commit that built this site in your footer.
 # Requires enableGitInfo = true, and for your website to be public on GitHub.
 siteRepo = "ananthb/jughead"  # Site GitHub repository
@@ -36,9 +38,9 @@ siteRepo = "ananthb/jughead"  # Site GitHub repository
 # Configure the Giscus comment system.
 [params.giscus]
 repo = "ananthb/jughead"
-repoID = "R_kgDOKs2pMQ"
+repoId = "R_kgDOKs2pMQ"
 category = "Comments"
-categoryID = 'DIC_kwDOKs2pMc4Cl_sd'
+categoryId = 'DIC_kwDOKs2pMc4Cl_sd'
 mapping = "og:title"
 strict = "1"
 reactionsEnabled = "1"
@@ -57,21 +59,26 @@ utterancesRepo = "ananthb/jughead"
 [[params.social]]
 name = "GitHub"
 icon = "github"
-url = "https://github.com/ananthb/jughead"
+url = "https://github.com"
 [[params.social]]
 name = "Twitter"
 icon = "twitter"
-url = "https://twitter.com/me/"
+url = "https://twitter.com"
 [[params.social]]
 name = "GitLab"
 icon = "gitlab"
-url = "https://gitlab.com/ananth/"
+url = "https://gitlab.com"
 [[params.social]]
 name = "LinkedIn"
 icon = "linkedin"
-url = "https://www.linkedin.com/in/ananth-bhaskararaman-2b4227316"
+url = "https://www.linkedin.com"
+
+[[menu.main]]
+name = "Resume"
+url = "/resume"
+weight = 1
 
 [[menu.main]]
 name = "Blog"
 url = "/blog"
-weight = 1
+weight = 2

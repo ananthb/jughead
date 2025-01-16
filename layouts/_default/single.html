@@ -1,36 +1,37 @@
 {{ define "main" }}
-<article>
-        <header>
-                <h1>{{ .Title }}</h1>
-                <div>
-                        Posted on
-                        <time datetime='{{ dateFormat "2006-02-02 15:04" .Date }}'>
-                                {{ dateFormat "Jan 02, 2006" .Date}}
-                        </time>
-                        {{ if .Draft }}
-                        <mark>DRAFT</mark>
-                        {{ end }}
-                </div>
-        </header>
+  <article>
+    <header>
+      <h1>{{ .Title }}</h1>
+      <div>
+        Posted on
+        <time datetime="{{ dateFormat "2006-02-02 15:04" .Date }}">
+          {{ dateFormat "Jan 02, 2006" .Date }}
+        </time>
+        {{ if .Draft }}
+          <mark>DRAFT</mark>
+        {{ end }}
+      </div>
+    </header>
 
-        <main>{{ .Content }}</main>
+    <main>{{ .Content }}</main>
 
-        <footer>
-                {{ if ne .Type "page" }}
-                {{ if gt .Params.tags 0 }}
-                <h4>Tags</h4>
-                <nav>
-                        <ul>
-                                {{ range .Params.tags }}
-                                <li>
-                                        <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
-                                </li>
-                                {{ end }}
-                        </ul>
-                </nav>
-                {{ end }}
-                {{ end }}
-        </footer>
-</article>
-
+    <footer>
+      {{ if ne .Type "page" }}
+        {{ if gt .Params.tags 0 }}
+          <h4>Tags</h4>
+          <nav>
+            <ul>
+              {{ range .Params.tags }}
+                <li>
+                  <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}"
+                    >{{ . }}</a
+                  >
+                </li>
+              {{ end }}
+            </ul>
+          </nav>
+        {{ end }}
+      {{ end }}
+    </footer>
+  </article>
 {{ end }}

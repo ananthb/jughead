@@ -1,13 +1,17 @@
 {{- range resources.Match "katex/fonts/*.woff2" }}
-<link rel="preload" href="{{ .Permalink }}" as="font" type="font/woff2" />
+  <link rel="preload" href="{{ .Permalink }}" as="font" type="font/woff2" />
 {{- end }}
 
 {{- $katexCss := resources.Get "katex/katex.css" -}}
 {{- if hugo.IsProduction -}}
-{{- $katexCss = $katexCss | minify | fingerprint "sha512" }}
-<link rel="stylesheet" href="{{ $katexCss.Permalink }}" integrity={{ $katexCss.Data.Integrity }} /> 
+  {{- $katexCss = $katexCss | minify | fingerprint "sha512" }}
+  <link
+    rel="stylesheet"
+    href="{{ $katexCss.Permalink }}"
+    integrity="{{ $katexCss.Data.Integrity }}"
+  />
 {{- else }}
-<link rel="stylesheet" href="{{ $katexCss.Permalink }}" />
+  <link rel="stylesheet" href="{{ $katexCss.Permalink }}" />
 {{- end -}}
 
 {{- $katexJs := resources.Get "katex/katex.mjs" -}}
@@ -22,9 +26,7 @@
     }
   }
   {{- end -}}
-</script>
-
-<script type="module">
+</script><script type="module">
   {{- if hugo.IsProduction -}}
   {{- $katexJs = $katexJs | minify | fingerprint "sha512" -}}
   {{- $katexAutoRenderJs = $katexAutoRenderJs | minify | fingerprint "sha512" -}}

@@ -8,9 +8,7 @@
     }
   }
   {{- end -}}
-</script>
-
-<script type="module">
+</script><script type="module">
   import mermaid from {{ $mermaidJs.RelPermalink }};
   {{- range resources.Match "mermaid/chunks/mermaid.esm/*.mjs" -}}
   import "{{ .RelPermalink }}";
