@@ -1,0 +1,7 @@
+{{ with .skills }}
+  <h2>{{ T "skill" | title }}</h2>
+  <hr />
+  {{ range . }}
+    <p><strong>{{ .name }}</strong>: {{ delimit .keywords ", " " & " }}</p>
+  {{ end }}
+{{ end }}

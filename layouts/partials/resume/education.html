@@ -1,0 +1,42 @@
+{{ with .education }}
+  {{ range $edu := . }}
+    <h2>{{ T "education" | title }}</h2>
+    <hr />
+    <article>
+      <header class="grid">
+        <div>
+          {{ with .area }}
+            <h3>{{ . }}</h3>
+          {{ end }}
+          {{ with $inst := .institution }}
+            <p>
+              <em>
+                <small>
+                  {{ with $edu.url }}
+                    <a href="{{ . }}" target="_blank">{{ $inst }}</a>
+                  {{ else }}
+                    {{ . }}
+                  {{ end }}
+                </small>
+              </em>
+            </p>
+          {{ end }}
+          {{ with .studyType }}<p>{{ . }}</p>{{ end }}
+        </div>
+        <p align="right">
+          <em>{{ partial "resume/start-end-times.html" . }}</em>
+        </p>
+      </header>
+      <main>
+        {{ with .courses }}
+          <h4>{{ T "course" | title }}</h4>
+          <ul>
+            {{ range . }}
+              <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </main>
+    </article>
+  {{ end }}
+{{ end }}

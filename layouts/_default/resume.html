@@ -1,15 +1,33 @@
-{{- define "main" -}}
-  {{- with partial "get-resume.html" .Site.Params.jsonResumeRegistrySlug -}}
+{{ define "main" }}
+  {{ with partial "get-resume.html" .Site.Params.jsonResumeRegistrySlug }}
     <article class="resume">
       <header>
         {{ partial "resume/basics.html" . }}
       </header>
 
       <main>
-        <section></section>
+        <section>
+          {{ partial "resume/education.html" . }}
+        </section>
+
+        <section>
+          {{ partial "resume/work.html" . }}
+        </section>
+
+        <section>
+          {{ partial "resume/languages.html" . }}
+        </section>
+
+        <section>
+          {{ partial "resume/skills.html" . }}
+        </section>
+
+        <section>
+          {{ partial "resume/interests.html" . }}
+        </section>
       </main>
 
       <footer></footer>
     </article>
-  {{- end -}}
-{{- end -}}
+  {{ end }}
+{{ end }}

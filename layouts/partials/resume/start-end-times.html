@@ -1,0 +1,8 @@
+{{ with .startDate }}
+  {{ time . | dateFormat "January 2006" }} ⇾
+{{ end }}
+{{ with .endDate }}
+  {{ time . | dateFormat "January 2006" }}
+{{ else }}
+  {{ T "present" | title }}
+{{ end }}

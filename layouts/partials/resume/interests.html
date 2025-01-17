@@ -1,0 +1,7 @@
+{{ with .interests }}
+  <h2>{{ T "interest" | title }}</h2>
+  <hr />
+  {{ range . }}
+    <p><strong>{{ .name }}</strong>: {{ delimit .keywords ", " " & " }}</p>
+  {{ end }}
+{{ end }}

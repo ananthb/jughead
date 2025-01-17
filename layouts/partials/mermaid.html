@@ -1,18 +1,25 @@
-{{- $mermaidJs := resources.Get "mermaid/mermaid.esm.mjs" -}}
+{{ $mermaidJs := resources.Get "mermaid/mermaid.esm.mjs" }}
+{{ $mermaidChunks := resources.Match "mermaid/chunks/mermaid.esm/*.mjs" }}
+
+{{ if hugo.IsProduction }}
+  {{ $mermaidJs = resources.Get "mermaid/mermaid.esm.min.mjs" }}
+  {{ $mermaidChunks = resources.Match "mermaid/chunks/mermaid.esm.min/*.mjs" }}
+{{ end }}
+
 <script type="importmap">
-  {{- if hugo.IsProduction -}}
-  {{- $mermaidJs = $mermaidJs | minify | fingerprint "sha512" -}}
+  {{ if hugo.IsProduction }}
+  {{ $mermaidJs = $mermaidJs | resources.Fingerprint "sha512" }}
   {
-    "integrity": {
+    "imports": {
       "{{ $mermaidJs.RelPermalink }}": "{{ $mermaidJs.Data.Integrity }}"
     }
   }
-  {{- end -}}
+  {{ end }}
 </script><script type="module">
   import mermaid from {{ $mermaidJs.RelPermalink }};
-  {{- range resources.Match "mermaid/chunks/mermaid.esm/*.mjs" -}}
+  {{ range $mermaidChunks }}
   import "{{ .RelPermalink }}";
-  {{ end -}}
+  {{ end }}
 
   let theme = "default";
   if (

@@ -1,0 +1,45 @@
+{{ with .work }}
+  <h2>{{ T "work_experience" | title }}</h2>
+  <hr />
+  {{ range $work := . }}
+    <article>
+      <div class="grid">
+        <div>
+          {{ with .position }}
+            <h3>{{ . }}</h3>
+          {{ end }}
+          {{ with $name := .name }}
+            <p>
+              <em>
+                <small>
+                  {{ with $work.url }}
+                    <a href="{{ . }}" target="_blank">{{ $name }}</a>
+                  {{ else }}
+                    {{ . }}
+                  {{ end }}
+                </small>
+              </em>
+            </p>
+          {{ end }}
+        </div>
+        <p align="right">
+          <em>{{ partial "resume/start-end-times.html" . }}</em>
+        </p>
+      </div>
+      <div>
+        {{ with .summary }}
+          <p>{{ . }}</p>
+        {{ end }}
+
+        {{ with .highlights }}
+          <h4>{{ T "highlight" | title }}</h4>
+          <ul>
+            {{ range . }}
+              <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </div>
+    </article>
+  {{ end }}
+{{ end }}
