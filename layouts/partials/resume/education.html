@@ -3,7 +3,7 @@
     <h2>{{ T "education" | title }}</h2>
     <hr />
     <article>
-      <header class="grid">
+      <div class="grid">
         <div>
           {{ with .area }}
             <h3>{{ . }}</h3>
@@ -26,8 +26,8 @@
         <p align="right">
           <em>{{ partial "resume/start-end-times.html" . }}</em>
         </p>
-      </header>
-      <main>
+      </div>
+      <div>
         {{ with .courses }}
           <h4>{{ T "course" | title }}</h4>
           <ul>
@@ -36,7 +36,7 @@
             {{ end }}
           </ul>
         {{ end }}
-      </main>
+      </div>
     </article>
   {{ end }}
 {{ end }}

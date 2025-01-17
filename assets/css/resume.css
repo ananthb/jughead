@@ -7,3 +7,17 @@
 .resume {
   font-size: 0.8em;
 }
+
+.resume h1,
+.resume h2,
+.resume h3,
+.resume h4,
+.resume h5,
+.resume h6,
+.resume p {
+  margin: 0;
+}
+
+.resume hr {
+  margin-top: 0;
+}
