@@ -1,6 +1,6 @@
 # Jughead - Portfolio & Blog Theme for Hugo
 
-![logo](https://github.com/ananthb/jughead/tree/main/images/logo.png)
+![logo](https://github.com/ananthb/jughead/blob/main/images/logo.png)
 
 Jughead is a simple and powerful portfolio and blog theme for Hugo.
 Its responsive and loads fast on all devices.
