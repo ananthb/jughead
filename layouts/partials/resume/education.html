@@ -11,13 +11,11 @@
           {{ with $inst := .institution }}
             <p>
               <em>
-                <small>
-                  {{ with $edu.url }}
-                    <a href="{{ . }}" target="_blank">{{ $inst }}</a>
-                  {{ else }}
-                    {{ . }}
-                  {{ end }}
-                </small>
+                {{ with $edu.url }}
+                  <a href="{{ . }}" target="_blank">{{ $inst }}</a>
+                {{ else }}
+                  {{ . }}
+                {{ end }}
               </em>
             </p>
           {{ end }}

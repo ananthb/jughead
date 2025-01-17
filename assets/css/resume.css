@@ -1,9 +1,4 @@
-@media (min-width: 768px) {
-  .basics-links {
-    width: 50%;
-  }
-}
-
+/* Scrunch up everything close for almost all of the resume */
 .resume {
   font-size: 0.8em;
 }
@@ -20,4 +15,16 @@
 
 .resume hr {
   margin-top: 0;
+}
+
+/* Shrink basics links on desktop for a nicer arrangement */
+@media (min-width: 768px) {
+  .basics-links {
+    width: 50%;
+  }
+}
+
+/* Fix heading spacing for basics contact and profile links */
+.basics-links > div > h2 {
+  margin-bottom: var(--pico-typography-spacing-vertical);
 }

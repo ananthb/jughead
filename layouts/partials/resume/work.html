@@ -11,13 +11,11 @@
           {{ with $name := .name }}
             <p>
               <em>
-                <small>
-                  {{ with $work.url }}
-                    <a href="{{ . }}" target="_blank">{{ $name }}</a>
-                  {{ else }}
-                    {{ . }}
-                  {{ end }}
-                </small>
+                {{ with $work.url }}
+                  <a href="{{ . }}" target="_blank">{{ $name }}</a>
+                {{ else }}
+                  {{ . }}
+                {{ end }}
               </em>
             </p>
           {{ end }}
