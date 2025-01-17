@@ -1,52 +1,76 @@
 {{- with .basics -}}
-  {{- with .name -}}
-    <h1>{{ . }}</h1>
-  {{ end -}}
-  {{- with .label -}}
-    <p>{{ . }}</p>
-  {{ end -}}
-  {{- with .image }}
-    <img src="{{ . }}" {{ with $.basics.name }}alt="{{ . }}"{{ end }} />
-  {{ end -}}
-  <nav>
-    <ul>
-      {{ with .email }}
-        <li>
-          <a href="mailto:{{ . }}" rel="me" title="Email">
-            {{ partial "feather.html" "mail" }}
-            {{ . }}
-          </a>
-        </li>
-      {{ end }}
-      {{ with .phone }}
-        <li>
-          <a href="tel:{{ . }}" rel="me" title="Phone">
-            {{ partial "feather.html" "phone" }}
-            {{ . }}
-          </a>
-        </li>
-      {{ end }}
-      {{ with .url }}
-        <li>
-          <a href="{{ . }}" rel="me" title="Website">
-            {{ partial "feather.html" "link" }}
-            {{ . }}
-          </a>
-        </li>
-      {{ end }}
+  <section class="grid">
+    <div>
+      {{- with .name -}}
+        <h1>{{ . }}</h1>
+      {{ end -}}
+      {{- with .label -}}
+        <p>{{ . }}</p>
+      {{ end -}}
+      {{- with .summary -}}
+        <p>{{ . }}</p>
+      {{- end -}}
+    </div>
 
-    </ul>
-    {{- with .profiles -}}
+    <div align="center">
+      {{- with .image }}
+        <img
+          src="{{ . }}"
+          {{ with $.basics.name }}alt="{{ . }}"{{ end }}
+          width="200px"
+        />
+      {{ end -}}
+      {{- with $.qrUrl }}
+        <img src="{{ . }}" width="200px" alt="Resume QR" />
+      {{- end -}}
+    </div>
+  </section>
+
+  <section class="grid basics-links">
+    <div>
+      <h2>{{ T "contact" | title }}</h2>
       <ul>
-        {{- range . }}
+        {{ with .email }}
           <li>
-            <a href="{{ .url }}" rel="me" title="{{ .network }}">
-              {{ partial "feather.html" (.network | lower ) }}
-              {{ .username }}
+            <a href="mailto:{{ . }}" rel="me" title="Email">
+              {{ partial "feather.html" "mail" }}
+              {{ . }}
             </a>
           </li>
-        {{- end }}
+        {{ end }}
+        {{ with .phone }}
+          <li>
+            <a href="tel:{{ . }}" rel="me" title="Phone">
+              {{ partial "feather.html" "phone" }}
+              {{ . }}
+            </a>
+          </li>
+        {{ end }}
+        {{ with .url }}
+          <li>
+            <a href="{{ . }}" rel="me" title="Website">
+              {{ partial "feather.html" "link" }}
+              {{ . }}
+            </a>
+          </li>
+        {{ end }}
       </ul>
-    {{ end }}
-  </nav>
+    </div>
+
+    <div>
+      {{- with .profiles -}}
+        <h2>{{ T "profile" | title }}</h2>
+        <ul>
+          {{- range . }}
+            <li>
+              <a href="{{ .url }}" rel="me" title="{{ .network }}">
+                {{ partial "feather.html" (.network | lower ) }}
+                {{ .username }}
+              </a>
+            </li>
+          {{- end }}
+        </ul>
+      {{ end }}
+    </div>
+  </section>
 {{- end -}}

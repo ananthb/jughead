@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <h1>{{ .Data.Plural | title }}</h1>
+  <h1>{{ T .Data.Singular | default .Data.Plural | title }}</h1>
 
   {{ $biggest := 1 }}
   {{ $smallest := 1 }}

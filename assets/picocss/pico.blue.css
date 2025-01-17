@@ -23,6 +23,8 @@
   --pico-typography-spacing-vertical: 1rem;
   --pico-block-spacing-vertical: var(--pico-spacing);
   --pico-block-spacing-horizontal: var(--pico-spacing);
+  --pico-grid-column-gap: var(--pico-spacing);
+  --pico-grid-row-gap: var(--pico-spacing);
   --pico-form-element-spacing-vertical: 0.75rem;
   --pico-form-element-spacing-horizontal: 1rem;
   --pico-group-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
@@ -70,6 +72,9 @@
 }
 
 a {
+  --pico-text-decoration: underline;
+}
+a.secondary, a.contrast {
   --pico-text-decoration: underline;
 }
 
@@ -164,10 +169,38 @@ input:not([type=submit],
   --pico-border-width: 0.1875rem;
 }
 
+details.dropdown summary:not([role=button]) {
+  --pico-outline-width: 0.0625rem;
+}
+
+nav details.dropdown summary:focus-visible {
+  --pico-outline-width: 0.125rem;
+}
+
 [role=search] {
   --pico-border-radius: 5rem;
 }
 
+[role=search]:has(button.secondary:focus,
+[type=submit].secondary:focus,
+[type=button].secondary:focus,
+[role=button].secondary:focus),
+[role=group]:has(button.secondary:focus,
+[type=submit].secondary:focus,
+[type=button].secondary:focus,
+[role=button].secondary:focus) {
+  --pico-group-box-shadow-focus-with-button: 0 0 0 var(--pico-outline-width) var(--pico-secondary-focus);
+}
+[role=search]:has(button.contrast:focus,
+[type=submit].contrast:focus,
+[type=button].contrast:focus,
+[role=button].contrast:focus),
+[role=group]:has(button.contrast:focus,
+[type=submit].contrast:focus,
+[type=button].contrast:focus,
+[role=button].contrast:focus) {
+  --pico-group-box-shadow-focus-with-button: 0 0 0 var(--pico-outline-width) var(--pico-contrast-focus);
+}
 [role=search] button,
 [role=search] [type=submit],
 [role=search] [type=button],
@@ -179,11 +212,11 @@ input:not([type=submit],
   --pico-form-element-spacing-horizontal: 2rem;
 }
 
-details summary[role=button]::after {
+details summary[role=button]:not(.outline)::after {
   filter: brightness(0) invert(1);
 }
 
-[aria-busy=true]:not(input, select, textarea):is(button, [type=submit], [type=button], [type=reset], [role=button])::before {
+[aria-busy=true]:not(input, select, textarea):is(button, [type=submit], [type=button], [type=reset], [role=button]):not(.outline)::before {
   filter: brightness(0) invert(1);
 }
 
@@ -194,18 +227,18 @@ details summary[role=button]::after {
 :root:not([data-theme=dark]) {
   --pico-background-color: #fff;
   --pico-color: #373c44;
-  --pico-text-selection-color: rgba(71, 164, 23, 0.25);
+  --pico-text-selection-color: rgba(116, 139, 248, 0.25);
   --pico-muted-color: #646b79;
   --pico-muted-border-color: #e7eaf0;
-  --pico-primary: #33790f;
-  --pico-primary-background: #398712;
+  --pico-primary: #2060df;
+  --pico-primary-background: #2060df;
   --pico-primary-border: var(--pico-primary-background);
-  --pico-primary-underline: rgba(51, 121, 15, 0.5);
-  --pico-primary-hover: #265e09;
-  --pico-primary-hover-background: #33790f;
+  --pico-primary-underline: rgba(32, 96, 223, 0.5);
+  --pico-primary-hover: #184eb8;
+  --pico-primary-hover-background: #1d59d0;
   --pico-primary-hover-border: var(--pico-primary-hover-background);
   --pico-primary-hover-underline: var(--pico-primary-hover);
-  --pico-primary-focus: rgba(71, 164, 23, 0.5);
+  --pico-primary-focus: rgba(116, 139, 248, 0.5);
   --pico-primary-inverse: #fff;
   --pico-secondary: #5d6b89;
   --pico-secondary-background: #525f7a;
@@ -280,6 +313,11 @@ details summary[role=button]::after {
   --pico-card-border-color: var(--pico-muted-border-color);
   --pico-card-box-shadow: var(--pico-box-shadow);
   --pico-card-sectioning-background-color: #fbfcfc;
+  --pico-dropdown-background-color: #fff;
+  --pico-dropdown-border-color: #eff1f4;
+  --pico-dropdown-box-shadow: var(--pico-box-shadow);
+  --pico-dropdown-color: var(--pico-color);
+  --pico-dropdown-hover-background-color: #eff1f4;
   --pico-loading-spinner-opacity: 0.5;
   --pico-modal-overlay-background-color: rgba(232, 234, 237, 0.75);
   --pico-progress-background-color: #dfe3eb;
@@ -309,18 +347,18 @@ details summary[role=button]::after {
   :root:not([data-theme]) {
     --pico-background-color: #13171f;
     --pico-color: #c2c7d0;
-    --pico-text-selection-color: rgba(78, 179, 27, 0.1875);
+    --pico-text-selection-color: rgba(137, 153, 249, 0.1875);
     --pico-muted-color: #7b8495;
     --pico-muted-border-color: #202632;
-    --pico-primary: #4eb31b;
-    --pico-primary-background: #398712;
+    --pico-primary: #8999f9;
+    --pico-primary-background: #2060df;
     --pico-primary-border: var(--pico-primary-background);
-    --pico-primary-underline: rgba(78, 179, 27, 0.5);
-    --pico-primary-hover: #5dd121;
-    --pico-primary-hover-background: #409614;
+    --pico-primary-underline: rgba(137, 153, 249, 0.5);
+    --pico-primary-hover: #aeb5fb;
+    --pico-primary-hover-background: #3c71f7;
     --pico-primary-hover-border: var(--pico-primary-hover-background);
     --pico-primary-hover-underline: var(--pico-primary-hover);
-    --pico-primary-focus: rgba(78, 179, 27, 0.375);
+    --pico-primary-focus: rgba(137, 153, 249, 0.375);
     --pico-primary-inverse: #fff;
     --pico-secondary: #969eaf;
     --pico-secondary-background: #525f7a;
@@ -395,6 +433,11 @@ details summary[role=button]::after {
     --pico-card-border-color: var(--pico-card-background-color);
     --pico-card-box-shadow: var(--pico-box-shadow);
     --pico-card-sectioning-background-color: #1a1f28;
+    --pico-dropdown-background-color: #181c25;
+    --pico-dropdown-border-color: #202632;
+    --pico-dropdown-box-shadow: var(--pico-box-shadow);
+    --pico-dropdown-color: var(--pico-color);
+    --pico-dropdown-hover-background-color: #202632;
     --pico-loading-spinner-opacity: 0.5;
     --pico-modal-overlay-background-color: rgba(8, 9, 10, 0.75);
     --pico-progress-background-color: #202632;
@@ -413,22 +456,32 @@ details summary[role=button]::after {
   [type=file]) {
     --pico-form-element-focus-color: var(--pico-primary-focus);
   }
+  :root:not([data-theme]) details summary[role=button].contrast:not(.outline)::after {
+    filter: brightness(0);
+  }
+  :root:not([data-theme]) [aria-busy=true]:not(input, select, textarea).contrast:is(button,
+  [type=submit],
+  [type=button],
+  [type=reset],
+  [role=button]):not(.outline)::before {
+    filter: brightness(0);
+  }
 }
 [data-theme=dark] {
   --pico-background-color: #13171f;
   --pico-color: #c2c7d0;
-  --pico-text-selection-color: rgba(78, 179, 27, 0.1875);
+  --pico-text-selection-color: rgba(137, 153, 249, 0.1875);
   --pico-muted-color: #7b8495;
   --pico-muted-border-color: #202632;
-  --pico-primary: #4eb31b;
-  --pico-primary-background: #398712;
+  --pico-primary: #8999f9;
+  --pico-primary-background: #2060df;
   --pico-primary-border: var(--pico-primary-background);
-  --pico-primary-underline: rgba(78, 179, 27, 0.5);
-  --pico-primary-hover: #5dd121;
-  --pico-primary-hover-background: #409614;
+  --pico-primary-underline: rgba(137, 153, 249, 0.5);
+  --pico-primary-hover: #aeb5fb;
+  --pico-primary-hover-background: #3c71f7;
   --pico-primary-hover-border: var(--pico-primary-hover-background);
   --pico-primary-hover-underline: var(--pico-primary-hover);
-  --pico-primary-focus: rgba(78, 179, 27, 0.375);
+  --pico-primary-focus: rgba(137, 153, 249, 0.375);
   --pico-primary-inverse: #fff;
   --pico-secondary: #969eaf;
   --pico-secondary-background: #525f7a;
@@ -503,6 +556,11 @@ details summary[role=button]::after {
   --pico-card-border-color: var(--pico-card-background-color);
   --pico-card-box-shadow: var(--pico-box-shadow);
   --pico-card-sectioning-background-color: #1a1f28;
+  --pico-dropdown-background-color: #181c25;
+  --pico-dropdown-border-color: #202632;
+  --pico-dropdown-box-shadow: var(--pico-box-shadow);
+  --pico-dropdown-color: var(--pico-color);
+  --pico-dropdown-hover-background-color: #202632;
   --pico-loading-spinner-opacity: 0.5;
   --pico-modal-overlay-background-color: rgba(8, 9, 10, 0.75);
   --pico-progress-background-color: #202632;
@@ -520,6 +578,16 @@ details summary[role=button]::after {
 [type=radio],
 [type=file]) {
   --pico-form-element-focus-color: var(--pico-primary-focus);
+}
+[data-theme=dark] details summary[role=button].contrast:not(.outline)::after {
+  filter: brightness(0);
+}
+[data-theme=dark] [aria-busy=true]:not(input, select, textarea).contrast:is(button,
+[type=submit],
+[type=button],
+[type=reset],
+[role=button]):not(.outline)::before {
+  filter: brightness(0);
 }
 
 progress,
@@ -580,47 +648,7 @@ main {
 body > header,
 body > main,
 body > footer {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal);
-}
-@media (min-width: 576px) {
-  body > header,
-  body > main,
-  body > footer {
-    max-width: 510px;
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-@media (min-width: 768px) {
-  body > header,
-  body > main,
-  body > footer {
-    max-width: 700px;
-  }
-}
-@media (min-width: 1024px) {
-  body > header,
-  body > main,
-  body > footer {
-    max-width: 950px;
-  }
-}
-@media (min-width: 1280px) {
-  body > header,
-  body > main,
-  body > footer {
-    max-width: 1200px;
-  }
-}
-@media (min-width: 1536px) {
-  body > header,
-  body > main,
-  body > footer {
-    max-width: 1450px;
-  }
+  padding-block: var(--pico-block-spacing-vertical);
 }
 
 /**
@@ -628,6 +656,72 @@ body > footer {
  */
 section {
   margin-bottom: var(--pico-block-spacing-vertical);
+}
+
+/**
+ * Container
+ */
+.container,
+.container-fluid {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--pico-spacing);
+  padding-left: var(--pico-spacing);
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 510px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 700px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 950px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1450px;
+  }
+}
+
+/**
+ * Grid
+ * Minimal grid system with auto-layout columns
+ */
+.grid {
+  grid-column-gap: var(--pico-grid-column-gap);
+  grid-row-gap: var(--pico-grid-row-gap);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(0%, 1fr));
+  }
+}
+.grid > * {
+  min-width: 0;
+}
+
+/**
+ * Overflow auto
+ */
+.overflow-auto {
+  overflow: auto;
 }
 
 /**
@@ -815,6 +909,26 @@ del {
 [role=link]:focus-visible {
   box-shadow: 0 0 0 var(--pico-outline-width) var(--pico-primary-focus);
 }
+:where(a:not([role=button])).secondary,
+[role=link].secondary {
+  --pico-color: var(--pico-secondary);
+  --pico-underline: var(--pico-secondary-underline);
+}
+:where(a:not([role=button])).secondary:is([aria-current]:not([aria-current=false]), :hover, :active, :focus),
+[role=link].secondary:is([aria-current]:not([aria-current=false]), :hover, :active, :focus) {
+  --pico-color: var(--pico-secondary-hover);
+  --pico-underline: var(--pico-secondary-hover-underline);
+}
+:where(a:not([role=button])).contrast,
+[role=link].contrast {
+  --pico-color: var(--pico-contrast);
+  --pico-underline: var(--pico-contrast-underline);
+}
+:where(a:not([role=button])).contrast:is([aria-current]:not([aria-current=false]), :hover, :active, :focus),
+[role=link].contrast:is([aria-current]:not([aria-current=false]), :hover, :active, :focus) {
+  --pico-color: var(--pico-contrast-hover);
+  --pico-underline: var(--pico-contrast-hover-underline);
+}
 
 a[role=button] {
   display: inline-block;
@@ -901,6 +1015,7 @@ button:focus, button:is([aria-current]:not([aria-current=false])):focus,
   margin-bottom: var(--pico-spacing);
 }
 
+:is(button, [type=submit], [type=button], [role=button]).secondary,
 [type=reset],
 [type=file]::file-selector-button {
   --pico-background-color: var(--pico-secondary-background);
@@ -908,15 +1023,66 @@ button:focus, button:is([aria-current]:not([aria-current=false])):focus,
   --pico-color: var(--pico-secondary-inverse);
   cursor: pointer;
 }
+:is(button, [type=submit], [type=button], [role=button]).secondary:is([aria-current]:not([aria-current=false]), :hover, :active, :focus),
 [type=reset]:is([aria-current]:not([aria-current=false]), :hover, :active, :focus),
 [type=file]::file-selector-button:is([aria-current]:not([aria-current=false]), :hover, :active, :focus) {
   --pico-background-color: var(--pico-secondary-hover-background);
   --pico-border-color: var(--pico-secondary-hover-border);
   --pico-color: var(--pico-secondary-inverse);
 }
+:is(button, [type=submit], [type=button], [role=button]).secondary:focus, :is(button, [type=submit], [type=button], [role=button]).secondary:is([aria-current]:not([aria-current=false])):focus,
 [type=reset]:focus,
-[type=file]::file-selector-button:focus {
+[type=reset]:is([aria-current]:not([aria-current=false])):focus,
+[type=file]::file-selector-button:focus,
+[type=file]::file-selector-button:is([aria-current]:not([aria-current=false])):focus {
   --pico-box-shadow: var(--pico-button-hover-box-shadow, 0 0 0 rgba(0, 0, 0, 0)), 0 0 0 var(--pico-outline-width) var(--pico-secondary-focus);
+}
+
+:is(button, [type=submit], [type=button], [role=button]).contrast {
+  --pico-background-color: var(--pico-contrast-background);
+  --pico-border-color: var(--pico-contrast-border);
+  --pico-color: var(--pico-contrast-inverse);
+}
+:is(button, [type=submit], [type=button], [role=button]).contrast:is([aria-current]:not([aria-current=false]), :hover, :active, :focus) {
+  --pico-background-color: var(--pico-contrast-hover-background);
+  --pico-border-color: var(--pico-contrast-hover-border);
+  --pico-color: var(--pico-contrast-inverse);
+}
+:is(button, [type=submit], [type=button], [role=button]).contrast:focus, :is(button, [type=submit], [type=button], [role=button]).contrast:is([aria-current]:not([aria-current=false])):focus {
+  --pico-box-shadow: var(--pico-button-hover-box-shadow, 0 0 0 rgba(0, 0, 0, 0)), 0 0 0 var(--pico-outline-width) var(--pico-contrast-focus);
+}
+
+:is(button, [type=submit], [type=button], [role=button]).outline,
+[type=reset].outline {
+  --pico-background-color: transparent;
+  --pico-color: var(--pico-primary);
+  --pico-border-color: var(--pico-primary);
+}
+:is(button, [type=submit], [type=button], [role=button]).outline:is([aria-current]:not([aria-current=false]), :hover, :active, :focus),
+[type=reset].outline:is([aria-current]:not([aria-current=false]), :hover, :active, :focus) {
+  --pico-background-color: transparent;
+  --pico-color: var(--pico-primary-hover);
+  --pico-border-color: var(--pico-primary-hover);
+}
+
+:is(button, [type=submit], [type=button], [role=button]).outline.secondary,
+[type=reset].outline {
+  --pico-color: var(--pico-secondary);
+  --pico-border-color: var(--pico-secondary);
+}
+:is(button, [type=submit], [type=button], [role=button]).outline.secondary:is([aria-current]:not([aria-current=false]), :hover, :active, :focus),
+[type=reset].outline:is([aria-current]:not([aria-current=false]), :hover, :active, :focus) {
+  --pico-color: var(--pico-secondary-hover);
+  --pico-border-color: var(--pico-secondary-hover);
+}
+
+:is(button, [type=submit], [type=button], [role=button]).outline.contrast {
+  --pico-color: var(--pico-contrast);
+  --pico-border-color: var(--pico-contrast);
+}
+:is(button, [type=submit], [type=button], [role=button]).outline.contrast:is([aria-current]:not([aria-current=false]), :hover, :active, :focus) {
+  --pico-color: var(--pico-contrast-hover);
+  --pico-border-color: var(--pico-contrast-hover);
 }
 
 :where(button, [type=submit], [type=reset], [type=button], [role=button])[disabled],
@@ -1362,17 +1528,17 @@ textarea[aria-invalid] {
   background-size: 1rem var(--pico-icon-height) !important;
 }
 
-:where(input, select, textarea, fieldset) + small {
+:where(input, select, textarea, fieldset, .grid) + small {
   display: block;
   width: 100%;
   margin-top: calc(var(--pico-spacing) * -0.75);
   margin-bottom: var(--pico-spacing);
   color: var(--pico-muted-color);
 }
-:where(input, select, textarea, fieldset)[aria-invalid=false] + small {
+:where(input, select, textarea, fieldset, .grid)[aria-invalid=false] + small {
   color: var(--pico-ins-color);
 }
-:where(input, select, textarea, fieldset)[aria-invalid=true] + small {
+:where(input, select, textarea, fieldset, .grid)[aria-invalid=true] + small {
   color: var(--pico-del-color);
 }
 
@@ -1821,6 +1987,166 @@ article > footer {
 }
 
 /**
+ * Dropdown (details.dropdown)
+ */
+details.dropdown {
+  position: relative;
+  border-bottom: none;
+}
+details.dropdown summary::after,
+details.dropdown > button::after,
+details.dropdown > a::after {
+  display: block;
+  width: 1rem;
+  height: calc(1rem * var(--pico-line-height, 1.5));
+  margin-inline-start: 0.25rem;
+  float: right;
+  transform: rotate(0deg) translateX(0.2rem);
+  background-image: var(--pico-icon-chevron);
+  background-position: right center;
+  background-size: 1rem auto;
+  background-repeat: no-repeat;
+  content: "";
+}
+
+nav details.dropdown {
+  margin-bottom: 0;
+}
+
+details.dropdown summary:not([role]) {
+  height: calc(1rem * var(--pico-line-height) + var(--pico-form-element-spacing-vertical) * 2 + var(--pico-border-width) * 2);
+  padding: var(--pico-form-element-spacing-vertical) var(--pico-form-element-spacing-horizontal);
+  border: var(--pico-border-width) solid var(--pico-form-element-border-color);
+  border-radius: var(--pico-border-radius);
+  background-color: var(--pico-form-element-background-color);
+  color: var(--pico-form-element-placeholder-color);
+  line-height: inherit;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  transition: background-color var(--pico-transition), border-color var(--pico-transition), color var(--pico-transition), box-shadow var(--pico-transition);
+}
+details.dropdown summary:not([role]):active, details.dropdown summary:not([role]):focus {
+  border-color: var(--pico-form-element-active-border-color);
+  background-color: var(--pico-form-element-active-background-color);
+}
+details.dropdown summary:not([role]):focus {
+  box-shadow: 0 0 0 var(--pico-outline-width) var(--pico-form-element-focus-color);
+}
+details.dropdown summary:not([role]):focus-visible {
+  outline: none;
+}
+details.dropdown summary:not([role])[aria-invalid=false] {
+  --pico-form-element-border-color: var(--pico-form-element-valid-border-color);
+  --pico-form-element-active-border-color: var(--pico-form-element-valid-focus-color);
+  --pico-form-element-focus-color: var(--pico-form-element-valid-focus-color);
+}
+details.dropdown summary:not([role])[aria-invalid=true] {
+  --pico-form-element-border-color: var(--pico-form-element-invalid-border-color);
+  --pico-form-element-active-border-color: var(--pico-form-element-invalid-focus-color);
+  --pico-form-element-focus-color: var(--pico-form-element-invalid-focus-color);
+}
+
+nav details.dropdown {
+  display: inline;
+  margin: calc(var(--pico-nav-element-spacing-vertical) * -1) 0;
+}
+nav details.dropdown summary::after {
+  transform: rotate(0deg) translateX(0rem);
+}
+nav details.dropdown summary:not([role]) {
+  height: calc(1rem * var(--pico-line-height) + var(--pico-nav-link-spacing-vertical) * 2);
+  padding: calc(var(--pico-nav-link-spacing-vertical) - var(--pico-border-width) * 2) var(--pico-nav-link-spacing-horizontal);
+}
+nav details.dropdown summary:not([role]):focus-visible {
+  box-shadow: 0 0 0 var(--pico-outline-width) var(--pico-primary-focus);
+}
+
+details.dropdown summary + ul {
+  display: flex;
+  z-index: 99;
+  position: absolute;
+  left: 0;
+  flex-direction: column;
+  width: 100%;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  margin: 0;
+  margin-top: var(--pico-outline-width);
+  padding: 0;
+  border: var(--pico-border-width) solid var(--pico-dropdown-border-color);
+  border-radius: var(--pico-border-radius);
+  background-color: var(--pico-dropdown-background-color);
+  box-shadow: var(--pico-dropdown-box-shadow);
+  color: var(--pico-dropdown-color);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity var(--pico-transition), transform 0s ease-in-out 1s;
+}
+details.dropdown summary + ul[dir=rtl] {
+  right: 0;
+  left: auto;
+}
+details.dropdown summary + ul li {
+  width: 100%;
+  margin-bottom: 0;
+  padding: calc(var(--pico-form-element-spacing-vertical) * 0.5) var(--pico-form-element-spacing-horizontal);
+  list-style: none;
+}
+details.dropdown summary + ul li:first-of-type {
+  margin-top: calc(var(--pico-form-element-spacing-vertical) * 0.5);
+}
+details.dropdown summary + ul li:last-of-type {
+  margin-bottom: calc(var(--pico-form-element-spacing-vertical) * 0.5);
+}
+details.dropdown summary + ul li a {
+  display: block;
+  margin: calc(var(--pico-form-element-spacing-vertical) * -0.5) calc(var(--pico-form-element-spacing-horizontal) * -1);
+  padding: calc(var(--pico-form-element-spacing-vertical) * 0.5) var(--pico-form-element-spacing-horizontal);
+  overflow: hidden;
+  border-radius: 0;
+  color: var(--pico-dropdown-color);
+  text-decoration: none;
+  text-overflow: ellipsis;
+}
+details.dropdown summary + ul li a:hover, details.dropdown summary + ul li a:focus, details.dropdown summary + ul li a:active, details.dropdown summary + ul li a:focus-visible, details.dropdown summary + ul li a[aria-current]:not([aria-current=false]) {
+  background-color: var(--pico-dropdown-hover-background-color);
+}
+details.dropdown summary + ul li label {
+  width: 100%;
+}
+details.dropdown summary + ul li:has(label):hover {
+  background-color: var(--pico-dropdown-hover-background-color);
+}
+
+details.dropdown[open] summary {
+  margin-bottom: 0;
+}
+
+details.dropdown[open] summary + ul {
+  transform: scaleY(1);
+  opacity: 1;
+  transition: opacity var(--pico-transition), transform 0s ease-in-out 0s;
+}
+
+details.dropdown[open] summary::before {
+  display: block;
+  z-index: 1;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  inset: 0;
+  background: none;
+  content: "";
+  cursor: default;
+}
+
+label > details.dropdown {
+  margin-top: calc(var(--pico-spacing) * 0.25);
+}
+
+/**
  * Group ([role="group"], [role="search"])
  */
 [role=search],
@@ -2027,7 +2353,7 @@ dialog article {
 dialog article > header > * {
   margin-bottom: 0;
 }
-dialog article > header :is(a, button)[rel=prev] {
+dialog article > header .close, dialog article > header :is(a, button)[rel=prev] {
   margin: 0;
   margin-left: var(--pico-spacing);
   padding: 0;
@@ -2044,7 +2370,7 @@ dialog article > footer button:not(:first-of-type),
 dialog article > footer [role=button]:not(:first-of-type) {
   margin-left: calc(var(--pico-spacing) * 0.5);
 }
-dialog article :is(a, button)[rel=prev] {
+dialog article .close, dialog article :is(a, button)[rel=prev] {
   display: block;
   width: 1rem;
   height: 1rem;
@@ -2060,13 +2386,58 @@ dialog article :is(a, button)[rel=prev] {
   opacity: 0.5;
   transition: opacity var(--pico-transition);
 }
-dialog article :is(a, button)[rel=prev]:is([aria-current]:not([aria-current=false]), :hover, :active, :focus) {
+dialog article .close:is([aria-current]:not([aria-current=false]), :hover, :active, :focus), dialog article :is(a, button)[rel=prev]:is([aria-current]:not([aria-current=false]), :hover, :active, :focus) {
   opacity: 1;
 }
 dialog:not([open]), dialog[open=false] {
   display: none;
 }
 
+.modal-is-open {
+  padding-right: var(--pico-scrollbar-width, 0px);
+  overflow: hidden;
+  pointer-events: none;
+  touch-action: none;
+}
+.modal-is-open dialog {
+  pointer-events: auto;
+  touch-action: auto;
+}
+
+:where(.modal-is-opening, .modal-is-closing) dialog,
+:where(.modal-is-opening, .modal-is-closing) dialog > article {
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+:where(.modal-is-opening, .modal-is-closing) dialog {
+  animation-duration: 0.8s;
+  animation-name: modal-overlay;
+}
+:where(.modal-is-opening, .modal-is-closing) dialog > article {
+  animation-delay: 0.2s;
+  animation-name: modal;
+}
+
+.modal-is-closing dialog,
+.modal-is-closing dialog > article {
+  animation-delay: 0s;
+  animation-direction: reverse;
+}
+
+@keyframes modal-overlay {
+  from {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-color: transparent;
+  }
+}
+@keyframes modal {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
 /**
  * Nav
  */

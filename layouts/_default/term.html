@@ -1,9 +1,10 @@
 {{ define "main" }}
   <h1>
     {{- if isset .Data "Term" -}}
-      {{- .Data.Singular | title }} "{{ .Data.Term | title -}}"
+      {{- T .Data.Singular 1 | default .Data.Singular | title }}
+      "{{ .Data.Term | title -}}"
     {{- else -}}
-      Pages
+      {{ T "page" | title }}
     {{- end -}}
   </h1>
 

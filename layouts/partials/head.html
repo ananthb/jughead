@@ -1,88 +1,86 @@
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>
-    {{- if .IsHome -}}
-      {{- .Site.Title -}}
-    {{- else -}}
-      {{- .Title -}}
-    {{- end -}}
-  </title>
-
-  {{- partial "favicons.html" . -}}
-
-  {{ $description := .Description -}}
-  {{- if not $description -}}
-    {{- if .IsPage -}}
-      {{- $description = .Summary -}}
-    {{- else -}}
-      {{- $description = .Site.Params.description -}}
-    {{- end -}}
+<title>
+  {{- if .IsHome -}}
+    {{- .Site.Title -}}
+  {{- else -}}
+    {{- .Title -}}
   {{- end -}}
-  <meta name="description" content="{{ $description }}" />
+</title>
 
-  {{ with .OutputFormats.Get "rss" }}
-    {{ printf `
-      <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML
-    }}
-  {{ end -}}
+{{- partial "favicons.html" . -}}
 
-
-  <!-- Open Graph: https://ogp.me/ -->
-  {{- template "_internal/opengraph.html" . -}}
-
-
-  <!-- Twitter Cards: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards -->
-  {{- template "_internal/twitter_cards.html" . -}}
-
-
-  <!-- Feather Icons -->
-  {{- if isset .Site.Params "social" -}}
-    <link
-      rel="preload"
-      href="{{ absURL "feather-icons/feather-sprite.svg" }}"
-      as="image"
-    />
+{{ $description := .Description -}}
+{{- if not $description -}}
+  {{- if .IsPage -}}
+    {{- $description = .Summary -}}
+  {{- else -}}
+    {{- $description = .Site.Params.description -}}
   {{- end -}}
+{{- end -}}
+<meta name="description" content="{{ $description }}" />
 
-  {{/* Load regular or coloured Pico CSS file */}}
-  {{- $picoCssFile := "picocss/pico.classless.css" -}}
-  {{- with .Site.Params.colourScheme -}}
-    {{ $picoCssFile = printf "picocss/pico.classless.%s.css" . -}}
-  {{- end -}}
+{{ with .OutputFormats.Get "rss" }}
+  {{ printf `
+    <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML
+  }}
+{{ end -}}
 
-  {{ $styles := append (resources.Get $picoCssFile) (resources.Match "css/**.css") }}
 
-  {{- if hugo.IsProduction -}}
-    {{- $css := $styles | resources.Concat "main.css" | minify | fingerprint "sha512" -}}
+<!-- Open Graph: https://ogp.me/ -->
+{{- template "_internal/opengraph.html" . -}}
+
+
+<!-- Twitter Cards: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards -->
+{{- template "_internal/twitter_cards.html" . -}}
+
+
+<!-- Feather Icons -->
+{{- if isset .Site.Params "social" -}}
+  <link
+    rel="preload"
+    href="{{ absURL "feather-icons/feather-sprite.svg" }}"
+    as="image"
+  />
+{{- end -}}
+
+{{/* Load regular or coloured Pico CSS file */}}
+{{- $picoCssFile := "picocss/pico.css" -}}
+{{- with .Site.Params.colourScheme -}}
+  {{ $picoCssFile = printf "picocss/pico.%s.css" . -}}
+{{- end -}}
+
+{{ $styles := append (resources.Get $picoCssFile) (resources.Match "css/**.css") }}
+
+{{- if hugo.IsProduction -}}
+  {{- $css := $styles | resources.Concat "main.css" | minify | fingerprint "sha512" -}}
+  <link
+    rel="stylesheet"
+    type="text/css"
+    media="screen"
+    href="{{ $css.Permalink }}"
+    integrity="{{ $css.Data.Integrity }}"
+  />
+{{ else }}
+  {{- range $styles }}
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="{{ $css.Permalink }}"
-      integrity="{{ $css.Data.Integrity }}"
+      href="{{ .Permalink }}"
     />
-  {{ else }}
-    {{- range $styles }}
-      <link
-        rel="stylesheet"
-        type="text/css"
-        media="screen"
-        href="{{ .Permalink }}"
-      />
-    {{ end -}}
-  {{- end -}}
+  {{ end -}}
+{{- end -}}
 
 
-  <!-- KaTeX support -->
-  {{- if (.Params.katex) -}}
-    {{ partial "katex.html" }}
-  {{- end -}}
+<!-- KaTeX support -->
+{{- if (.Params.katex) -}}
+  {{ partial "katex.html" }}
+{{- end -}}
 
 
-  <!-- MermaidJS -->
-  {{- if (.Params.mermaid) -}}
-    {{ partial "mermaid.html" }}
-  {{- end -}}
-</head>
+<!-- MermaidJS -->
+{{- if (.Params.mermaid) -}}
+  {{ partial "mermaid.html" }}
+{{- end -}}

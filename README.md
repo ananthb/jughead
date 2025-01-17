@@ -26,6 +26,7 @@ Source code for the demo site is available in [https://github.com/ananthb/jughea
 
 ## Features
 
+- [JSON Resume] support.
 - Comments powered by [giscus](https://giscus.app).
 - [MermaidJS](https://mermaid.js.org) diagrams.
 - [KaTeX](https://katex.org) for rendering math formulae.
@@ -43,7 +44,35 @@ path = "github.com/ananthb/jughead"
 
 For more information read the official [setup guide](https://gohugo.io/installation).
 
-## Writing Posts
+## JSON Resume
+
+Render your JSON resume by configuring your unique
+[JSON Resume Registry](https://registry.jsonresume.org) slug in the
+`params` section of your site configuration file.
+
+You will need to sign up with JSON Resume Registry using your GitHub account.
+As on date, your unique slug is your GitHub username.
+
+```toml
+...
+[params]
+jsonResumeRegistrySlug = "your-github-username"
+```
+
+This will add a basic portfolio section from your resume to your site's
+homepage.
+
+You can also render your resume in any page in your site
+by creating a new empty page and setting its layout to `resume` in frontmatter.
+
+```toml
++++
+layout = "resume"
+date = "2025-01-01"
++++
+```
+
+## Write Posts
 
 Use `hugo new posts/my-first-post.md` to create a new post.
 Edit the frontmatter and write your post in markdown.
@@ -64,7 +93,7 @@ katex: true
 
 ```toml
 baseURL = "https://ananthb.github.io/jughead/"
-languageCode = "en-in"
+languageCode = "en"
 title = "Jughead"
 copyright = "© Your Name Here"
 paginate = 10
