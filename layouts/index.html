@@ -28,10 +28,8 @@
 
       <h2>{{ T "about" | title }}</h2>
       <article class="resume">
-        {{- with .Site.Params.jsonResumeRegistrySlug -}}
-          {{- with partial "get-resume.html" $ -}}
-            {{- partial "resume/overview.html" . -}}
-          {{- end -}}
+        {{- with partial "get-resume.html" . -}}
+          {{- partial "resume/overview.html" . -}}
         {{- end -}}
       </article>
     </main>
