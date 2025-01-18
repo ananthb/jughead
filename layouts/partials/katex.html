@@ -23,6 +23,11 @@
 {{ $katexJs := resources.Get "katex/katex.mjs" }}
 {{ $katexAutoRenderJs := resources.Get "katex/contrib/auto-render.mjs" }}
 
+{{ if hugo.IsProduction }}
+  {{ $katexJs = $katexJs | minify | fingerprint "sha512" }}
+  {{ $katexAutoRenderJs = $katexAutoRenderJs | minify | fingerprint "sha512" }}
+{{ end }}
+
 <script type="importmap">
   {{ if hugo.IsProduction }}
   {
@@ -32,14 +37,12 @@
     }
   }
   {{ end }}
-</script><script type="module">
-  {{ if hugo.IsProduction }}
-  {{ $katexJs = $katexJs | minify | fingerprint "sha512" }}
-  {{ $katexAutoRenderJs = $katexAutoRenderJs | minify | fingerprint "sha512" }}
-  {{ end }}
+</script>
 
+<script type="module">
   import katex from {{ $katexJs.RelPermalink }};
   import renderMathInElement from {{ $katexAutoRenderJs.RelPermalink }};
+
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
       delimiters: [
