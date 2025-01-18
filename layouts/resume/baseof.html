@@ -7,7 +7,7 @@
   <body>
     <header class="container">{{ partial "header.html" . }}</header>
     <main class="container">
-      {{ with partial "get-resume.html" .Site.Params.jsonResumeRegistrySlug }}
+      {{ with partial "get-resume.html" . }}
         <div class="resume">
           <section>
             {{ partial "resume/basics.html" . }}

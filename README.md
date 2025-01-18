@@ -49,15 +49,19 @@ For more information read the official [setup guide](https://gohugo.io/installat
 Render your JSON resume by configuring your unique
 [JSON Resume Registry](https://registry.jsonresume.org) slug in the
 `params` section of your site configuration file.
-
-You will need to sign up with JSON Resume Registry using your GitHub account.
-As on date, your unique slug is your GitHub username.
+The slug is the string that appears after `registry.jsonresume.org/` in your
+resume's URL.
 
 ```toml
-...
 [params]
 jsonResumeRegistrySlug = "your-github-username"
 ```
+
+
+You can also render a local `resume.json` file by placing it in the
+`data` directory of your site.
+
+The local `resume.json` file will take precedence over the JSON Resume Registry.
 
 This will add a basic portfolio section from your resume to your site's
 homepage.
@@ -65,7 +69,7 @@ homepage.
 You can also render your resume in any page in your site
 by creating a new empty page and setting its type to `resume` in frontmatter.
 
-```toml
+```markdown
 +++
 type = "resume"
 date = "2025-01-01"
@@ -81,13 +85,16 @@ Toggle MermaidJS and KaTeX support in your post frontmatter.
 Set `mermaid` to `true` to enable MermaidJS support,
 and `katex` to `true` to enable KaTeX support.
 
-```yml
----
-title: Diagrams & Equations
-mermaid: true
-katex: true
----
+```markdown
++++
+title = "Diagrams & Equations"
+mermaid = true
+katex = true
++++
 ```
+
+MermaidJS and KaTeX are JavaScript heavy.
+Enable them when necessary.
 
 ## Sample Config File
 
@@ -115,6 +122,10 @@ subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/ananthb/j
 
 siteRepo = "your-github-org/your-site-repo"
 
+# JSON Resume
+jsonResumeRegistrySlug = "your-github-username"
+# Or create a resume.json file in the data directory.
+
 # Comments
 # Get these values by filling out the form on https://giscus.app
 [params.giscus]
@@ -122,7 +133,6 @@ repo = "your-github-org/your-comments-repo"
 repoID = "your-github-repo-id"
 category = "your-announcement-category"
 categoryID = "your-announcement-category-id"
-...
 
 # Social Tags
 [[params.social]]

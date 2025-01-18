@@ -61,25 +61,25 @@
               {{ with .categoryId -}}
                 data-category-id="{{ . }}"
               {{- end }}
-              {{ with .mapping -}}
+              {{ with (.mapping | default "pathname") -}}
                 data-mapping="{{ . }}"
               {{- end }}
               {{ with .strict -}}
                 data-strict="{{ . }}"
               {{- end }}
-              {{ with .reactionsEnabled -}}
+              {{ with (.reactionsEnabled | default "1") -}}
                 data-reactions-enabled="{{ . }}"
               {{- end }}
               {{ with .emitMetadata -}}
                 data-emit-metadata="{{ . }}"
               {{- end }}
-              {{ with .inputPosition -}}
+              {{ with (.inputPosition | default "bottom") -}}
                 data-input-position="{{ . }}"
               {{- end }}
-              {{ with .theme -}}
+              {{ with (.theme | default "preferred_color_scheme") -}}
                 data-theme="{{ . }}"
               {{- end }}
-              {{ with .lang -}}
+              {{ with (.lang | default "en") -}}
                 data-lang="{{ . }}"
               {{- end }}
               {{ with .loading -}}

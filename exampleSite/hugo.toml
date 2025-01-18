@@ -43,11 +43,6 @@ category = "Comments"
 categoryId = 'DIC_kwDOKs2pMc4Cl_sd'
 mapping = "og:title"
 strict = "1"
-reactionsEnabled = "1"
-emitMetadata = "0"
-inputPosition = "bottom"
-theme = "preferred_color_scheme"
-lang = "en"
 loading = "lazy"
 
 # Follow setup instructions at https://utteranc.es.
