@@ -29,7 +29,8 @@ subtitle = "Portfolio and blog theme for Hugo."
 description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
 
 # Your JSON Resume Registry slug. This is the part of the URL after https://registry.jsonresume.org/.
-jsonResumeRegistrySlug = "ananthb"
+# jsonResumeRegistrySlug = "<your-github-username>"
+# Or create a resume.json file in the data directory.
 
 # Display a link to the commit that built this site in your footer.
 # Requires enableGitInfo = true, and for your website to be public on GitHub.
