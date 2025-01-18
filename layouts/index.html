@@ -28,7 +28,7 @@
 
       <h2>{{ T "about" | title }}</h2>
       <article class="resume">
-        {{- with partial "get-resume.html" . -}}
+        {{- with partial "resume/get.html" . -}}
           {{- partial "resume/overview.html" . -}}
         {{- end -}}
       </article>
