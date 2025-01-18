@@ -8,20 +8,12 @@
     <header class="container">{{ partial "header.html" . }}</header>
 
     <main class="container">
-      <article class="resume">
-        {{- with .Site.Params.jsonResumeRegistrySlug -}}
-          {{- with partial "get-resume.html" . -}}
-            {{- partial "resume/basics.html" . -}}
-          {{- end -}}
-        {{- end -}}
-      </article>
-
-      {{- $pages := first 3 (
+      {{ $pages := first 3 (
         where
         (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
         "Params.featured" "eq" true
         )
-      -}}
+      }}
       {{- if gt (len $pages) 0 }}
         <section>
           <h2>{{ T "featured" | title }}</h2>
@@ -32,6 +24,15 @@
           </ul>
         </section>
       {{ end }}
+
+      <h2>{{ T "about" | title }}</h2>
+      <article class="resume">
+        {{- with .Site.Params.jsonResumeRegistrySlug -}}
+          {{- with partial "get-resume.html" . -}}
+            {{- partial "resume/overview.html" . -}}
+          {{- end -}}
+        {{- end -}}
+      </article>
     </main>
 
     <footer class="container">{{ partial "footer.html" . }}</footer>

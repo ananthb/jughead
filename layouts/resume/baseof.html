@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+
+  <body>
+    <header class="container">{{ partial "header.html" . }}</header>
+    <main class="container">
+      {{ with partial "get-resume.html" .Site.Params.jsonResumeRegistrySlug }}
+        <div class="resume">
+          <section>
+            {{ partial "resume/basics.html" . }}
+          </section>
+
+          <section>
+            {{ partial "resume/education.html" . }}
+          </section>
+
+          <section>
+            {{ partial "resume/work.html" . }}
+          </section>
+
+          <section>
+            {{ partial "resume/languages.html" . }}
+          </section>
+
+          <section>
+            {{ partial "resume/skills.html" . }}
+          </section>
+
+          <section>
+            {{ partial "resume/interests.html" . }}
+          </section>
+        </div>
+      {{ end }}
+    </main>
+  </body>
+</html>

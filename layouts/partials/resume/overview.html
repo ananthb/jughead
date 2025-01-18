@@ -57,8 +57,8 @@
       </ul>
     </div>
 
-    <div>
-      {{- with .profiles -}}
+    {{ with .profiles }}
+      <div>
         <h3>{{ T "profile" | title }}</h3>
         <ul>
           {{- range . }}
@@ -70,7 +70,69 @@
             </li>
           {{- end }}
         </ul>
-      {{ end }}
-    </div>
+      </div>
+    {{ end }}
+
+    {{ with $.projects }}
+      <div>
+        <h3>{{ T "project" | title }}</h3>
+        <ul>
+          {{ range . }}
+            <li>
+              <a href="{{ .url }}">
+                {{ .name }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+
+  </section>
+
+  <section class="grid basics-links">
+    {{ with $.certificates }}
+      <div>
+        <h3>{{ T "certificate" | title }}</h3>
+        <ul>
+          {{ range . }}
+            <li>
+              <a href="{{ .url }}" title="{{ .issuer }}">
+                {{ .name }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+
+    {{ with $.publications }}
+      <div>
+        <h3>{{ T "publication" | title }}</h3>
+        <ul>
+          {{ range . }}
+            <li>
+              <a href="{{ .url }}">
+                {{ .name }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+
+    {{ with $.awards }}
+      <div>
+        <h3>{{ T "award" | title }}</h3>
+        <ul>
+          {{ range . }}
+            <li>
+              <p>{{ .title }} - <em>{{ .awarder }}</em></p>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+
   </section>
 {{- end -}}

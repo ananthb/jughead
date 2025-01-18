@@ -17,14 +17,7 @@
   margin-top: 0;
 }
 
-/* Shrink basics links on desktop for a nicer arrangement */
-@media (min-width: 768px) {
-  .basics-links {
-    width: 50%;
-  }
-}
-
 /* Fix heading spacing for basics contact and profile links */
-.basics-links > div > h2 {
+.basics-links > div > h3 {
   margin-bottom: var(--pico-typography-spacing-vertical);
 }

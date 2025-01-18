@@ -1,6 +1,8 @@
 <nav>
   <ul>
-    <h1><a href="{{ absURL "" }}">{{ .Site.Title }}</a></h1>
+    <li>
+      <h1><a href="{{ absURL "" }}">{{ .Site.Title }}</a></h1>
+    </li>
   </ul>
   <ul>
     {{ range .Site.Menus.main }}

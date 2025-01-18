@@ -63,11 +63,11 @@ This will add a basic portfolio section from your resume to your site's
 homepage.
 
 You can also render your resume in any page in your site
-by creating a new empty page and setting its layout to `resume` in frontmatter.
+by creating a new empty page and setting its type to `resume` in frontmatter.
 
 ```toml
 +++
-layout = "resume"
+type = "resume"
 date = "2025-01-01"
 +++
 ```

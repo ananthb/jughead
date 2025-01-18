@@ -20,6 +20,8 @@ education = "education"
 
 work_experience = "work experience"
 
+about = "about"
+
 [language]
 one = "language"
 other = "languages"
@@ -51,3 +53,19 @@ other = "courses"
 [highlight]
 one = "highlight"
 other = "highlights"
+
+[project]
+one = "project"
+other = "projects"
+
+[certificate]
+one = "certificate"
+other = "certificates"
+
+[award]
+one = "award"
+other = "awards"
+
+[publication]
+one = "publication"
+other = "publications"
