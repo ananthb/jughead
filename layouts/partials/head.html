@@ -12,7 +12,7 @@
 {{ partial "favicons.html" . }}
 
 {{ with or .Description .Summary .Site.Params.description | plainify | htmlUnescape }}
-<meta name="description" content="{{ . }}" />
+  <meta name="description" content="{{ . }}" />
 {{ end }}
 
 {{ with .OutputFormats.Get "rss" }}
@@ -32,12 +32,14 @@
 {{/* Load all javascript files from assets/js */}}
 {{ $scripts := resources.Match "js/**.js" }}
 {{ if hugo.IsProduction }}
-  {{ $js := $scripts | resources.Concat "main.js" | minify | fingerprint "sha512" }}
-  <script
-    src="{{ $js.Permalink }}"
-    defer
-    integrity="{{ $js.Data.Integrity }}"
-  ></script>
+  {{ with $scripts }}
+    {{ $js := . | resources.Concat "main.js" | minify | fingerprint "sha512" }}
+    <script
+      src="{{ $js.Permalink }}"
+      defer
+      integrity="{{ $js.Data.Integrity }}"
+    ></script>
+  {{ end }}
 {{ else }}
   {{ range $scripts }}
     <script src="{{ .Permalink }}" defer></script>
@@ -45,12 +47,14 @@
 {{ end }}
 {{ $scripts = resources.Match "js/**.mjs" }}
 {{ if hugo.IsProduction }}
-  {{ $js := $scripts | resources.Concat "main.mjs" | minify | fingerprint "sha512" }}
-  <script
-    type="module"
-    src="{{ $js.Permalink }}"
-    integrity="{{ $js.Data.Integrity }}"
-  ></script>
+  {{ with $scripts }}
+    {{ $js := . | resources.Concat "main.mjs" | minify | fingerprint "sha512" }}
+    <script
+      type="module"
+      src="{{ $js.Permalink }}"
+      integrity="{{ $js.Data.Integrity }}"
+    ></script>
+  {{ end }}
 {{ else }}
   {{ range $scripts }}
     <script type="module" src="{{ .Permalink }}"></script>
