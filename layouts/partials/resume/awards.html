@@ -1,0 +1,19 @@
+{{ with .awards }}
+  <h2>{{ T "award" | title }}</h2>
+  <hr />
+  {{ range . }}
+    <div class="grid">
+      <div>
+        {{ with .title }}
+          <h3>{{ . }}</h3>
+        {{ end }}
+        {{ with .awarder }}
+          <p><em>{{ . }}</em></p>
+        {{ end }}
+      </div>
+      <p align="right">
+        <em>{{ partial "resume/date-time.html" . }}</em>
+      </p>
+    </div>
+  {{ end }}
+{{ end }}

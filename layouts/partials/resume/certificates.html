@@ -1,0 +1,25 @@
+{{ with .certificates }}
+  <h2>{{ T "certificate" | title }}</h2>
+  <hr />
+  {{ range $cert := . }}
+    <div class="grid">
+      <div>
+        {{ with .name }}
+          <h3>
+            {{ with $cert.url }}
+              <a href="{{ . }}" target="_blank">{{ $cert.name }}</a>
+            {{ else }}
+              {{ . }}
+            {{ end }}
+          </h3>
+        {{ end }}
+        {{ with .issuer }}
+          <p><em>{{ . }}</em></p>
+        {{ end }}
+      </div>
+      <p align="right">
+        <em>{{ partial "resume/date-time.html" . }}</em>
+      </p>
+    </div>
+  {{ end }}
+{{ end }}

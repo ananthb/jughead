@@ -17,10 +17,10 @@ Source code for the demo site is available in [https://github.com/ananthb/jughea
 
 ![Home](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot.png)
 ![Home Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-dark.png)
-![Typography](https://raw.githubusercontent.com/ananthb/jughead/main/images/typography.png)
-![Typography Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/typography-dark.png)
-![Mobile](https://raw.githubusercontent.com/ananthb/jughead/main/images/mobile.png)
-![Mobile Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/mobile-dark.png)
+![Typography](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-typography.png)
+![Typography Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-typography-dark.png)
+![Mobile](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile.png)
+![Mobile Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile-dark.png)
 
 </details>
 
@@ -57,7 +57,6 @@ resume's URL.
 jsonResumeRegistrySlug = "your-github-username"
 ```
 
-
 You can also render a local `resume.json` file by placing it in the
 `data` directory of your site.
 
@@ -67,11 +66,11 @@ This will add a basic portfolio section from your resume to your site's
 homepage.
 
 You can also render your resume in any page in your site
-by creating a new empty page and setting its type to `resume` in frontmatter.
+by creating a new empty page and setting its layout to `resume` in frontmatter.
 
 ```markdown
 +++
-type = "resume"
+layout = "resume"
 date = "2025-01-01"
 +++
 ```

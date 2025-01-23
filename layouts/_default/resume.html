@@ -1,0 +1,53 @@
+{{ define "main" }}
+  {{ with partial "resume/get.html" . }}
+    <div class="resume">
+      <section>
+        {{ partial "resume/basics.html" . }}
+      </section>
+
+      <section>
+        {{ partial "resume/work.html" . }}
+      </section>
+
+      <section>
+        {{ partial "resume/volunteer.html" . }}
+      </section>
+
+      <section>
+        {{ partial "resume/education.html" . }}
+      </section>
+
+      <section>
+        {{ partial "resume/awards.html" . }}
+      </section>
+
+      <section>
+        {{ partial "resume/certificates.html" . }}
+      </section>
+
+      <section>
+        {{ partial "resume/publications.html" . }}
+      </section>
+
+      <section>
+        {{ partial "resume/skills.html" . }}
+      </section>
+
+      <section>
+        {{ partial "resume/languages.html" . }}
+      </section>
+
+      <section>
+        {{ partial "resume/interests.html" . }}
+      </section>
+
+      <section>
+        {{ partial "resume/references.html" . }}
+      </section>
+
+      <section>
+        {{ partial "resume/projects.html" . }}
+      </section>
+    </div>
+  {{ end }}
+{{ end }}

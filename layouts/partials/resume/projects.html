@@ -1,0 +1,27 @@
+{{ with .projects }}
+  <h2>{{ T "project" | title }}</h2>
+  <hr />
+  {{ range $proj := . }}
+    <div class="grid">
+      <div>
+        {{ with .name }}
+          <h3>{{ . }}</h3>
+        {{ end }}
+        {{ with .description }}
+          <p>{{ . }}</p>
+        {{ end }}
+        {{ with .highlights }}
+          <h4>{{ T "highlight" | title }}</h4>
+          {{ range . }}
+            <ul>
+              <li><p>{{ . }}</p></li>
+            </ul>
+          {{ end }}
+        {{ end }}
+      </div>
+      <p align="right">
+        <em>{{ partial "resume/start-end-times.html" . }}</em>
+      </p>
+    </div>
+  {{ end }}
+{{ end }}

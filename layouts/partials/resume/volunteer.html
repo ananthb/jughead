@@ -1,0 +1,43 @@
+{{ with .volunteer }}
+  <h2>{{ T "volunteer" | title }}</h2>
+  <hr />
+  {{ range $job := . }}
+    <article>
+      <div class="grid">
+        <div>
+          {{ with .position }}
+            <h3>{{ . }}</h3>
+          {{ end }}
+          {{ with .organization }}
+            <p>
+              <em>
+                {{ with $job.url }}
+                  <a href="{{ . }}" target="_blank">{{ $job.organization }}</a>
+                {{ else }}
+                  {{ . }}
+                {{ end }}
+              </em>
+            </p>
+          {{ end }}
+        </div>
+        <p align="right">
+          <em>{{ partial "resume/start-end-times.html" . }}</em>
+        </p>
+      </div>
+      <div>
+        {{ with .summary }}
+          <p>{{ . }}</p>
+        {{ end }}
+
+        {{ with .highlights }}
+          <h4>{{ T "highlight" | title }}</h4>
+          <ul>
+            {{ range . }}
+              <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </div>
+    </article>
+  {{ end }}
+{{ end }}

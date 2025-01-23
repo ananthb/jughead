@@ -1,0 +1,14 @@
+{{ with .references }}
+  <h2>{{ T "reference" | title }}</h2>
+  <hr />
+  {{ range $ref := . }}
+    <div>
+      {{ with .name }}
+        <h3>{{ . }}</h3>
+      {{ end }}
+      {{ with .reference }}
+        <blockquote><p>{{ . }}</p></blockquote>
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}

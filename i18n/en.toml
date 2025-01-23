@@ -22,6 +22,8 @@ work_experience = "work experience"
 
 about = "about"
 
+volunteer = "volunteer"
+
 [language]
 one = "language"
 other = "languages"
@@ -69,3 +71,7 @@ other = "awards"
 [publication]
 one = "publication"
 other = "publications"
+
+[reference]
+one = "reference"
+other = "references"

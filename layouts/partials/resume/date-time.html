@@ -1,0 +1,6 @@
+{{ with .date }}
+  {{ time . | dateFormat "January 2006" }}
+{{ end }}
+{{ with .releaseDate }}
+  {{ time . | dateFormat "January 2006" }}
+{{ end }}
