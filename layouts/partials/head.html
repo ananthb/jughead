@@ -9,16 +9,20 @@
   {{- end -}}
 </title>
 
-{{- partial "favicons.html" . -}}
+{{ partial "favicons.html" . }}
 
-{{ $description := .Description -}}
-{{- if not $description -}}
-  {{- if .IsPage -}}
-    {{- $description = .Summary -}}
-  {{- else -}}
-    {{- $description = .Site.Params.description -}}
-  {{- end -}}
-{{- end -}}
+{{ $description := .Description }}
+{{ if not $description }}
+  {{ if .IsPage }}
+    {{ with .Summary }}
+      {{ $description = . }}
+    {{ else }}
+      {{ $description = .Site.Params.decscription }}
+    {{ end }}
+  {{ else }}
+    {{ $description = .Site.Params.description }}
+  {{ end }}
+{{ end }}
 <meta name="description" content="{{ $description }}" />
 
 {{ with .OutputFormats.Get "rss" }}
@@ -29,32 +33,60 @@
 
 
 <!-- Open Graph: https://ogp.me/ -->
-{{- template "_internal/opengraph.html" . -}}
+{{ template "_internal/opengraph.html" . }}
 
 
 <!-- Twitter Cards: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards -->
-{{- template "_internal/twitter_cards.html" . -}}
+{{ template "_internal/twitter_cards.html" . }}
+
+{{/* Load all javascript files from assets/js */}}
+{{ $scripts := resources.Match "js/**.js" }}
+{{ if hugo.IsProduction }}
+  {{ $js := $scripts | resources.Concat "main.js" | minify | fingerprint "sha512" }}
+  <script
+    src="{{ $js.Permalink }}"
+    defer
+    integrity="{{ $js.Data.Integrity }}"
+  ></script>
+{{ else }}
+  {{ range $scripts }}
+    <script src="{{ .Permalink }}" defer></script>
+  {{ end }}
+{{ end }}
+{{ $scripts = resources.Match "js/**.mjs" }}
+{{ if hugo.IsProduction }}
+  {{ $js := $scripts | resources.Concat "main.mjs" | minify | fingerprint "sha512" }}
+  <script
+    type="module"
+    src="{{ $js.Permalink }}"
+    integrity="{{ $js.Data.Integrity }}"
+  ></script>
+{{ else }}
+  {{ range $scripts }}
+    <script type="module" src="{{ .Permalink }}"></script>
+  {{ end }}
+{{ end }}
 
 
 <!-- Feather Icons -->
-{{- if isset .Site.Params "social" -}}
+{{ if isset .Site.Params "social" }}
   <link
     rel="preload"
     href="{{ absURL "feather-icons/feather-sprite.svg" }}"
     as="image"
   />
-{{- end -}}
+{{ end }}
 
 {{/* Load regular or coloured Pico CSS file */}}
-{{- $picoCssFile := "picocss/pico.css" -}}
-{{- with .Site.Params.colourScheme -}}
-  {{ $picoCssFile = printf "picocss/pico.%s.css" . -}}
-{{- end -}}
+{{ $picoCssFile := "picocss/pico.css" }}
+{{ with .Site.Params.colourScheme }}
+  {{ $picoCssFile = printf "picocss/pico.%s.css" . }}
+{{ end }}
 
+{{/* Load Pico CSS files and all CSS files from assets/css */}}
 {{ $styles := append (resources.Get $picoCssFile) (resources.Match "css/**.css") }}
-
-{{- if hugo.IsProduction -}}
-  {{- $css := $styles | resources.Concat "main.css" | minify | fingerprint "sha512" -}}
+{{ if hugo.IsProduction }}
+  {{ $css := $styles | resources.Concat "main.css" | minify | fingerprint "sha512" }}
   <link
     rel="stylesheet"
     type="text/css"
@@ -63,24 +95,24 @@
     integrity="{{ $css.Data.Integrity }}"
   />
 {{ else }}
-  {{- range $styles }}
+  {{ range $styles }}
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
       href="{{ .Permalink }}"
     />
-  {{ end -}}
-{{- end -}}
+  {{ end }}
+{{ end }}
 
 
 <!-- KaTeX support -->
-{{- if (.Params.katex) -}}
+{{ if (.Params.katex) }}
   {{ partial "katex.html" }}
-{{- end -}}
+{{ end }}
 
 
 <!-- MermaidJS -->
-{{- if (.Params.mermaid) -}}
+{{ if (.Params.mermaid) }}
   {{ partial "mermaid.html" }}
-{{- end -}}
+{{ end }}
