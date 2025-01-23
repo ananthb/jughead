@@ -12,7 +12,7 @@
 {{ partial "favicons.html" . }}
 
 {{ with or .Description .Summary .Site.Params.description | plainify | htmlUnescape }}
-<meta name="description" content="{{ $description }}" />
+<meta name="description" content="{{ . }}" />
 {{ end }}
 
 {{ with .OutputFormats.Get "rss" }}
