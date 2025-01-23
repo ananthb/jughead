@@ -7,7 +7,7 @@
         {{ with .name }}
           <h3>
             {{ with $proj.url }}
-              <a href="{{ . }}" target="_blank">{{ $proj.name }}</a>
+              <a href="{{ . }}">{{ $proj.name }}</a>
             {{ else }}
               {{ . }}
             {{ end }}

@@ -7,7 +7,7 @@
         {{ with .name }}
           <h3>
             {{ with $pub.url }}
-              <a href="{{ . }}" target="_blank">{{ $pub.name }}</a>
+              <a href="{{ . }}">{{ $pub.name }}</a>
             {{ else }}
             {{ end }}
             {{ . }}

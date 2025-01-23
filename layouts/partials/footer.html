@@ -67,7 +67,6 @@
         {{ T "commit" | title }}
         {{ if $.Site.Params.siteRepo }}
           <a
-            target="_blank"
             href="https://github.com/{{ $.Site.Params.siteRepo }}/commit/{{ .Hash }}"
           >
             {{ .AbbreviatedHash }}
