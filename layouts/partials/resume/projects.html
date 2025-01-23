@@ -5,7 +5,13 @@
     <div class="grid">
       <div>
         {{ with .name }}
-          <h3>{{ . }}</h3>
+          <h3>
+            {{ with .url }}
+              <a href="{{ . }}" target="_blank">{{ $proj.name }}</a>
+            {{ else }}
+              {{ . }}
+            {{ end }}
+          </h3>
         {{ end }}
         {{ with .description }}
           <p>{{ . }}</p>
