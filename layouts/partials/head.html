@@ -11,19 +11,9 @@
 
 {{ partial "favicons.html" . }}
 
-{{ $description := .Description }}
-{{ if not $description }}
-  {{ if .IsPage }}
-    {{ with .Summary }}
-      {{ $description = . }}
-    {{ else }}
-      {{ $description = .Site.Params.decscription }}
-    {{ end }}
-  {{ else }}
-    {{ $description = .Site.Params.description }}
-  {{ end }}
-{{ end }}
+{{ with or .Description .Summary .Site.Params.description | plainify | htmlUnescape }}
 <meta name="description" content="{{ $description }}" />
+{{ end }}
 
 {{ with .OutputFormats.Get "rss" }}
   {{ printf `
