@@ -1,28 +1,42 @@
 {{- with .basics -}}
   <section class="grid">
     <div>
-      {{- with .name -}}
+      {{ with .name }}
         <h2>{{ . }}</h2>
-      {{ end -}}
-      {{- with .label -}}
+      {{ end }}
+      {{ with .label }}
         <p><em>{{ . }}</em></p>
-      {{ end -}}
-      {{- with .summary -}}
+      {{ end }}
+      {{ with .summary }}
         <p>{{ . }}</p>
-      {{- end -}}
+      {{ end }}
     </div>
 
     <div align="center">
-      {{- with .image }}
-        <img
-          src="{{ . }}"
-          {{ with $.basics.name }}alt="{{ . }}"{{ end }}
-          width="200px"
-        />
-      {{ end -}}
-      {{- with $.qrUrl }}
-        <img src="{{ . }}" width="200px" alt="Resume QR" />
-      {{- end -}}
+      {{ with .image }}
+        {{ with resources.GetRemote . }}
+          <img
+            src="{{ .RelPermalink }}"
+            width="200px"
+            height="200px"
+            {{ with $.basics.name }}
+              alt="{{ . }}'s Resume"
+            {{ end }}
+          />
+        {{ end }}
+      {{ end }}
+      {{ with $.qrUrl }}
+        {{ with resources.GetRemote . }}
+          <img
+            src="{{ .RelPermalink }}"
+            width="200px"
+            height="200px"
+            {{ with $.basics.name }}
+              alt="QR Code Linking to {{ . }}'s Resume"
+            {{ end }}
+          />
+        {{ end }}
+      {{ end }}
     </div>
   </section>
 
@@ -133,6 +147,5 @@
         </ul>
       </div>
     {{ end }}
-
   </section>
 {{- end -}}
