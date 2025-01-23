@@ -2,20 +2,29 @@
   <h2>{{ T "project" | title }}</h2>
   <hr />
   {{ range $proj := . }}
-    <div class="grid">
+    <article>
+      <div class="grid">
+        <div>
+          {{ with .name }}
+            <h3>
+              {{ with $proj.url }}
+                <a href="{{ . }}">{{ $proj.name }}</a>
+              {{ else }}
+                {{ . }}
+              {{ end }}
+            </h3>
+          {{ end }}
+        </div>
+        <p align="right">
+          <em>{{ partial "resume/start-end-times.html" . }}</em>
+        </p>
+      </div>
+
       <div>
-        {{ with .name }}
-          <h3>
-            {{ with $proj.url }}
-              <a href="{{ . }}">{{ $proj.name }}</a>
-            {{ else }}
-              {{ . }}
-            {{ end }}
-          </h3>
-        {{ end }}
         {{ with .description }}
           <p>{{ . }}</p>
         {{ end }}
+
         {{ with .highlights }}
           <h4>{{ T "highlight" | title }}</h4>
           {{ range . }}
@@ -25,9 +34,6 @@
           {{ end }}
         {{ end }}
       </div>
-      <p align="right">
-        <em>{{ partial "resume/start-end-times.html" . }}</em>
-      </p>
-    </div>
+    </article>
   {{ end }}
 {{ end }}
