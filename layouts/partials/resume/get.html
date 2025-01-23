@@ -3,8 +3,9 @@
 {{ with .Site.Data.resume }}
   {{ $resume = . }}
 {{ else }}
-  {{ $resumeJsonUrl := printf "https://registry.jsonresume.org/%s.json" .Site.Params.jsonResumeRegistrySlug }}
-  {{ $qrUrl := printf "https://registry.jsonresume.org/%s.qr" . }}
+  {{ $slug := .Site.Params.jsonResumeRegistrySlug
+  {{ $resumeJsonUrl := printf "https://registry.jsonresume.org/%s.json" $slug }}
+  {{ $qrUrl := printf "https://registry.jsonresume.org/%s.qr" $slug }}
   {{ with resources.GetRemote $resumeJsonUrl }}
     {{ $resume = merge (. | transform.Unmarshal) (dict "qrUrl" $qrUrl) }}
   {{ end }}
