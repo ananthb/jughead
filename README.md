@@ -26,11 +26,12 @@ Source code for the demo site is available in [https://github.com/ananthb/jughea
 
 ## Features
 
-- [JSON Resume] support.
+- [JSON Resume](https://jsonresume.org) support.
 - Comments powered by [giscus](https://giscus.app).
 - [MermaidJS](https://mermaid.js.org) diagrams.
 - [KaTeX](https://katex.org) for rendering math formulae.
 - Reading time indicators.
+- i18n enabled. Translations welcome.
 
 ## Installation
 
