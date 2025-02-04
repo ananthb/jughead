@@ -10,9 +10,13 @@
   <section>
     <h2>{{ T "featured" | title }}</h2>
     <ul>
-      {{ $featured := (where .Data.Pages.ByDate.Reverse "Params.featured" "eq" true) }}
+      {{ $featured := (where .Data.Pages.ByDate.Reverse "Params.featured" "eq"
+        true)
+      }}
       {{ range collections.First 3 $featured }}
-        {{ template "partials/pageslist.html" . }}
+        {{ template
+          "partials/pageslistitem.html" .
+        }}
       {{ end }}
     </ul>
   </section>
@@ -21,13 +25,13 @@
     <h2>{{ T "new" | title }}</h2>
     <ul>
       {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
-      {{ range $paginator.Pages }}
-        {{ template "partials/pageslist.html" . }}
+      {{ range
+        $paginator.Pages
+      }}
+        {{ template "partials/pageslistitem.html" . }}
       {{ end }}
     </ul>
   </section>
 
-  <section>
-    {{ template "partials/paginator.html" $paginator }}
-  </section>
+  <section>{{ template "partials/paginator.html" $paginator }}</section>
 {{ end }}

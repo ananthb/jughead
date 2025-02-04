@@ -1,4 +1,4 @@
-<nav id="site-header">
+<nav id="site-nav">
   <ul>
     <li>
       <h1><a href="{{ absURL "" }}">{{ .Site.Title }}</a></h1>
@@ -8,6 +8,17 @@
     {{ end }}
   </ul>
 </nav>
+
+{{ with .Site.Params.Social }}
+  <div id="site-header-social" align="center">
+    {{- range $i, $key := . -}}
+      {{- if $i -}}<span>|</span>{{- end -}}
+      <a href="{{ $key.url }}" rel="me" title="{{ $key.name }}">
+        {{ partial "feather.html" $key.icon }}
+      </a>
+    {{- end -}}
+  </div>
+{{- end -}}
 
 {{- if isset .Site.Params "subtitle" -}}
   <p>{{ .Site.Params.Subtitle | markdownify }}</p>

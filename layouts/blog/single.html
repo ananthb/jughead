@@ -11,8 +11,6 @@
           <mark>DRAFT</mark>
         {{ end }}
         <p>{{ printf "Estimated reading time: %d minutes" .ReadingTime }}</p>
-        <strong>tl;dr:</strong>
-        <p>{{ .Summary }}</p>
       </section>
 
       {{ if in .TableOfContents "li" }}

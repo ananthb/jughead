@@ -15,18 +15,6 @@
   </nav>
 </section>
 
-{{ with .Site.Params.Social }}
-  <section>
-    {{- range $i, $key := . -}}
-      {{- if $i -}}<span>|</span>{{- end -}}
-      <a href="{{ $key.url }}" rel="me" title="{{ $key.name }}">
-        {{ partial "feather.html" $key.icon }}
-      </a>
-    {{- end -}}
-  </section>
-{{- end -}}
-
-
 <section>
   <p>
     {{- /* Copyright years range from the year of the oldest page to the year of the newest one. */ -}}

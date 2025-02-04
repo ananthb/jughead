@@ -1,7 +1,9 @@
 {{ define "main" }}
   <h1>
     {{- if isset .Data "Term" -}}
-      {{- T .Data.Singular 1 | default .Data.Singular | title }}
+      {{- T .Data.Singular 1 | default .Data.Singular
+        | title
+      }}
       "{{ .Data.Term | title -}}"
     {{- else -}}
       {{ T "page" | title }}
@@ -10,9 +12,7 @@
 
   <section>
     <ul>
-      {{- range .Data.Pages -}}
-        {{ partial "pageslist.html" . }}
-      {{- end -}}
+      {{- range .Data.Pages -}}{{ partial "pageslistitem.html" . }}{{- end -}}
     </ul>
   </section>
 {{ end }}

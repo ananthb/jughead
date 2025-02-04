@@ -1,7 +1,11 @@
-#site-header {
+#site-nav {
   justify-content: center;
 }
 
-#site-header h1 {
+#site-nav h1 {
   font-size: 3rem;
+}
+
+#site-header-social :where(a, [role="link"]):not(:hover) {
+  text-decoration: none;
 }
