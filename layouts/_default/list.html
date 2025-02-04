@@ -11,7 +11,7 @@
     <ul>
       {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
       {{ range $paginator.Pages }}
-        {{ template "partials/pageslist.html" . }}
+        {{ template "partials/pageslistitem.html" . }}
       {{ end }}
     </ul>
   </section>
