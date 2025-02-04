@@ -1,5 +1,6 @@
 #site-nav {
   justify-content: center;
+  flex-flow: row wrap;
 }
 
 #site-nav h1 {
