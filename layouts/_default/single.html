@@ -16,22 +16,7 @@
     <main>{{ .Content }}</main>
 
     <footer>
-      {{ if ne .Type "page" }}
-        {{ if gt .Params.tags 0 }}
-          <h4>Tags</h4>
-          <nav>
-            <ul>
-              {{ range .Params.tags }}
-                <li>
-                  <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}"
-                    >{{ . }}</a
-                  >
-                </li>
-              {{ end }}
-            </ul>
-          </nav>
-        {{ end }}
-      {{ end }}
+      {{ partial "page-tags-categories.html" . }}
     </footer>
   </article>
 {{ end }}

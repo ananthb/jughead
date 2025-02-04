@@ -24,36 +24,7 @@
     <main>{{ .Content }}</main>
 
     <footer>
-      <section class="footer-explore">
-        {{ with .GetTerms "tags" }}
-          <small><strong>{{ T "tags" | title }}</strong></small>
-          <nav>
-            <ul>
-              {{ range first 5 . }}
-                <li>
-                  <small>
-                    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-                  </small>
-                </li>
-              {{ end }}
-            </ul>
-          </nav>
-        {{ end }}
-        {{ with .GetTerms "categories" }}
-          <small><strong>{{ T "categories" | title }}</strong></small>
-          <nav>
-            <ul>
-              {{ range first 5 . }}
-                <li>
-                  <small>
-                    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-                  </small>
-                </li>
-              {{ end }}
-            </ul>
-          </nav>
-        {{ end }}
-      </section>
+      {{ partial "page-tags-categories.html" . }}
 
       {{ if not .Params.comments }}
         <section>

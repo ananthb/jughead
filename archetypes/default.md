@@ -9,28 +9,8 @@ draft = true
 tags = []
 
 # Categories broadly relate posts to each other
-# Add a post to the "featured" category to display it on the homepage and blog page.
+# Add a post to the "featured" category to display it on the homepage.
 categories = []
 
-# Add a manual summary
-# summary = ""
-
-## Features
-
-# Add JavaScript to render Mermaid diagrams
-mermaid = false
-
-# Add JavaScript to render KaTeX math
-katex = false
-
-# Turn off comments
-# comments = false
+summary = "{{ replace .File.ContentBaseName "-" " " | title }}"
 +++
-
-<!-- Or write an inline summary right here. -->
-
-Briefly summarise {{ replace .File.ContentBaseName "-" " " | title }}.
-
-<!--more-->
-
-## A Subtitle

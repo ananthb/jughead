@@ -32,6 +32,8 @@ serviceWorker = "precache"
 subtitle = "Portfolio and blog theme for Hugo."
 description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
 
+mainSections = ["blog", "links"]
+
 # Your JSON Resume Registry slug. This is the part of the URL after https://registry.jsonresume.org/.
 # Or create a resume.json file in the data directory.
 # jsonResumeRegistrySlug = "<your-github-username>"

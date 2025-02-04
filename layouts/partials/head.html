@@ -49,38 +49,6 @@ if (navigator.serviceWorker) {
 <!-- Twitter Cards: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards -->
 {{ template "_internal/twitter_cards.html" . }}
 
-{{/* Load all javascript files from assets/js */}}
-{{ $scripts := resources.Match "js/**.js" }}
-{{ if hugo.IsProduction }}
-  {{ with $scripts }}
-    {{ $js := . | resources.Concat "main.js" | minify | fingerprint }}
-    <script
-      src="{{ $js.Permalink }}"
-      defer
-      integrity="{{ $js.Data.Integrity }}"
-    ></script>
-  {{ end }}
-{{ else }}
-  {{ range $scripts }}
-    <script src="{{ .Permalink }}" defer></script>
-  {{ end }}
-{{ end }}
-{{ $scripts = resources.Match "js/**.mjs" }}
-{{ if hugo.IsProduction }}
-  {{ with $scripts }}
-    {{ $js := . | resources.Concat "main.mjs" | minify | fingerprint }}
-    <script
-      type="module"
-      src="{{ $js.Permalink }}"
-      integrity="{{ $js.Data.Integrity }}"
-    ></script>
-  {{ end }}
-{{ else }}
-  {{ range $scripts }}
-    <script type="module" src="{{ .Permalink }}"></script>
-  {{ end }}
-{{ end }}
-
 
 <!-- Feather Icons -->
 {{ if isset .Site.Params "social" }}
@@ -117,16 +85,4 @@ if (navigator.serviceWorker) {
       href="{{ .Permalink }}"
     />
   {{ end }}
-{{ end }}
-
-
-<!-- KaTeX support -->
-{{ if (.Params.katex) }}
-  {{ partial "katex.html" }}
-{{ end }}
-
-
-<!-- MermaidJS -->
-{{ if (.Params.mermaid) }}
-  {{ partial "mermaid.html" }}
 {{ end }}

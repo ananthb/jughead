@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+  <head>
+    {{ partial "head.html" . }}
+
+
+    <!-- KaTeX support -->
+    {{ if (.Params.katex) }}
+      {{ partial "katex.html" }}
+    {{ end }}
+
+
+    <!-- MermaidJS -->
+    {{ if (.Params.mermaid) }}
+      {{ partial "mermaid.html" }}
+    {{ end }}
+  </head>
+
+  <body>
+    <header class="container">{{ partial "header.html" . }}</header>
+    <main class="container">{{ block "main" . }}{{ end }}</main>
+    <footer class="container">{{ partial "footer.html" . }}</footer>
+  </body>
+</html>

@@ -4,7 +4,9 @@
     <time datetime="{{ dateFormat "2006-02-02 15:04" .Date }}">
       <i>{{ dateFormat "Jan 2, 2006" .Date }}</i>
     </time>
-    <small> ({{ .ReadingTime }} min. read)</small>
+    {{ if in .Section "blog" }}
+      <small> ({{ .ReadingTime }} min. read)</small>
+    {{ end }}
     {{ if .Draft }}
       <mark>DRAFT</mark>
     {{ end }}
