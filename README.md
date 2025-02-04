@@ -5,24 +5,6 @@
 Jughead is a simple and powerful portfolio and blog theme for Hugo.
 It features a Resume page, Giscus comments, Mermaid diagrams, and KaTeX formulae.
 
-## [Demo](https://ananthb.github.io/jughead)
-
-Check out the demo site here: [https://ananthb.github.io/jughead](https://ananthb.github.io/jughead).
-Source code for the demo site is available in [https://github.com/ananthb/jughead/tree/main/exampleSite](exampleSite).
-
-<details>
-
-<summary>Screenshots</summary>
-
-![Home](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot.png)
-![Home Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-dark.png)
-![Resume](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-resume.png)
-![Resume Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-resume-dark.png)
-![Mobile](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile.png)
-![Mobile Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile-dark.png)
-
-</details>
-
 ## Features
 
 - [JSON Resume](https://jsonresume.org) support.
@@ -166,6 +148,22 @@ name = "Blog"
 url = "/blog"
 weight = 1
 ```
+
+## Screenshots
+
+<details>
+
+<summary>Screenshots</summary>
+
+![Home](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot.png)
+![Home Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-dark.png)
+![Resume](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-resume.png)
+![Resume Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-resume-dark.png)
+![Mobile](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile.png)
+![Mobile Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile-dark.png)
+
+</details>
+
 
 ## [License](LICENSE)
 
