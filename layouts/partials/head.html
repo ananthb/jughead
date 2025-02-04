@@ -10,7 +10,12 @@
 {{ end }}
 
 {{- range .Translations }}
-  <link rel="alternate" hreflang="{{ default .Site.LanguageCode .Language.Lang }}" href="{{ .Permalink }}" title="{{ partial "title" . }}">
+  <link
+    rel="alternate"
+    hreflang="{{ default .Site.LanguageCode .Language.Lang }}"
+    href="{{ .Permalink }}"
+    title="{{ partial "title" . }}"
+  />
 {{- end -}}
 
 {{ if .Site.Params.serviceWorker }}
@@ -22,7 +27,7 @@
 {{ end }}
 if (navigator.serviceWorker) {
   navigator.serviceWorker.register(
-    "{{ $swJS.RelPermalink }}", 
+    "{{ $swJS.RelPermalink }}",
     { scope: "{{ "./" | relURL }}" }
   );
 }
