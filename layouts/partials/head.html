@@ -1,18 +1,33 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>
-  {{- if .IsHome -}}
-    {{- .Site.Title -}}
-  {{- else -}}
-    {{- .Title -}}
-  {{- end -}}
-</title>
+<title>{{ partial "title" . }} | {{ .Site.Title -}}</title>
 
 {{ partial "favicons.html" . }}
 
 {{ with or .Description .Summary .Site.Params.description | plainify | htmlUnescape }}
   <meta name="description" content="{{ . }}" />
+{{ end }}
+
+{{- range .Translations }}
+  <link rel="alternate" hreflang="{{ default .Site.LanguageCode .Language.Lang }}" href="{{ .Permalink }}" title="{{ partial "title" . }}">
+{{- end -}}
+
+{{ if .Site.Params.serviceWorker }}
+<script>
+{{ if .Site.Params.serviceWorker -}}
+{{ $swJS := resources.Get "sw.js" | resources.ExecuteAsTemplate "sw.js" . }}
+{{ if hugo.IsProduction }}
+{{ $swJS = $swJS | minify | fingerprint }}
+{{ end }}
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register(
+    "{{ $swJS.RelPermalink }}", 
+    { scope: "{{ "./" | relURL }}" }
+  );
+}
+{{ end }}
+</script>
 {{ end }}
 
 {{ with .OutputFormats.Get "rss" }}
@@ -33,7 +48,7 @@
 {{ $scripts := resources.Match "js/**.js" }}
 {{ if hugo.IsProduction }}
   {{ with $scripts }}
-    {{ $js := . | resources.Concat "main.js" | minify | fingerprint "sha512" }}
+    {{ $js := . | resources.Concat "main.js" | minify | fingerprint }}
     <script
       src="{{ $js.Permalink }}"
       defer
@@ -48,7 +63,7 @@
 {{ $scripts = resources.Match "js/**.mjs" }}
 {{ if hugo.IsProduction }}
   {{ with $scripts }}
-    {{ $js := . | resources.Concat "main.mjs" | minify | fingerprint "sha512" }}
+    {{ $js := . | resources.Concat "main.mjs" | minify | fingerprint }}
     <script
       type="module"
       src="{{ $js.Permalink }}"
@@ -80,7 +95,7 @@
 {{/* Load Pico CSS files and all CSS files from assets/css */}}
 {{ $styles := append (resources.Get $picoCssFile) (resources.Match "css/**.css") }}
 {{ if hugo.IsProduction }}
-  {{ $css := $styles | resources.Concat "main.css" | minify | fingerprint "sha512" }}
+  {{ $css := $styles | resources.Concat "main.css" | minify | fingerprint }}
   <link
     rel="stylesheet"
     type="text/css"

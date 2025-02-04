@@ -3,8 +3,7 @@
 ![logo](https://raw.githubusercontent.com/ananthb/jughead/refs/heads/main/images/logo.png)
 
 Jughead is a simple and powerful portfolio and blog theme for Hugo.
-Its responsive and loads fast on all devices.
-It supports comments, diagrams, and math formulae.
+It features a Resume page, Giscus comments, Mermaid diagrams, and KaTeX formulae.
 
 ## [Demo](https://ananthb.github.io/jughead)
 
@@ -31,6 +30,8 @@ Source code for the demo site is available in [https://github.com/ananthb/jughea
 - [MermaidJS](https://mermaid.js.org) diagrams.
 - [KaTeX](https://katex.org) for rendering math formulae.
 - Reading time indicators.
+- Offline caching with a service worker.
+- [Pico CSS](https://picocss.com) colour schemes.
 - i18n enabled. Translations welcome.
 
 ## Installation
@@ -115,16 +116,23 @@ pygmentscodefencesguesssyntax = true
 # Add a logo to your site by placing an image in the assets directory
 # and setting the path here. Preferably a square png image.
 logo = "images/logo.png"
+
 # Choose a colour scheme from one of the Pico CSS colurs.
 colourScheme = "blue"
+
+# Turn on offline caching
+serviceWorker = "precache"
+
 # Add a subtitle on the home page.
 subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/ananthb/jughead)"
 
+# Site GitHub Repository slig
+# If enableGitInfo is true, this will add a link to the source code of the site.
 siteRepo = "your-github-org/your-site-repo"
 
-# JSON Resume
-jsonResumeRegistrySlug = "your-github-username"
+# JSON Resume Registry slug
 # Or create a resume.json file in the data directory.
+jsonResumeRegistrySlug = "your-github-username"
 
 # Comments
 # Get these values by filling out the form on https://giscus.app

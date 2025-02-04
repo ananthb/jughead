@@ -8,8 +8,10 @@
     {{ if .Draft }}
       <mark>DRAFT</mark>
     {{ end }}
-    {{ if .Params.featured }}
-      <p>{{ .Summary }}</p>
-    {{ end }}
   </span>
+  {{ if .Params.featured }}
+  <div>
+  {{ .Summary }}
+  </div>
+  {{ end }}
 </li>

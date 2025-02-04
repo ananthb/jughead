@@ -10,7 +10,7 @@
 
 {{ $katexCss := resources.Get "katex/katex.css" }}
 {{ if hugo.IsProduction }}
-  {{- $katexCss = $katexCss | minify | fingerprint "sha512" }}
+  {{- $katexCss = $katexCss | minify | fingerprint }}
   <link
     rel="stylesheet"
     href="{{ $katexCss.Permalink }}"
@@ -24,20 +24,11 @@
 {{ $katexAutoRenderJs := resources.Get "katex/contrib/auto-render.mjs" }}
 
 {{ if hugo.IsProduction }}
-  {{ $katexJs = $katexJs | minify | fingerprint "sha512" }}
-  {{ $katexAutoRenderJs = $katexAutoRenderJs | minify | fingerprint "sha512" }}
+  {{ $katexJs = $katexJs | minify | fingerprint }}
+  {{ $katexAutoRenderJs = $katexAutoRenderJs | minify | fingerprint }}
 {{ end }}
 
-<script type="importmap">
-  {{ if hugo.IsProduction }}
-  {
-    "integrity": {
-      "{{ $katexJs.RelPermalink }}": "{{ $katexJs.Data.Integrity }}",
-      "{{ $katexAutoRenderJs.RelPermalink }}": "{{ $katexAutoRenderJs.Data.Integrity }}"
-    }
-  }
-  {{ end }}
-</script><script type="module">
+<script type="module">
   import katex from {{ $katexJs.RelPermalink }};
   import renderMathInElement from {{ $katexAutoRenderJs.RelPermalink }};
 

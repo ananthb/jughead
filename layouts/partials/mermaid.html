@@ -6,16 +6,7 @@
   {{ $mermaidChunks = resources.Match "mermaid/chunks/mermaid.esm.min/*.mjs" }}
 {{ end }}
 
-<script type="importmap">
-  {{ if hugo.IsProduction }}
-  {{ $mermaidJs = $mermaidJs | resources.Fingerprint "sha512" }}
-  {
-    "imports": {
-      "{{ $mermaidJs.RelPermalink }}": "{{ $mermaidJs.Data.Integrity }}"
-    }
-  }
-  {{ end }}
-</script><script type="module">
+<script type="module">
   import mermaid from {{ $mermaidJs.RelPermalink }};
   {{ range $mermaidChunks }}
   import "{{ .RelPermalink }}";

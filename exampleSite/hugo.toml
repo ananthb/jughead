@@ -22,15 +22,19 @@ pygmentscodefencesguesssyntax = true
 # Add a logo to your site by placing an image in the assets directory
 # and setting the path here. Preferably a square png image.
 logo = "logo.png"
+
 # Choose a colour scheme from the Pico CSS palate: https://picocss.com/docs/colors.
 colourScheme = "blue"
-subtitle = "Portfolio and blog theme for Hugo."
 
+# Enable a service worker for offline access.
+serviceWorker = "precache"
+
+subtitle = "Portfolio and blog theme for Hugo."
 description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
 
 # Your JSON Resume Registry slug. This is the part of the URL after https://registry.jsonresume.org/.
-# jsonResumeRegistrySlug = "<your-github-username>"
 # Or create a resume.json file in the data directory.
+# jsonResumeRegistrySlug = "<your-github-username>"
 
 # Display a link to the commit that built this site in your footer.
 # Requires enableGitInfo = true, and for your website to be public on GitHub.
