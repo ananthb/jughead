@@ -3,6 +3,8 @@
     <li>
       <h1><a href="{{ absURL "" }}">{{ .Site.Title }}</a></h1>
     </li>
+  </ul>
+  <ul>
     {{ range .Site.Menus.main }}
       <li><a href="{{ .URL }}">{{ .Name }}</a></li>
     {{ end }}
