@@ -1,87 +1,89 @@
 {{ define "main" }}
-  <article>
-    <header>
-      <h1>{{ .Title }}</h1>
-      <section>
-        Posted on
-        <time datetime="{{ dateFormat "2006-02-02 15:04" .Date }}">
-          {{ dateFormat "Jan 02, 2006" .Date }}
-        </time>
-        {{ if .Draft }}
-          <mark>DRAFT</mark>
-        {{ end }}
-        <p>{{ printf "Estimated reading time: %d minutes" .ReadingTime }}</p>
-      </section>
-
-      {{ if in .TableOfContents "li" }}
+  <main class="container">
+    <article>
+      <header>
+        <h1>{{ .Title }}</h1>
         <section>
-          <h2>Table of Contents</h2>
-          <aside>{{ .TableOfContents }}</aside>
-        </section>
-      {{ end }}
-    </header>
-
-    <main>{{ .Content }}</main>
-
-    <footer>
-      {{ partial "page-tags-categories.html" . }}
-
-      {{ if not .Params.comments }}
-        <section>
-          {{ with .Site.Params.giscus }}
-            <script
-              src="https://giscus.app/client.js"
-              {{ with .repo -}}
-                data-repo="{{ . }}"
-              {{- end }}
-              {{ with .repoId -}}
-                data-repo-id="{{ . }}"
-              {{- end }}
-              {{ with .category -}}
-                data-category="{{ . }}"
-              {{- end }}
-              {{ with .categoryId -}}
-                data-category-id="{{ . }}"
-              {{- end }}
-              {{ with (.mapping | default "pathname") -}}
-                data-mapping="{{ . }}"
-              {{- end }}
-              {{ with .strict -}}
-                data-strict="{{ . }}"
-              {{- end }}
-              {{ with (.reactionsEnabled | default "1") -}}
-                data-reactions-enabled="{{ . }}"
-              {{- end }}
-              {{ with .emitMetadata -}}
-                data-emit-metadata="{{ . }}"
-              {{- end }}
-              {{ with (.inputPosition | default "bottom") -}}
-                data-input-position="{{ . }}"
-              {{- end }}
-              {{ with (.theme | default "preferred_color_scheme") -}}
-                data-theme="{{ . }}"
-              {{- end }}
-              {{ with (.lang | default "en") -}}
-                data-lang="{{ . }}"
-              {{- end }}
-              {{ with .loading -}}
-                data-loading="{{ . }}"
-              {{- end }}
-              crossorigin="anonymous"
-              async
-            ></script>
-            <noscript>
-              No JavaScript? Read comments from the GitHub
-              <a
-                href="https://github.com/{{ .repo }}/discussions?discussions_q={{ $.Page.Title }}"
-              >
-                Discussion
-              </a>
-              directly.
-            </noscript>
+          Posted on
+          <time datetime="{{ dateFormat "2006-02-02 15:04" .Date }}">
+            {{ dateFormat "Jan 02, 2006" .Date }}
+          </time>
+          {{ if .Draft }}
+            <mark>DRAFT</mark>
           {{ end }}
+          <p>{{ printf "Estimated reading time: %d minutes" .ReadingTime }}</p>
         </section>
-      {{ end }}
-    </footer>
-  </article>
+
+        {{ if in .TableOfContents "li" }}
+          <section>
+            <h2>Table of Contents</h2>
+            <aside>{{ .TableOfContents }}</aside>
+          </section>
+        {{ end }}
+      </header>
+
+      <main>{{ .Content }}</main>
+
+      <footer>
+        {{ partial "page-tags-categories.html" . }}
+
+        {{ if not .Params.comments }}
+          <section>
+            {{ with .Site.Params.giscus }}
+              <script
+                src="https://giscus.app/client.js"
+                {{ with .repo -}}
+                  data-repo="{{ . }}"
+                {{- end }}
+                {{ with .repoId -}}
+                  data-repo-id="{{ . }}"
+                {{- end }}
+                {{ with .category -}}
+                  data-category="{{ . }}"
+                {{- end }}
+                {{ with .categoryId -}}
+                  data-category-id="{{ . }}"
+                {{- end }}
+                {{ with (.mapping | default "pathname") -}}
+                  data-mapping="{{ . }}"
+                {{- end }}
+                {{ with .strict -}}
+                  data-strict="{{ . }}"
+                {{- end }}
+                {{ with (.reactionsEnabled | default "1") -}}
+                  data-reactions-enabled="{{ . }}"
+                {{- end }}
+                {{ with .emitMetadata -}}
+                  data-emit-metadata="{{ . }}"
+                {{- end }}
+                {{ with (.inputPosition | default "bottom") -}}
+                  data-input-position="{{ . }}"
+                {{- end }}
+                {{ with (.theme | default "preferred_color_scheme") -}}
+                  data-theme="{{ . }}"
+                {{- end }}
+                {{ with (.lang | default "en") -}}
+                  data-lang="{{ . }}"
+                {{- end }}
+                {{ with .loading -}}
+                  data-loading="{{ . }}"
+                {{- end }}
+                crossorigin="anonymous"
+                async
+              ></script>
+              <noscript>
+                No JavaScript? Read comments from the GitHub
+                <a
+                  href="https://github.com/{{ .repo }}/discussions?discussions_q={{ $.Page.Title }}"
+                >
+                  Discussion
+                </a>
+                directly.
+              </noscript>
+            {{ end }}
+          </section>
+        {{ end }}
+      </footer>
+    </article>
+  </main>
 {{ end }}

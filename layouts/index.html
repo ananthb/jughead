@@ -5,7 +5,8 @@
   </head>
 
   <body>
-    <header class="container">{{ partial "header.html" . }}</header>
+    {{ partial "header.html" . }}
+
 
     <main class="container">
       {{ $pages := first 3 (
@@ -34,6 +35,6 @@
       </article>
     </main>
 
-    <footer class="container">{{ partial "footer.html" . }}</footer>
+    {{ partial "footer.html" . }}
   </body>
 </html>

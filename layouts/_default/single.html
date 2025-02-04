@@ -1,22 +1,24 @@
 {{ define "main" }}
-  <article>
-    <header>
-      <h1>{{ .Title }}</h1>
-      <div>
-        Posted on
-        <time datetime="{{ dateFormat "2006-02-02 15:04" .Date }}">
-          {{ dateFormat "Jan 02, 2006" .Date }}
-        </time>
-        {{ if .Draft }}
-          <mark>DRAFT</mark>
-        {{ end }}
-      </div>
-    </header>
+  <main class="container">
+    <article>
+      <header>
+        <h1>{{ .Title }}</h1>
+        <div>
+          Posted on
+          <time datetime="{{ dateFormat "2006-02-02 15:04" .Date }}">
+            {{ dateFormat "Jan 02, 2006" .Date }}
+          </time>
+          {{ if .Draft }}
+            <mark>DRAFT</mark>
+          {{ end }}
+        </div>
+      </header>
 
-    <main>{{ .Content }}</main>
+      <main>{{ .Content }}</main>
 
-    <footer>
-      {{ partial "page-tags-categories.html" . }}
-    </footer>
-  </article>
+      <footer>
+        {{ partial "page-tags-categories.html" . }}
+      </footer>
+    </article>
+  </main>
 {{ end }}

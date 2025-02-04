@@ -1,27 +1,29 @@
-<nav id="site-nav">
-  <ul>
-    <li>
-      <h1><a href="{{ absURL "" }}">{{ .Site.Title }}</a></h1>
-    </li>
-  </ul>
-  <ul>
-    {{ range .Site.Menus.main }}
-      <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-    {{ end }}
-  </ul>
-</nav>
+<header class="container">
+  <nav id="site-nav">
+    <ul>
+      <li>
+        <h1><a href="{{ absURL "" }}">{{ .Site.Title }}</a></h1>
+      </li>
+    </ul>
+    <ul>
+      {{ range .Site.Menus.main }}
+        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+  </nav>
 
-{{ with .Site.Params.Social }}
-  <div id="site-header-social" align="center">
-    {{- range $i, $key := . -}}
-      {{- if $i -}}<span>|</span>{{- end -}}
-      <a href="{{ $key.url }}" rel="me" title="{{ $key.name }}">
-        {{ partial "feather.html" $key.icon }}
-      </a>
-    {{- end -}}
-  </div>
-{{- end -}}
+  {{ with .Site.Params.Social }}
+    <div id="site-header-social" align="center">
+      {{- range $i, $key := . -}}
+        {{- if $i -}}<span>|</span>{{- end -}}
+        <a href="{{ $key.url }}" rel="me" title="{{ $key.name }}">
+          {{ partial "feather.html" $key.icon }}
+        </a>
+      {{- end -}}
+    </div>
+  {{- end -}}
 
-{{- if isset .Site.Params "subtitle" -}}
-  <p>{{ .Site.Params.Subtitle | markdownify }}</p>
-{{- end -}}
+  {{- if isset .Site.Params "subtitle" -}}
+    <p>{{ .Site.Params.Subtitle | markdownify }}</p>
+  {{- end -}}
+</header>

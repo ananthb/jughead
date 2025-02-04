@@ -1,18 +1,20 @@
 {{ define "main" }}
-  <h1>
-    {{- if isset .Data "Term" -}}
-      {{- T .Data.Singular 1 | default .Data.Singular
-        | title
-      }}
-      "{{ .Data.Term | title -}}"
-    {{- else -}}
-      {{ T "page" | title }}
-    {{- end -}}
-  </h1>
+  <main class="container">
+    <h1>
+      {{- if isset .Data "Term" -}}
+        {{- T .Data.Singular 1 | default .Data.Singular
+          | title
+        }}
+        "{{ .Data.Term | title -}}"
+      {{- else -}}
+        {{ T "page" | title }}
+      {{- end -}}
+    </h1>
 
-  <section>
-    <ul>
-      {{- range .Data.Pages -}}{{ partial "pageslistitem.html" . }}{{- end -}}
-    </ul>
-  </section>
+    <section>
+      <ul>
+        {{- range .Data.Pages -}}{{ partial "pageslistitem.html" . }}{{- end -}}
+      </ul>
+    </section>
+  </main>
 {{ end }}

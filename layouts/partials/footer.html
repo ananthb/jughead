@@ -1,75 +1,77 @@
-<section class="footer-explore">
-  <h4>{{ T "explore" | title }}</h4>
-  {{ with .Site.Taxonomies }}
-    {{ range $taxonomy, $terms := . }}
-      {{ with $terms }}
-        <h5>
-          <a href="{{ $taxonomy | relLangURL }}">{{ T $taxonomy | title }}</a>
-        </h5>
-        <nav>
-          <ul>
-            {{ range first 5 .ByCount }}
-              <li>
-                <small>
-                  <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
-                </small>
-              </li>
-            {{ end }}
-          </ul>
-        </nav>
+<footer class="container">
+  <section class="footer-explore">
+    <h4>{{ T "explore" | title }}</h4>
+    {{ with .Site.Taxonomies }}
+      {{ range $taxonomy, $terms := . }}
+        {{ with $terms }}
+          <h5>
+            <a href="{{ $taxonomy | relLangURL }}">{{ T $taxonomy | title }}</a>
+          </h5>
+          <nav>
+            <ul>
+              {{ range first 5 .ByCount }}
+                <li>
+                  <small>
+                    <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+                  </small>
+                </li>
+              {{ end }}
+            </ul>
+          </nav>
+        {{ end }}
       {{ end }}
     {{ end }}
-  {{ end }}
-</section>
+  </section>
 
-<section>
-  <p>
-    {{- /* Copyright years range from the year of the oldest page to the year of the newest one. */ -}}
-    {{ $currentYear := now.Year -}}
-    {{- $copyrightYears := slice -}}
-    {{- $seenYears := dict -}}
+  <section>
+    <p>
+      {{- /* Copyright years range from the year of the oldest page to the year of the newest one. */ -}}
+      {{ $currentYear := now.Year -}}
+      {{- $copyrightYears := slice -}}
+      {{- $seenYears := dict -}}
 
-    {{- range .Site.RegularPages.ByDate -}}
-      {{- $year := string .Date.Year -}}
-      {{- if not (index $seenYears $year) -}}
-        {{- $copyrightYears = $copyrightYears | append $year -}}
-        {{- $seenYears = merge $seenYears (dict $year true) -}}
+      {{- range .Site.RegularPages.ByDate -}}
+        {{- $year := string .Date.Year -}}
+        {{- if not (index $seenYears $year) -}}
+          {{- $copyrightYears = $copyrightYears | append $year -}}
+          {{- $seenYears = merge $seenYears (dict $year true) -}}
+        {{- end -}}
       {{- end -}}
-    {{- end -}}
 
-    {{- /* If there are more than 5 years, shorten the list */ -}}
-    {{- if gt (len $copyrightYears) 5 -}}
-      {{- $copyrightYears = (slice
-        (index $copyrightYears 0)
-        "..."
-        (index $copyrightYears (sub (len $copyrightYears) 3))
-        (index $copyrightYears (sub (len $copyrightYears) 2))
-        (index $copyrightYears (sub (len $copyrightYears) 1))
-        )
-      -}}
-    {{- end }}
+      {{- /* If there are more than 5 years, shorten the list */ -}}
+      {{- if gt (len $copyrightYears) 5 -}}
+        {{- $copyrightYears = (slice
+          (index $copyrightYears 0)
+          "..."
+          (index $copyrightYears (sub (len $copyrightYears) 3))
+          (index $copyrightYears (sub (len $copyrightYears) 2))
+          (index $copyrightYears (sub (len $copyrightYears) 1))
+          )
+        -}}
+      {{- end }}
 
 
-    <small>
-      ©
-      {{ delimit $copyrightYears ", " " & " }}
-      {{ with .Site.Copyright -}}
-        {{- . -}}
-      {{- end -}}.
-    </small>
-    {{ with .GitInfo }}
       <small>
-        {{ T "commit" | title }}
-        {{ if $.Site.Params.siteRepo }}
-          <a
-            href="https://github.com/{{ $.Site.Params.siteRepo }}/commit/{{ .Hash }}"
-          >
-            {{ .AbbreviatedHash }}
-          </a>
-        {{ else }}
-          {{ .AbbreviatedHash }}
-        {{ end }}.
+        ©
+        {{ delimit $copyrightYears ", " " & " }}
+        {{ with .Site.Copyright -}}
+          {{- . -}}
+        {{- end -}}.
       </small>
-    {{ end }}
-  </p>
-</section>
+      {{ with .GitInfo }}
+        <small>
+          {{ T "commit" | title }}
+          {{ if $.Site.Params.siteRepo }}
+            <a
+              href="https://github.com/{{ $.Site.Params.siteRepo }}/commit/{{ .Hash }}"
+            >
+              {{ .AbbreviatedHash }}
+            </a>
+          {{ else }}
+            {{ .AbbreviatedHash }}
+          {{ end }}.
+        </small>
+      {{ end }}
+    </p>
+  </section>
+</footer>
