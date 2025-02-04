@@ -1,7 +1,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>{{ partial "title" . }} | {{ .Site.Title -}}</title>
+<title>{{ with partial "title" . }} {{ . }} | {{ end}}{{ .Site.Title -}}</title>
 
 {{ partial "favicons.html" . }}
 
