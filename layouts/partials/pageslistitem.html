@@ -9,7 +9,7 @@
       <mark>DRAFT</mark>
     {{ end }}
   </span>
-  {{ if .Params.featured }}
+  {{ if in .Params.categories "featured" }}
     <div>
       {{ .Summary }}
     </div>

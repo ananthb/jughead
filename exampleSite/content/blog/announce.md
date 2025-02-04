@@ -3,8 +3,8 @@ title: "Announcing Jughead: \"The best thing since sliced bread!\""
 linktitle: "Announcing"
 date: 2025-01-01T02:01:58+05:30
 description: "This article is a sample blog post announcing the launch of \"Jughead\", a free and open-source website theme. It highlights the theme's key features like its design, responsiveness, customizability, speed, and SEO-friendliness. It also encourages users to download the theme, join the community, and provide feedback."
-tags: [blog, todo, announce]
-featured: true
+tags: [hugo, themes, meta]
+categories: [featured, announcements]
 ---
 
 "Jughead" is a new, free, and awesome website theme that's easy to use and

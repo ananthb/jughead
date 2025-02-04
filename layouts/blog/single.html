@@ -24,24 +24,37 @@
     <main>{{ .Content }}</main>
 
     <footer>
-      {{ if ne .Type "page" }}
-        {{ if gt .Params.tags 0 }}
-          <small><strong>Tags</strong></small>
+      <section class="footer-explore">
+        {{ with .GetTerms "tags" }}
+          <small><strong>{{ T "tags" | title }}</strong></small>
           <nav>
             <ul>
-              {{ range .Params.tags }}
+              {{ range first 5 . }}
                 <li>
                   <small>
-                    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">
-                      {{ . | title }}
-                    </a>
+                    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
                   </small>
                 </li>
               {{ end }}
             </ul>
           </nav>
         {{ end }}
-      {{ end }}
+        {{ with .GetTerms "categories" }}
+          <small><strong>{{ T "categories" | title }}</strong></small>
+          <nav>
+            <ul>
+              {{ range first 5 . }}
+                <li>
+                  <small>
+                    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                  </small>
+                </li>
+              {{ end }}
+            </ul>
+          </nav>
+        {{ end }}
+      </section>
+
       {{ if not .Params.comments }}
         <section>
           {{ with .Site.Params.giscus }}

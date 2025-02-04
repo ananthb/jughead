@@ -24,6 +24,10 @@ about = "about"
 
 volunteer = "volunteer"
 
+tags = "tags"
+
+categories = "categories"
+
 [language]
 one = "language"
 other = "languages"
@@ -39,10 +43,6 @@ other = "skills"
 [profile]
 one = "profile"
 other = "profiles"
-
-[tag]
-one = "tag"
-other = "tags"
 
 [page]
 one = "page"

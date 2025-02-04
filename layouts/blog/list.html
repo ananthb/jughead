@@ -10,8 +10,8 @@
   <section>
     <h2>{{ T "featured" | title }}</h2>
     <ul>
-      {{ $featured := (where .Data.Pages.ByDate.Reverse "Params.featured" "eq"
-        true)
+      {{ $featured := (where .Data.Pages.ByDate.Reverse
+        "Params.categories" "intersect" (slice "featured"))
       }}
       {{ range collections.First 3 $featured }}
         {{ template

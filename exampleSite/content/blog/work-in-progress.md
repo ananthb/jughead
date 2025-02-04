@@ -4,6 +4,7 @@ draft: true
 summary: "This post is a work in progress."
 date: 2024-03-18T12:13:38+05:30
 summary: "I'm working on it..."
+tags: [wip]
 ---
 
 This post is a work in progress.

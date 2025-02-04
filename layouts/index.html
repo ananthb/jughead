@@ -11,7 +11,7 @@
       {{ $pages := first 3 (
         where
         (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
-        "Params.featured" "eq" true
+        "Params.categories" "intersect" (slice  "featured")
         )
       }}
       {{- if gt (len $pages) 0 }}

@@ -32,7 +32,7 @@ Source code for the demo site is available in [https://github.com/ananthb/jughea
 - Reading time indicators.
 - Offline caching with a service worker.
 - [Pico CSS](https://picocss.com) colour schemes.
-- i18n enabled. Translations welcome.
+- i18n support. Translations welcomed!
 
 ## Installation
 
@@ -81,6 +81,8 @@ date = "2025-01-01"
 
 Use `hugo new posts/my-first-post.md` to create a new post.
 Edit the frontmatter and write your post in markdown.
+Add a `featured` category to your post to feature it on the homepage
+and blog page.
 
 Toggle MermaidJS and KaTeX support in your post frontmatter.
 Set `mermaid` to `true` to enable MermaidJS support,

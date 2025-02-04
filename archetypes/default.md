@@ -9,10 +9,8 @@ draft = true
 tags = []
 
 # Categories broadly relate posts to each other
+# Add a post to the "featured" category to display it on the homepage and blog page.
 categories = []
-
-# Set to true to feature the post on the home page and the blog home page
-featured = false
 
 # Add a manual summary
 # summary = ""

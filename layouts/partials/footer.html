@@ -1,18 +1,25 @@
-<section>
-  <small
-    ><strong>{{ T "explore" | title }} {{ T "tags" | title }}</strong></small
-  >
-  <nav>
-    <ul>
-      {{ range .Site.Taxonomies.tags }}
-        <li>
-          <small>
-            <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
-          </small>
-        </li>
+<section class="footer-explore">
+  <h4>{{ T "explore" | title }}</h4>
+  {{ with .Site.Taxonomies }}
+    {{ range $taxonomy, $terms := . }}
+      {{ with $terms }}
+        <h5>
+          <a href="{{ $taxonomy | relLangURL }}">{{ T $taxonomy | title }}</a>
+        </h5>
+        <nav>
+          <ul>
+            {{ range first 5 .ByCount }}
+              <li>
+                <small>
+                  <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+                </small>
+              </li>
+            {{ end }}
+          </ul>
+        </nav>
       {{ end }}
-    </ul>
-  </nav>
+    {{ end }}
+  {{ end }}
 </section>
 
 <section>
