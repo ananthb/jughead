@@ -27,6 +27,12 @@ logo = "logo.png"
 colourScheme = "blue"
 
 # Enable a service worker for offline access.
+# In regular and precache modes, routes including and under /admin are
+# passed through uncached.
+#
+# Set to true to cache pages as they are visited.
+# serviceWorker = true
+# Set to "precache" to cache all pages on first load.
 serviceWorker = "precache"
 
 subtitle = "Portfolio and blog theme for Hugo."

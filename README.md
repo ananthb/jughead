@@ -104,8 +104,10 @@ logo = "images/logo.png"
 # Choose a colour scheme from one of the Pico CSS colurs.
 colourScheme = "blue"
 
-# Turn on offline caching
+# Turn on offline caching with a service worker and cache all pages.
 serviceWorker = "precache"
+# Or cache pages on-demand.
+# serviceWorker = true
 
 # Add a subtitle on the home page.
 subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/ananthb/jughead)"
