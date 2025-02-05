@@ -31,7 +31,7 @@ colourScheme = "blue"
 # Set to true to cache pages as they are visited.
 # serviceWorker = true
 # Set to "precache" to cache all pages on first load.
-serviceWorker = "precache"
+# serviceWorker = "precache"
 
 subtitle = "Portfolio and blog theme for Hugo."
 description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
