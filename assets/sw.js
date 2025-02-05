@@ -17,10 +17,6 @@ self.addEventListener("install", async (event) => {
 
 self.addEventListener("fetch", async (event) => {
   const request = event.request;
-  // Don't cache requests to /admin
-  if (request.url.startsWith("/admin")) {
-    return;
-  }
   // Cache only GET requests
   if (request.method !== "GET") {
     return;
