@@ -3,7 +3,7 @@
   <hr />
   {{ range $work := . }}
     <article>
-      <div class="grid">
+      <header class="grid">
         <div>
           {{ with .position }}
             <h3>{{ . }}</h3>
@@ -19,11 +19,16 @@
               </em>
             </p>
           {{ end }}
+          <p>
+            <em>{{ partial "resume/start-end-times.html" . }}</em>
+          </p>
         </div>
-        <p align="right">
-          <em>{{ partial "resume/start-end-times.html" . }}</em>
-        </p>
-      </div>
+        {{ with .location }}
+        <div>
+          <p><em>{{ . }}</em></p>
+        </div>
+        {{ end }}
+      </header>
 
       <div>
         {{ with .summary }}
