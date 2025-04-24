@@ -22,6 +22,6 @@
   margin-bottom: var(--pico-typography-spacing-vertical);
 }
 
-.resume header.grid :last-child {
+.resume header.grid + .resume header.grid :last-child {
   text-align: right;
 }
