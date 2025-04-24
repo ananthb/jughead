@@ -1,3 +1,5 @@
 # https://numtide.github.io/devshell
 [[commands]]
+package = "go"
+[[commands]]
 package = "hugo"

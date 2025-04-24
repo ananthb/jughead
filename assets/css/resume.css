@@ -22,6 +22,6 @@
   margin-bottom: var(--pico-typography-spacing-vertical);
 }
 
-.resume header.grid > div:last-child:nth-child(n+2) {
+.resume header.grid > div:last-child:nth-child(n+2) hugo server --source exampleSite --themesDir ../..{
   text-align: right;
 }

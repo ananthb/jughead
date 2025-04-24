@@ -20,7 +20,7 @@
           <h2>{{ T "featured" | title }}</h2>
           <ul>
             {{ range $pages }}
-              {{ template "partials/pageslistitem.html" . }}
+              {{ partial "page-list-item.html" . }}
             {{ end }}
           </ul>
         </section>

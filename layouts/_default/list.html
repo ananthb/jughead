@@ -12,12 +12,12 @@
       <ul>
         {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
         {{ range $paginator.Pages }}
-          {{ template "partials/pageslistitem.html" . }}
+          {{ partial "page-list-item.html" . }}
         {{ end }}
       </ul>
     </section>
     <section>
-      {{ template "partials/paginator.html" $paginator }}
+      {{ partial "paginator.html" $paginator }}
     </section>
   </main>
 {{ end }}
