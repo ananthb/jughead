@@ -18,6 +18,6 @@
 }
 
 /* Fix heading spacing for basics contact and profile links */
-.basics-links > div > h3 {
+.resume .basics-links > div > h3 {
   margin-bottom: var(--pico-typography-spacing-vertical);
 }

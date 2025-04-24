@@ -3,7 +3,7 @@
     <h2>{{ T "education" | title }}</h2>
     <hr />
     <article>
-      <div class="grid">
+      <header class="grid">
         <div>
           {{ with .area }}
             <h3>{{ . }}</h3>
@@ -20,11 +20,16 @@
             </p>
           {{ end }}
           {{ with .studyType }}<p>{{ . }}</p>{{ end }}
+          <p>
+            {{ partial "resume/start-end-times.html" . }}
+          </p>
+        {{ with .location }}
         </div>
-        <p align="right">
-          <em>{{ partial "resume/start-end-times.html" . }}</em>
-        </p>
-      </div>
+          <p><em>{{ . }}</em></p>
+        <div>
+        {{ end }}
+        </div>
+      </header>
       <div>
         {{ with .courses }}
           <h4>{{ T "course" | title }}</h4>
