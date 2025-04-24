@@ -2,7 +2,7 @@
   <h2>{{ T "certificate" | title }}</h2>
   <hr />
   {{ range $cert := . }}
-    <div class="grid">
+    <header class="grid">
       <div>
         {{ with .name }}
           <h3>
@@ -16,10 +16,8 @@
         {{ with .issuer }}
           <p><em>{{ . }}</em></p>
         {{ end }}
+        <p>{{ partial "resume/date-time.html" . }}</p>
       </div>
-      <p align="right">
-        <em>{{ partial "resume/date-time.html" . }}</em>
-      </p>
-    </div>
+    </header>
   {{ end }}
 {{ end }}
