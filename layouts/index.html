@@ -27,14 +27,12 @@
       {{ end }}
 
 
-      {{ if .Site.Params.jsonResume }}
-      <h2>{{ T "about" | title }}</h2>
-      <hr>
-      <article class="resume">
-        {{- with partial "resume/get.html" . -}}
+      {{- with partial "resume/get.html" . -}}
+        <h2>{{ T "about" | title }}</h2>
+        <hr>
+        <article class="resume">
           {{- partial "resume/overview.html" . -}}
-        {{- end -}}
-      </article>
+        </article>
       {{ end }}
     </main>
 

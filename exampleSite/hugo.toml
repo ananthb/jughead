@@ -38,7 +38,7 @@ description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
 
 mainSections = ["blog", "links"]
 
-# [jsonResume]
+# [params.jsonResume]
 # Add your JSON Resume Registry slug. This is the part of the URL after https://registry.jsonresume.org/.
 # Or create a resume.json file in the data directory.
 # slug = "<your-github-username>"

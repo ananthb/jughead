@@ -40,11 +40,13 @@ Render your JSON resume by configuring your unique
 `params` section of your site configuration file.
 The slug is the string that appears after `registry.jsonresume.org/` in your
 resume's URL.
+`qr` enables a QR code for your resume.
 
 ```toml
 [params]
-[jsonResume]
+[params.jsonResume]
 slug = "your-github-username"
+qr = true
 ```
 
 You can also render a local `resume.json` file by placing it in the
