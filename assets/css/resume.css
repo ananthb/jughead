@@ -19,9 +19,10 @@
 
 /* Fix heading spacing for basics contact and profile links */
 .resume .basics-links > div > h3 {
+  text-align: center;
   margin-bottom: var(--pico-typography-spacing-vertical);
 }
 
-.resume header.grid > div:last-child:nth-child(n+2) hugo server --source exampleSite --themesDir ../..{
+.resume header.grid > div:last-child:nth-child(n+2) {
   text-align: right;
 }
