@@ -38,9 +38,11 @@ description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
 
 mainSections = ["blog", "links"]
 
-# Your JSON Resume Registry slug. This is the part of the URL after https://registry.jsonresume.org/.
+# [jsonResume]
+# Add your JSON Resume Registry slug. This is the part of the URL after https://registry.jsonresume.org/.
 # Or create a resume.json file in the data directory.
-# jsonResumeRegistrySlug = "<your-github-username>"
+# slug = "<your-github-username>"
+# qr = true # Add this to display a QR code image pointing to your resume.
 
 # Display a link to the commit that built this site in your footer.
 # Requires enableGitInfo = true, and for your website to be public on GitHub.

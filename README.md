@@ -26,9 +26,14 @@ Add jughead to your hugo config files in the modules section.
 path = "github.com/ananthb/jughead"
 ```
 
-For more information read the official [setup guide](https://gohugo.io/installation).
+## Quickstart
 
-## JSON Resume
+Copy the [`hugo.toml`](./exampleSite/hugo.toml) configuration file from [./exampleSite](./exampleSite).
+Edit parameters as needed.
+
+## Features
+
+### JSON Resume
 
 Render your JSON resume by configuring your unique
 [JSON Resume Registry](https://registry.jsonresume.org) slug in the
@@ -38,7 +43,8 @@ resume's URL.
 
 ```toml
 [params]
-jsonResumeRegistrySlug = "your-github-username"
+[jsonResume]
+slug = "your-github-username"
 ```
 
 You can also render a local `resume.json` file by placing it in the
@@ -59,7 +65,7 @@ date = "2025-01-01"
 +++
 ```
 
-## Write Posts
+### Write Posts
 
 Use `hugo new posts/my-first-post.md` to create a new post.
 Edit the frontmatter and write your post in markdown.
@@ -80,76 +86,6 @@ katex = true
 
 MermaidJS and KaTeX are JavaScript heavy.
 Enable them when necessary.
-
-## Sample Config File
-
-```toml
-baseURL = "https://ananthb.github.io/jughead/"
-languageCode = "en"
-title = "Jughead"
-copyright = "© Your Name Here"
-paginate = 10
-enableGitInfo = true
-
-# Code Highlight
-pygmentsstyle = "monokai"
-pygmentscodefences = true
-pygmentscodefencesguesssyntax = true
-
-[params]
-# Add a logo to your site by placing an image in the assets directory
-# and setting the path here. Preferably a square png image.
-logo = "images/logo.png"
-
-# Choose a colour scheme from one of the Pico CSS colurs.
-colourScheme = "blue"
-
-# Turn on offline caching with a service worker and cache all pages.
-serviceWorker = "precache"
-# Or cache pages on-demand.
-# serviceWorker = true
-
-# Add a subtitle on the home page.
-subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/ananthb/jughead)"
-
-# Site GitHub Repository slig
-# If enableGitInfo is true, this will add a link to the source code of the site.
-siteRepo = "your-github-org/your-site-repo"
-
-# JSON Resume Registry slug
-# Or create a resume.json file in the data directory.
-jsonResumeRegistrySlug = "your-github-username"
-
-# Comments
-# Get these values by filling out the form on https://giscus.app
-[params.giscus]
-repo = "your-github-org/your-comments-repo"
-repoID = "your-github-repo-id"
-category = "your-announcement-category"
-categoryID = "your-announcement-category-id"
-
-# Social Tags
-[[params.social]]
-name = "GitHub"
-icon = "github"
-url = "https://github.com/ananthb/jughead"
-
-[[params.social]]
-name = "Twitter"
-icon = "twitter"
-url = "https://twitter.com/your-name-here/"
-
-[[params.social]]
-name = "GitLab"
-icon = "gitlab"
-url = "https://gitlab.com/ananthb/"
-
-# Main menu Items
-[[menu.main]]
-name = "Blog"
-url = "/blog"
-weight = 1
-```
 
 ## Screenshots
 
