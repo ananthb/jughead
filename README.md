@@ -1,9 +1,22 @@
 # Jughead - Portfolio & Blog Theme for Hugo
 
-![logo](https://raw.githubusercontent.com/ananthb/jughead/refs/heads/main/images/logo.png)
+<img src="https://raw.githubusercontent.com/ananthb/jughead/main/images/logo-small.png" alt="logo" width="100">
 
 Jughead is a simple and powerful portfolio and blog theme for Hugo.
 It features a Resume page, Giscus comments, Mermaid diagrams, and KaTeX formulae.
+
+![screenshot](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot.png)
+
+<details>
+<summary>More screenshots</summary>
+
+![Home Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-dark.png)
+![Resume](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-resume.png)
+![Resume Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-resume-dark.png)
+![Mobile](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile.png)
+![Mobile Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile-dark.png)
+
+</details>
 
 ## Features
 
@@ -13,7 +26,8 @@ It features a Resume page, Giscus comments, Mermaid diagrams, and KaTeX formulae
 - [KaTeX](https://katex.org) for rendering math formulae.
 - Reading time indicators.
 - Offline caching with a service worker.
-- [Pico CSS](https://picocss.com) colour schemes.
+- Two themes: `ink` (newspaper/OLED) and `earth` (rust/slate).
+- Auto light/dark mode with manual override option.
 - i18n support. Translations welcomed!
 
 ## Installation
@@ -30,6 +44,16 @@ path = "github.com/ananthb/jughead"
 
 Copy the [`hugo.toml`](./exampleSite/hugo.toml) configuration file from [./exampleSite](./exampleSite).
 Edit parameters as needed.
+
+### Themes
+
+Configure your theme in `hugo.toml`:
+
+```toml
+[params]
+  theme = "ink"        # "ink" or "earth"
+  themeMode = "auto"   # "auto", "light", or "dark"
+```
 
 ## Features
 
@@ -88,22 +112,6 @@ katex = true
 
 MermaidJS and KaTeX are JavaScript heavy.
 Enable them when necessary.
-
-## Screenshots
-
-<details>
-
-<summary>Screenshots</summary>
-
-![Home](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot.png)
-![Home Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-dark.png)
-![Resume](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-resume.png)
-![Resume Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-resume-dark.png)
-![Mobile](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile.png)
-![Mobile Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile-dark.png)
-
-</details>
-
 
 ## [License](LICENSE)
 
