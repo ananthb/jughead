@@ -1,4 +1,6 @@
-{{ with .work }}
+{{- $resume := .data | default . -}}
+{{- $brief := .brief | default false -}}
+{{ with $resume.work }}
   <h2>{{ T "work_experience" | title }}</h2>
   <hr />
   {{ range $work := . }}
@@ -14,7 +16,7 @@
                 {{ with $work.url }}
                   <a href="{{ . }}" target="_blank">{{ $name }}</a>
                 {{ else }}
-                  {{ . }}
+                  {{ $name }}
                 {{ end }}
               </em>
             </p>
@@ -28,6 +30,7 @@
         {{ end }}
       </header>
 
+      {{- if not $brief }}
       <div>
         {{ with .summary }}
           <p>{{ . }}</p>
@@ -42,6 +45,7 @@
           </ul>
         {{ end }}
       </div>
+      {{- end }}
     </article>
   {{ end }}
 {{ end }}

@@ -1,7 +1,9 @@
-{{ with .education }}
+{{- $resume := .data | default . -}}
+{{- $brief := .brief | default false -}}
+{{ with $resume.education }}
+  <h2>{{ T "education" | title }}</h2>
+  <hr />
   {{ range $edu := . }}
-    <h2>{{ T "education" | title }}</h2>
-    <hr />
     <article>
       <header class="grid">
         <div>
@@ -14,17 +16,17 @@
                 {{ with $edu.url }}
                   <a href="{{ . }}" target="_blank">{{ $inst }}</a>
                 {{ else }}
-                  {{ . }}
+                  {{ $inst }}
                 {{ end }}
               </em>
             </p>
           {{ end }}
           {{ with .studyType }}<p>{{ . }}</p>{{ end }}
-          <p>
-            {{ partial "resume/start-end-times.html" . }}
-          </p>
+          <p>{{ partial "resume/start-end-times.html" . }}</p>
         </div>
       </header>
+
+      {{- if not $brief }}
       <div>
         {{ with .courses }}
           <h4>{{ T "course" | title }}</h4>
@@ -35,6 +37,7 @@
           </ul>
         {{ end }}
       </div>
+      {{- end }}
     </article>
   {{ end }}
 {{ end }}

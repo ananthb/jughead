@@ -1,55 +1,79 @@
 {{ define "main" }}
   {{ with partial "resume/get.html" . }}
+    {{- $sections := site.Params.jsonResume.sections | default dict -}}
+    {{- $defaultOn := slice "work" "education" "projects" -}}
     <main class="container">
       <div class="resume">
         <section>
           {{ partial "resume/basics.html" . }}
         </section>
 
+        {{- if ne (index $sections "work") false | and (or (index $sections "work") (in $defaultOn "work")) }}
         <section>
-          {{ partial "resume/work.html" . }}
+          {{ partial "resume/work.html" (dict "data" . "brief" site.Params.jsonResume.briefWork) }}
         </section>
+        {{- end }}
 
+        {{- if index $sections "volunteer" }}
         <section>
           {{ partial "resume/volunteer.html" . }}
         </section>
+        {{- end }}
 
+        {{- if ne (index $sections "education") false | and (or (index $sections "education") (in $defaultOn "education")) }}
         <section>
-          {{ partial "resume/education.html" . }}
+          {{ partial "resume/education.html" (dict "data" . "brief" site.Params.jsonResume.briefEducation) }}
         </section>
+        {{- end }}
 
+        {{- if index $sections "awards" }}
         <section>
           {{ partial "resume/awards.html" . }}
         </section>
+        {{- end }}
 
+        {{- if index $sections "certificates" }}
         <section>
           {{ partial "resume/certificates.html" . }}
         </section>
+        {{- end }}
 
+        {{- if index $sections "publications" }}
         <section>
           {{ partial "resume/publications.html" . }}
         </section>
+        {{- end }}
 
+        {{- if index $sections "skills" }}
         <section>
           {{ partial "resume/skills.html" . }}
         </section>
+        {{- end }}
 
+        {{- if index $sections "languages" }}
         <section>
           {{ partial "resume/languages.html" . }}
         </section>
+        {{- end }}
 
+        {{- if index $sections "interests" }}
         <section>
           {{ partial "resume/interests.html" . }}
         </section>
+        {{- end }}
 
+        {{- if index $sections "references" }}
         <section>
           {{ partial "resume/references.html" . }}
         </section>
+        {{- end }}
 
+        {{- if ne (index $sections "projects") false | and (or (index $sections "projects") (in $defaultOn "projects")) }}
         <section>
           {{ partial "resume/projects.html" . }}
         </section>
+        {{- end }}
       </div>
     </main>
-  {{ end }}  
+  {{ end }}
 {{ end }}
