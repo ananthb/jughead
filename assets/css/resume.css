@@ -1,28 +1,129 @@
-/* Scrunch up everything close for almost all of the resume */
+/* Resume - Clean, scannable layout */
+
 .resume {
-  font-size: 0.8em;
+  max-width: 40rem;
+  margin-inline: auto;
+  padding-block: 2rem;
 }
 
+/* Clear top border */
+.resume > section:first-child {
+  border-block-start: 1px solid var(--pico-muted-border-color);
+  padding-block-start: 2rem;
+}
+
+/* Section spacing with subtle separators */
+.resume > section {
+  padding-block: 1.5rem;
+  border-block-end: 1px solid var(--pico-muted-border-color);
+}
+
+.resume > section:last-child {
+  border-block-end: none;
+}
+
+/* Remove empty sections */
+.resume > section:empty {
+  display: none;
+}
+
+/* Typography reset for tight layout */
 .resume h1,
 .resume h2,
 .resume h3,
 .resume h4,
 .resume h5,
-.resume h6,
+.resume h6 {
+  margin-block: 0 0.5rem;
+}
+
 .resume p {
-  margin: 0;
+  margin-block: 0 0.5rem;
 }
 
-.resume hr {
-  margin-top: 0;
+.resume p:last-child {
+  margin-block-end: 0;
 }
 
-/* Fix heading spacing for basics contact and profile links */
+/* Section headings */
+.resume h2 {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--pico-muted-color);
+  margin-block-end: 1rem;
+}
+
+/* Entry titles */
+.resume h3 {
+  font-size: 1rem;
+}
+
+/* Subsection spacing */
+.resume article,
+.resume .entry {
+  margin-block-end: 1.25rem;
+}
+
+.resume article:last-child,
+.resume .entry:last-child {
+  margin-block-end: 0;
+}
+
+/* Dates and secondary info */
+.resume time,
+.resume .date,
+.resume .location {
+  color: var(--pico-muted-color);
+  font-size: 0.9em;
+}
+
+/* Lists */
+.resume ul {
+  margin-block: 0.5rem 0;
+  padding-inline-start: 1.25rem;
+}
+
+.resume li {
+  margin-block-end: 0.25rem;
+}
+
+/* Basics/header section */
 .resume .basics-links > div > h3 {
   text-align: center;
-  margin-bottom: var(--pico-typography-spacing-vertical);
+  margin-block-end: 1rem;
 }
 
 .resume header.grid > div:last-child:nth-child(n+2) {
   text-align: right;
+}
+
+/* Skills - inline display */
+.resume .skills ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.resume .skills li {
+  margin: 0;
+}
+
+/* Links */
+.resume a {
+  text-decoration: none;
+  color: var(--pico-muted-color);
+}
+
+.resume a:hover {
+  color: var(--pico-color);
+}
+
+/* Horizontal rule override */
+.resume hr {
+  margin-block: 1rem;
+  border: none;
+  border-block-start: 1px solid var(--pico-muted-border-color);
 }

@@ -1,0 +1,189 @@
+/* Blog Article - Clean, distraction-free reading */
+
+/* Constrain width for optimal reading */
+article {
+  max-width: 40rem;
+  margin-inline: auto;
+  padding-block: 2rem;
+}
+
+/* Clear top border to frame content */
+article > header {
+  border-block-start: 1px solid var(--pico-muted-border-color);
+  padding-block-start: 2rem;
+}
+
+/* Comfortable line height for long-form reading */
+article > main {
+  line-height: 1.7;
+}
+
+/* Generous paragraph spacing */
+article > main p {
+  margin-block-end: 1.5em;
+}
+
+/* Title styling */
+article > header h1 {
+  margin-block-end: 0.5rem;
+  line-height: 1.2;
+}
+
+/* Meta info - date, reading time */
+article > header > section:first-of-type {
+  color: var(--pico-muted-color);
+  font-size: 0.9rem;
+  margin-block-end: 2rem;
+  padding-block-end: 2rem;
+  border-block-end: 1px solid var(--pico-muted-border-color);
+}
+
+article > header > section:first-of-type p {
+  display: inline;
+  margin: 0;
+}
+
+/* Table of Contents */
+article > header > section:last-of-type {
+  margin-block: 2rem;
+  padding-block-end: 2rem;
+  border-block-end: 1px solid var(--pico-muted-border-color);
+}
+
+article > header > section:last-of-type h2 {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--pico-muted-color);
+  margin-block-end: 0.75rem;
+}
+
+#TableOfContents {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+#TableOfContents ul,
+#TableOfContents ol {
+  padding-inline-start: 1.25rem;
+  margin: 0;
+  list-style: none;
+}
+
+#TableOfContents a {
+  text-decoration: none;
+  color: var(--pico-muted-color);
+}
+
+#TableOfContents a:hover {
+  color: var(--pico-color);
+}
+
+/* Content headings */
+article > main h2,
+article > main h3,
+article > main h4,
+article > main h5,
+article > main h6 {
+  margin-block-start: 2.5em;
+  margin-block-end: 0.75em;
+}
+
+article > main h2 {
+  padding-block-start: 1em;
+  border-block-start: 1px solid var(--pico-muted-border-color);
+}
+
+/* Blockquotes - simple left border */
+article > main blockquote {
+  border: none;
+  border-inline-start: 1px solid var(--pico-muted-border-color);
+  margin-inline: 0;
+  padding-inline-start: 1.5rem;
+  color: var(--pico-muted-color);
+}
+
+article > main blockquote p:last-child {
+  margin-block-end: 0;
+}
+
+/* Code blocks */
+article > main pre {
+  margin-block: 1.5em;
+  padding: 1.25rem;
+  border: 1px solid var(--pico-muted-border-color);
+  border-radius: 0;
+  background: transparent;
+}
+
+/* Inline code */
+article > main :not(pre) > code {
+  padding: 0.1em 0.3em;
+  font-size: 0.9em;
+  background: transparent;
+}
+
+/* Lists */
+article > main ul,
+article > main ol {
+  margin-block: 1.25em;
+  padding-inline-start: 1.5em;
+}
+
+article > main li {
+  margin-block-end: 0.4em;
+}
+
+article > main li:last-child {
+  margin-block-end: 0;
+}
+
+/* Images */
+article > main img {
+  display: block;
+  margin-inline: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+article > main figure {
+  margin-inline: 0;
+  margin-block: 2em;
+}
+
+article > main figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--pico-muted-color);
+  margin-block-start: 0.5rem;
+}
+
+/* Horizontal rules */
+article > main hr {
+  margin-block: 3rem;
+  border: none;
+  border-block-start: 1px solid var(--pico-muted-border-color);
+}
+
+/* Tables */
+article > main table {
+  margin-block: 1.5em;
+  font-size: 0.95rem;
+}
+
+/* Article footer */
+article > footer {
+  margin-block-start: 3rem;
+  padding-block-start: 2rem;
+  border-block-start: 1px solid var(--pico-muted-border-color);
+}
+
+/* Links - minimal styling */
+article > main a {
+  text-decoration-color: var(--pico-muted-border-color);
+  text-underline-offset: 0.15em;
+}
+
+article > main a:hover {
+  text-decoration-color: currentColor;
+}

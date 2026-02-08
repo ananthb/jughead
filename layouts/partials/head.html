@@ -59,14 +59,9 @@ if (navigator.serviceWorker) {
   />
 {{ end }}
 
-{{/* Load regular or coloured Pico CSS file */}}
-{{ $picoCssFile := "picocss/pico.css" }}
-{{ with .Site.Params.colourScheme }}
-  {{ $picoCssFile = printf "picocss/pico.%s.css" . }}
-{{ end }}
-
-{{/* Load Pico CSS files and all CSS files from assets/css */}}
-{{ $styles := append (resources.Get $picoCssFile) (resources.Match "css/**.css") }}
+{{/* Load Pico CSS base and all custom CSS files from assets/css */}}
+{{/* Theme colors are handled by css/themes.css via data-theme attribute */}}
+{{ $styles := append (resources.Get "picocss/pico.css") (resources.Match "css/**.css") }}
 {{ if hugo.IsProduction }}
   {{ $css := $styles | resources.Concat "main.css" | minify | fingerprint }}
   <link

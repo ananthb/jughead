@@ -1,0 +1,195 @@
+/* Theme System
+
+   Themes: ink, earth
+   Modes: auto (default), light, dark
+
+   Config in hugo.toml:
+     [params]
+       theme = "ink"      # or "earth"
+       themeMode = "auto" # or "light" or "dark"
+*/
+
+/* ============================================
+   INK THEME - Newspaper & OLED inspired
+   ============================================ */
+
+/* Ink Light - warm off-white, newspaper feel */
+:root[data-theme="ink"],
+:root[data-theme="ink-light"] {
+  --pico-background-color: #faf8f5;
+  --pico-color: #1a1a1a;
+  --pico-muted-color: #6b6b6b;
+  --pico-muted-border-color: #e0ddd8;
+  --pico-primary: #1a1a1a;
+  --pico-primary-background: #1a1a1a;
+  --pico-primary-border: #1a1a1a;
+  --pico-primary-underline: rgba(26, 26, 26, 0.4);
+  --pico-primary-hover: #404040;
+  --pico-primary-hover-background: #333;
+  --pico-primary-hover-border: #333;
+  --pico-primary-focus: rgba(26, 26, 26, 0.25);
+  --pico-primary-inverse: #faf8f5;
+  --pico-card-background-color: #fff;
+  --pico-card-border-color: var(--pico-muted-border-color);
+  --pico-code-background-color: #f0ede8;
+  --pico-code-color: var(--pico-color);
+  color-scheme: light;
+}
+
+/* Ink Dark - true black, steel accents, OLED optimized */
+:root[data-theme="ink-dark"] {
+  --pico-background-color: #000;
+  --pico-color: #b8bcc4;
+  --pico-muted-color: #6b7280;
+  --pico-muted-border-color: #1f2328;
+  --pico-primary: #9ca3af;
+  --pico-primary-background: #374151;
+  --pico-primary-border: #4b5563;
+  --pico-primary-underline: rgba(156, 163, 175, 0.4);
+  --pico-primary-hover: #d1d5db;
+  --pico-primary-hover-background: #4b5563;
+  --pico-primary-hover-border: #6b7280;
+  --pico-primary-focus: rgba(156, 163, 175, 0.25);
+  --pico-primary-inverse: #000;
+  --pico-card-background-color: #0a0a0a;
+  --pico-card-border-color: var(--pico-muted-border-color);
+  --pico-code-background-color: #111318;
+  --pico-code-color: var(--pico-color);
+  color-scheme: dark;
+}
+
+/* Ink Auto - follows system preference */
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="ink"] {
+    --pico-background-color: #000;
+    --pico-color: #b8bcc4;
+    --pico-muted-color: #6b7280;
+    --pico-muted-border-color: #1f2328;
+    --pico-primary: #9ca3af;
+    --pico-primary-background: #374151;
+    --pico-primary-border: #4b5563;
+    --pico-primary-underline: rgba(156, 163, 175, 0.4);
+    --pico-primary-hover: #d1d5db;
+    --pico-primary-hover-background: #4b5563;
+    --pico-primary-hover-border: #6b7280;
+    --pico-primary-focus: rgba(156, 163, 175, 0.25);
+    --pico-primary-inverse: #000;
+    --pico-card-background-color: #0a0a0a;
+    --pico-card-border-color: var(--pico-muted-border-color);
+    --pico-code-background-color: #111318;
+    --pico-code-color: var(--pico-color);
+    color-scheme: dark;
+  }
+}
+
+/* ============================================
+   EARTH THEME - Warm naturals & cool slate
+   ============================================ */
+
+/* Earth Light - cream, brown, rust orange */
+:root[data-theme="earth"],
+:root[data-theme="earth-light"] {
+  --pico-background-color: #faf6f1;
+  --pico-color: #3d2e24;
+  --pico-muted-color: #7a685c;
+  --pico-muted-border-color: #e5ddd4;
+  --pico-primary: #b45309;
+  --pico-primary-background: #b45309;
+  --pico-primary-border: #b45309;
+  --pico-primary-underline: rgba(180, 83, 9, 0.4);
+  --pico-primary-hover: #92400e;
+  --pico-primary-hover-background: #a34108;
+  --pico-primary-hover-border: #92400e;
+  --pico-primary-focus: rgba(180, 83, 9, 0.25);
+  --pico-primary-inverse: #fff;
+  --pico-card-background-color: #fffbf7;
+  --pico-card-border-color: var(--pico-muted-border-color);
+  --pico-code-background-color: #f0e9e0;
+  --pico-code-color: var(--pico-color);
+  color-scheme: light;
+}
+
+/* Earth Dark - slate blue, cool gray */
+:root[data-theme="earth-dark"] {
+  --pico-background-color: #0f172a;
+  --pico-color: #cbd5e1;
+  --pico-muted-color: #64748b;
+  --pico-muted-border-color: #1e293b;
+  --pico-primary: #7c9bb8;
+  --pico-primary-background: #334155;
+  --pico-primary-border: #475569;
+  --pico-primary-underline: rgba(124, 155, 184, 0.4);
+  --pico-primary-hover: #a8c4de;
+  --pico-primary-hover-background: #475569;
+  --pico-primary-hover-border: #64748b;
+  --pico-primary-focus: rgba(124, 155, 184, 0.25);
+  --pico-primary-inverse: #0f172a;
+  --pico-card-background-color: #1e293b;
+  --pico-card-border-color: var(--pico-muted-border-color);
+  --pico-code-background-color: #1e293b;
+  --pico-code-color: var(--pico-color);
+  color-scheme: dark;
+}
+
+/* Earth Auto - follows system preference */
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="earth"] {
+    --pico-background-color: #0f172a;
+    --pico-color: #cbd5e1;
+    --pico-muted-color: #64748b;
+    --pico-muted-border-color: #1e293b;
+    --pico-primary: #7c9bb8;
+    --pico-primary-background: #334155;
+    --pico-primary-border: #475569;
+    --pico-primary-underline: rgba(124, 155, 184, 0.4);
+    --pico-primary-hover: #a8c4de;
+    --pico-primary-hover-background: #475569;
+    --pico-primary-hover-border: #64748b;
+    --pico-primary-focus: rgba(124, 155, 184, 0.25);
+    --pico-primary-inverse: #0f172a;
+    --pico-card-background-color: #1e293b;
+    --pico-card-border-color: var(--pico-muted-border-color);
+    --pico-code-background-color: #1e293b;
+    --pico-code-color: var(--pico-color);
+    color-scheme: dark;
+  }
+}
+
+/* ============================================
+   Common overrides for both themes
+   ============================================ */
+
+:root[data-theme] {
+  --pico-blockquote-border-color: var(--pico-muted-border-color);
+  --pico-blockquote-footer-color: var(--pico-muted-color);
+  --pico-table-border-color: var(--pico-muted-border-color);
+  --pico-code-kbd-background-color: var(--pico-code-background-color);
+  --pico-code-kbd-color: var(--pico-code-color);
+  --pico-form-element-background-color: transparent;
+  --pico-form-element-border-color: var(--pico-muted-border-color);
+  --pico-form-element-placeholder-color: var(--pico-muted-color);
+  --pico-accordion-border-color: var(--pico-muted-border-color);
+  --pico-accordion-close-summary-color: var(--pico-color);
+  --pico-accordion-open-summary-color: var(--pico-muted-color);
+  --pico-dropdown-background-color: var(--pico-card-background-color);
+  --pico-dropdown-border-color: var(--pico-muted-border-color);
+  --pico-dropdown-color: var(--pico-color);
+  --pico-dropdown-hover-background-color: var(--pico-muted-border-color);
+  --pico-progress-background-color: var(--pico-muted-border-color);
+  --pico-progress-color: var(--pico-primary-background);
+  --pico-tooltip-background-color: var(--pico-color);
+  --pico-tooltip-color: var(--pico-background-color);
+}
+
+/* Apply background and text color to body */
+:root[data-theme] body {
+  background-color: var(--pico-background-color);
+  color: var(--pico-color);
+}
+
+/* Code blocks inherit theme */
+:root[data-theme] pre,
+:root[data-theme] code {
+  background-color: var(--pico-code-background-color);
+  color: var(--pico-code-color);
+}

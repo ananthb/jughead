@@ -23,8 +23,10 @@ pygmentscodefencesguesssyntax = true
 # and setting the path here. Preferably a square png image.
 logo = "logo.png"
 
-# Choose a colour scheme from the Pico CSS palate: https://picocss.com/docs/colors.
-colourScheme = "blue"
+# Theme: "ink" (newspaper/OLED) or "earth" (rust/slate)
+theme = "ink"
+# Theme mode: "auto" (follows system), "light", or "dark"
+themeMode = "auto"
 
 # Enable a service worker for offline access.
 #

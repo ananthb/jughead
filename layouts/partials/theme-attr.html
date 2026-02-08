@@ -1,0 +1,20 @@
+{{- /*
+  Theme attribute partial - returns just the theme value for use in data-theme
+
+  Config options in hugo.toml:
+    [params]
+      theme = "ink"      # Theme name: "ink" or "earth" (default: "ink")
+      themeMode = "auto" # Mode: "auto", "light", or "dark" (default: "auto")
+
+  Output examples:
+    theme="ink", themeMode="auto"  -> ink
+    theme="ink", themeMode="light" -> ink-light
+    theme="ink", themeMode="dark"  -> ink-dark
+*/ -}}
+{{- $theme := .Site.Params.theme | default "ink" -}}
+{{- $mode := .Site.Params.themeMode | default "auto" -}}
+{{- if eq $mode "auto" -}}
+{{- $theme -}}
+{{- else -}}
+{{- $theme -}}-{{- $mode -}}
+{{- end -}}

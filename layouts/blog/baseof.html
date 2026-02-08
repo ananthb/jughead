@@ -1,14 +1,12 @@
 <!doctype html>
-<html lang="{{ .Site.Language.Lang | default "en" }}">
+<html lang="{{ .Site.Language.Lang | default "en" }}" data-theme="{{ partial "theme-attr.html" . }}">
   <head>
     {{ partial "head.html" . }}
-
 
     <!-- KaTeX support -->
     {{ if (.Params.katex) }}
       {{ partial "katex.html" }}
     {{ end }}
-
 
     <!-- MermaidJS -->
     {{ if (.Params.mermaid) }}
