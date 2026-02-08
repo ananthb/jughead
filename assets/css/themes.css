@@ -14,8 +14,8 @@
    ============================================ */
 
 /* Ink Light - warm off-white, newspaper feel */
-:root[data-theme="ink"],
-:root[data-theme="ink-light"] {
+html:root[data-theme="ink"],
+html:root[data-theme="ink-light"] {
   --pico-background-color: #faf8f5;
   --pico-color: #1a1a1a;
   --pico-muted-color: #6b6b6b;
@@ -37,7 +37,7 @@
 }
 
 /* Ink Dark - true black, steel accents, OLED optimized */
-:root[data-theme="ink-dark"] {
+html:root[data-theme="ink-dark"] {
   --pico-background-color: #000;
   --pico-color: #b8bcc4;
   --pico-muted-color: #6b7280;
@@ -60,7 +60,7 @@
 
 /* Ink Auto - follows system preference */
 @media (prefers-color-scheme: dark) {
-  :root[data-theme="ink"] {
+  html:root[data-theme="ink"] {
     --pico-background-color: #000;
     --pico-color: #b8bcc4;
     --pico-muted-color: #6b7280;
@@ -87,8 +87,8 @@
    ============================================ */
 
 /* Earth Light - cream, brown, rust orange */
-:root[data-theme="earth"],
-:root[data-theme="earth-light"] {
+html:root[data-theme="earth"],
+html:root[data-theme="earth-light"] {
   --pico-background-color: #faf6f1;
   --pico-color: #3d2e24;
   --pico-muted-color: #7a685c;
@@ -110,7 +110,7 @@
 }
 
 /* Earth Dark - slate blue, cool gray */
-:root[data-theme="earth-dark"] {
+html:root[data-theme="earth-dark"] {
   --pico-background-color: #0f172a;
   --pico-color: #cbd5e1;
   --pico-muted-color: #64748b;
@@ -133,7 +133,7 @@
 
 /* Earth Auto - follows system preference */
 @media (prefers-color-scheme: dark) {
-  :root[data-theme="earth"] {
+  html:root[data-theme="earth"] {
     --pico-background-color: #0f172a;
     --pico-color: #cbd5e1;
     --pico-muted-color: #64748b;
@@ -159,7 +159,7 @@
    Common overrides for both themes
    ============================================ */
 
-:root[data-theme] {
+html:root[data-theme] {
   --pico-blockquote-border-color: var(--pico-muted-border-color);
   --pico-blockquote-footer-color: var(--pico-muted-color);
   --pico-table-border-color: var(--pico-muted-border-color);
@@ -182,14 +182,14 @@
 }
 
 /* Apply background and text color to body */
-:root[data-theme] body {
+html:root[data-theme] body {
   background-color: var(--pico-background-color);
   color: var(--pico-color);
 }
 
 /* Code blocks inherit theme */
-:root[data-theme] pre,
-:root[data-theme] code {
+html:root[data-theme] pre,
+html:root[data-theme] code {
   background-color: var(--pico-code-background-color);
   color: var(--pico-code-color);
 }

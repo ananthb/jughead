@@ -27,11 +27,13 @@
               pkgs.git
               pkgs.go
               pkgs.hugo
+              pkgs.nodejs
+              pkgs.playwright-driver.browsers
             ];
 
             shellHook = ''
-              echo "hello from nix develop"
-              git --version
+              export PLAYWRIGHT_BROWSERS_PATH=${pkgs.playwright-driver.browsers}
+              export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
             '';
           };
         });
