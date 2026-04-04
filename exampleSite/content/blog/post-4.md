@@ -28,4 +28,3 @@ I really love traveling this way, and am more than willing to sacrifice bringing
 By the way, you don’t need much more than this kind of setup even in everyday life.
 
 For more info on this, check out my Ultralight ebook, and my friend Tynan has a great book called Forever Nomad.
-

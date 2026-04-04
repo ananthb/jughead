@@ -15,16 +15,23 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
+        vendoredFiles = "(assets/katex|assets/mermaid|assets/picocss|static/feather-icons)/.*";
+
         pre-commit = git-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
-            check-json.enable = true;
             check-merge-conflicts.enable = true;
             check-toml.enable = true;
             check-yaml.enable = true;
             detect-private-keys.enable = true;
-            end-of-file-fixer.enable = true;
-            trim-trailing-whitespace.enable = true;
+            end-of-file-fixer = {
+              enable = true;
+              excludes = [ vendoredFiles ];
+            };
+            trim-trailing-whitespace = {
+              enable = true;
+              excludes = [ vendoredFiles ];
+            };
           };
         };
 
@@ -39,7 +46,7 @@
 
           buildPhase = ''
             export HOME=$TMPDIR
-            hugo build --minify --buildDrafts --source exampleSite
+            hugo build --minify --buildDrafts --source exampleSite --enableGitInfo=false
           '';
 
           installPhase = ''
