@@ -2,7 +2,15 @@
   <nav id="site-nav">
     <ul>
       <li>
-        <h1><a href="{{ absURL "" }}">{{ .Site.Title }}</a></h1>
+        {{- with site.Params.headerLogo }}
+          {{- with resources.Get . }}
+            <a href="{{ absURL "" }}" id="site-logo">
+              <img src="{{ .RelPermalink }}" alt="{{ site.Title }}" />
+            </a>
+          {{- end }}
+        {{- else }}
+          <h1><a href="{{ absURL "" }}">{{ .Site.Title }}</a></h1>
+        {{- end }}
       </li>
     </ul>
     <ul>

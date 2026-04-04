@@ -10,6 +10,12 @@
   letter-spacing: -0.02em;
 }
 
+/* Logo image replacing text title */
+#site-logo img {
+  height: 3rem;
+  width: auto;
+}
+
 /* Social links */
 #site-header-social {
   display: flex;
