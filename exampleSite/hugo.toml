@@ -65,17 +65,25 @@ name = "GitHub"
 icon = "github"
 url = "https://github.com"
 [[params.social]]
-name = "Twitter"
-icon = "twitter"
-url = "https://twitter.com"
-[[params.social]]
-name = "GitLab"
-icon = "gitlab"
-url = "https://gitlab.com"
+name = "X"
+icon = "x"
+url = "https://x.com"
 [[params.social]]
 name = "LinkedIn"
 icon = "linkedin"
 url = "https://www.linkedin.com"
+[[params.social]]
+name = "Telegram"
+icon = "telegram"
+url = "https://telegram.org"
+[[params.social]]
+name = "Discord"
+icon = "discord"
+url = "https://discord.com"
+[[params.social]]
+name = "Matrix"
+icon = "matrix"
+url = "https://matrix.org"
 
 [[menu.main]]
 name = "Blog"
