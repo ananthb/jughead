@@ -1,12 +1,37 @@
+/* Site header */
+
 #site-nav {
   justify-content: center;
   flex-flow: row wrap;
 }
 
 #site-nav h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
+  letter-spacing: -0.02em;
 }
 
-#site-header-social :where(a, [role="link"]):not(:hover) {
+/* Social links */
+#site-header-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+#site-header-social :where(a, [role="link"]) {
   text-decoration: none;
+  color: var(--pico-muted-color);
+}
+
+#site-header-social :where(a, [role="link"]):hover {
+  color: var(--pico-color);
+}
+
+/* Subtitle */
+#site-header-subtitle {
+  text-align: center;
+  color: var(--pico-muted-color);
+  font-size: 1.05rem;
+  margin-block-start: 0;
 }

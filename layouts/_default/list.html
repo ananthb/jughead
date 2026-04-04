@@ -9,7 +9,7 @@
     </h1>
 
     <section>
-      <ul>
+      <ul class="post-list">
         {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
         {{ range $paginator.Pages }}
           {{ partial "page-list-item.html" . }}

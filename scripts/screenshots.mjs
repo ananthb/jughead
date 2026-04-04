@@ -7,6 +7,7 @@
  * - Desktop and mobile viewports
  * - Home, blog post, and resume pages
  *
+ * Prerequisites: npx playwright install chromium
  * Usage: node scripts/screenshots.mjs [--serve]
  *   --serve: Start Hugo server automatically (otherwise assumes server running on :1313)
  */

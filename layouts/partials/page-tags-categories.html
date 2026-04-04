@@ -4,11 +4,7 @@
     <nav>
       <ul>
         {{ range first 5 . }}
-          <li>
-            <small>
-              <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-            </small>
-          </li>
+          <li><small><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></small></li>
         {{ end }}
       </ul>
     </nav>
@@ -18,11 +14,7 @@
     <nav>
       <ul>
         {{ range first 5 . }}
-          <li>
-            <small>
-              <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-            </small>
-          </li>
+          <li><small><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></small></li>
         {{ end }}
       </ul>
     </nav>

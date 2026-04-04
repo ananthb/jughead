@@ -13,17 +13,16 @@
   </nav>
 
   {{ with .Site.Params.Social }}
-    <div id="site-header-social" align="center">
-      {{- range $i, $key := . -}}
-        {{- if $i -}}<span>|</span>{{- end -}}
-        <a href="{{ $key.url }}" rel="me" title="{{ $key.name }}">
-          {{ partial "feather.html" $key.icon }}
+    <div id="site-header-social">
+      {{- range . -}}
+        <a href="{{ .url }}" rel="me" title="{{ .name }}">
+          {{ partial "feather.html" .icon }}
         </a>
       {{- end -}}
     </div>
   {{- end -}}
 
-  {{- if isset .Site.Params "subtitle" -}}
-    <p>{{ .Site.Params.Subtitle | markdownify }}</p>
+  {{- with .Site.Params.Subtitle -}}
+    <p id="site-header-subtitle">{{ . | markdownify }}</p>
   {{- end -}}
 </header>

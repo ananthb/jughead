@@ -1,18 +1,20 @@
 {{ if gt .TotalPages 1 }}
-  <ul>
-    <span>
-      {{ with .Prev }}
-        <a href="{{ .URL }}" aria-label="Previous">
-          <span aria-hidden="true">← Prev</span>
-        </a>
-      {{ end }}
-    </span>
-    <span>
-      {{ with .Next }}
-        <a href="{{ .URL }}" aria-label="Next">
-          <span aria-hidden="true">Next →</span>
-        </a>
-      {{ end }}
-    </span>
-  </ul>
+  <nav>
+    <ul>
+      <li>
+        {{ with .Prev }}
+          <a href="{{ .URL }}" aria-label="Previous">
+            <span aria-hidden="true">&larr; Prev</span>
+          </a>
+        {{ end }}
+      </li>
+      <li>
+        {{ with .Next }}
+          <a href="{{ .URL }}" aria-label="Next">
+            <span aria-hidden="true">Next &rarr;</span>
+          </a>
+        {{ end }}
+      </li>
+    </ul>
+  </nav>
 {{ end }}

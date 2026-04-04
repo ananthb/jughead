@@ -112,15 +112,14 @@ article > main pre {
   margin-block: 1.5em;
   padding: 1.25rem;
   border: 1px solid var(--pico-muted-border-color);
-  border-radius: 0;
-  background: transparent;
+  border-radius: 4px;
 }
 
 /* Inline code */
 article > main :not(pre) > code {
-  padding: 0.1em 0.3em;
+  padding: 0.15em 0.35em;
   font-size: 0.9em;
-  background: transparent;
+  border-radius: 3px;
 }
 
 /* Lists */

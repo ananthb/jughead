@@ -7,7 +7,6 @@
   <body>
     {{ partial "header.html" . }}
 
-
     <main class="container">
       {{ $pages := first 3 (
         where
@@ -18,14 +17,13 @@
       {{- if gt (len $pages) 0 }}
         <section>
           <h2>{{ T "featured" | title }}</h2>
-          <ul>
+          <ul class="post-list">
             {{ range $pages }}
               {{ partial "page-list-item.html" . }}
             {{ end }}
           </ul>
         </section>
       {{ end }}
-
 
       {{- with partial "resume/get.html" . -}}
         <h2>{{ T "about" | title }}</h2>

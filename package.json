@@ -5,8 +5,6 @@
     "screenshots": "node scripts/screenshots.mjs --serve"
   },
   "devDependencies": {
-    "playwright": "1.57.0",
-    "prettier": "^3.4.2",
-    "prettier-plugin-go-template": "^0.0.15"
+    "playwright": "1.57.0"
   }
 }

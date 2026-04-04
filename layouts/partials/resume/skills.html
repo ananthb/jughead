@@ -2,6 +2,13 @@
   <h2>{{ T "skill" | title }}</h2>
   <hr />
   {{ range . }}
-    <p><strong>{{ .name }}</strong>: {{ delimit .keywords ", " " & " }}</p>
+    <div class="skills">
+      <p><strong>{{ .name }}</strong></p>
+      <ul>
+        {{ range .keywords }}
+          <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+    </div>
   {{ end }}
 {{ end }}

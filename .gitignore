@@ -2,7 +2,6 @@
 public
 resources
 node_modules
-.direnv
 
 # direnv
 .direnv

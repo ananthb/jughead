@@ -1,1 +1,73 @@
 /* Site-wide custom styles */
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth transitions for interactive elements */
+a,
+button,
+[role="button"],
+summary {
+  transition: color 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease, text-decoration-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* Better focus visibility */
+:focus-visible {
+  outline: 2px solid var(--pico-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Prevent layout shift from scrollbar */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--pico-primary-focus);
+}
+
+/* Post list — clean, scannable layout */
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list li {
+  padding-block: 0.75rem;
+  border-block-end: 1px solid var(--pico-muted-border-color);
+}
+
+.post-list li:last-child {
+  border-block-end: none;
+}
+
+.post-list a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.post-list a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--pico-primary-underline);
+  text-underline-offset: 0.15em;
+}
+
+.post-list .post-meta {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--pico-muted-color);
+  margin-block-start: 0.15rem;
+}
+
+.post-list .post-summary {
+  margin-block-start: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--pico-muted-color);
+  line-height: 1.5;
+}

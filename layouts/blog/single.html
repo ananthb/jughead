@@ -4,14 +4,13 @@
       <header>
         <h1>{{ .Title }}</h1>
         <section>
-          Posted on
-          <time datetime="{{ dateFormat "2006-02-02 15:04" .Date }}">
-            {{ dateFormat "Jan 02, 2006" .Date }}
+          <time datetime="{{ dateFormat "2006-01-02 15:04" .Date }}">
+            {{ dateFormat "Jan 2, 2006" .Date }}
           </time>
+          &middot; {{ .ReadingTime }} min read
           {{ if .Draft }}
             <mark>DRAFT</mark>
           {{ end }}
-          <p>{{ printf "Estimated reading time: %d minutes" .ReadingTime }}</p>
         </section>
 
         {{ if in .TableOfContents "li" }}
