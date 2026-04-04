@@ -1,5 +1,5 @@
 name = "Jughead"
-license = "MIT"
+license = "GPL-3.0-only"
 licenselink = "https://github.com/ananthb/jughead/blob/main/LICENSE"
 description = """Jughead is a simple and powerful blog theme for Hugo.
 It features Giscus comments, Mermaid diagrams, and KaTeX formulae."""
