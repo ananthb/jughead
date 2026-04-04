@@ -2,8 +2,6 @@ featured = "featured"
 
 new = "new"
 
-contact = "contact"
-
 commit = "commit"
 
 explore = "explore"
@@ -14,64 +12,6 @@ page_not_found_message = "Looks like you've wandered off the beaten path. Don't 
 
 return_home = "Return Home"
 
-present = "present"
-
-education = "education"
-
-work_experience = "work experience"
-
-about = "about"
-
-volunteer = "volunteer"
-
 tags = "tags"
 
 categories = "categories"
-
-[language]
-one = "language"
-other = "languages"
-
-[interest]
-one = "interest"
-other = "interests"
-
-[skill]
-one = "skill"
-other = "skills"
-
-[profile]
-one = "profile"
-other = "profiles"
-
-[page]
-one = "page"
-other = "pages"
-
-[course]
-one = "course"
-other = "courses"
-
-[highlight]
-one = "highlight"
-other = "highlights"
-
-[project]
-one = "project"
-other = "projects"
-
-[certificate]
-one = "certificate"
-other = "certificates"
-
-[award]
-one = "award"
-other = "awards"
-
-[publication]
-one = "publication"
-other = "publications"
-
-[reference]
-one = "reference"
-other = "references"

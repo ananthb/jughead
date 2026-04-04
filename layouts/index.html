@@ -1,39 +1,39 @@
-<!doctype html>
-<html lang="{{ .Site.Language.Lang | default "en" }}" data-theme="{{ partial "theme-attr.html" . }}">
-  <head>
-    {{ partial "head.html" . }}
-  </head>
+{{ define "main" }}
+  <main class="container">
+    {{/* Render user-provided homepage content from content/_index.md */}}
+    {{ with .Content }}
+      <article>
+        <main>{{ . }}</main>
+      </article>
+    {{ end }}
 
-  <body>
-    {{ partial "header.html" . }}
+    {{ $featured := first 3 (
+      where
+      (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
+      "Params.categories" "intersect" (slice "featured")
+      )
+    }}
+    {{- if gt (len $featured) 0 }}
+      <section>
+        <h2>{{ T "featured" | title }}</h2>
+        <ul class="post-list">
+          {{ range $featured }}
+            {{ partial "page-list-item.html" . }}
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
 
-    <main class="container">
-      {{ $pages := first 3 (
-        where
-        (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
-        "Params.categories" "intersect" (slice  "featured")
-        )
-      }}
-      {{- if gt (len $pages) 0 }}
-        <section>
-          <h2>{{ T "featured" | title }}</h2>
-          <ul class="post-list">
-            {{ range $pages }}
-              {{ partial "page-list-item.html" . }}
-            {{ end }}
-          </ul>
-        </section>
-      {{ end }}
-
-      {{- with partial "resume/get.html" . -}}
-        <h2>{{ T "about" | title }}</h2>
-        <hr>
-        <article class="resume">
-          {{- partial "resume/overview.html" . -}}
-        </article>
-      {{ end }}
-    </main>
-
-    {{ partial "footer.html" . }}
-  </body>
-</html>
+    {{ $recent := first 10 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections).ByDate.Reverse }}
+    {{- if gt (len $recent) 0 }}
+      <section>
+        <h2>{{ T "new" | title }}</h2>
+        <ul class="post-list">
+          {{ range $recent }}
+            {{ partial "page-list-item.html" . }}
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  </main>
+{{ end }}

@@ -40,30 +40,6 @@ description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
 
 mainSections = ["blog", "links"]
 
-# [params.jsonResume]
-# Add your JSON Resume Registry slug. This is the part of the URL after https://registry.jsonresume.org/.
-# Or create a resume.json file in the data directory.
-# slug = "<your-github-username>"
-# qr = true # Add this to display a QR code image pointing to your resume.
-#
-# # Brief mode shows only position/degree, company/institution, and dates
-# briefWork = false
-# briefEducation = false
-#
-# # Toggle resume sections (work, education, projects are on by default)
-# [params.jsonResume.sections]
-# work = true
-# education = true
-# projects = true
-# volunteer = false
-# awards = false
-# certificates = false
-# publications = false
-# skills = false
-# languages = false
-# interests = false
-# references = false
-
 # Display a link to the commit that built this site in your footer.
 # Requires enableGitInfo = true, and for your website to be public on GitHub.
 siteRepo = "ananthb/jughead"  # Site GitHub repository
@@ -102,11 +78,6 @@ icon = "linkedin"
 url = "https://www.linkedin.com"
 
 [[menu.main]]
-name = "Resume"
-url = "/resume"
-weight = 1
-
-[[menu.main]]
 name = "Blog"
 url = "/blog"
-weight = 2
+weight = 1

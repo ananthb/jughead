@@ -1,12 +1,12 @@
-# Jughead - Portfolio & Blog Theme for Hugo
+# Jughead - Blog Theme for Hugo
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ananthb/jughead/main/images/logo-light.svg">
   <img src="https://raw.githubusercontent.com/ananthb/jughead/main/images/logo.svg" alt="Jughead" width="64">
 </picture>
 
-Jughead is a simple and powerful portfolio and blog theme for Hugo.
-It features a Resume page, Giscus comments, Mermaid diagrams, and KaTeX formulae.
+Jughead is a simple and powerful blog theme for Hugo.
+It features Giscus comments, Mermaid diagrams, and KaTeX formulae.
 
 ![screenshot](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot.png)
 
@@ -14,8 +14,6 @@ It features a Resume page, Giscus comments, Mermaid diagrams, and KaTeX formulae
 <summary>More screenshots</summary>
 
 ![Home Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-dark.png)
-![Resume](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-resume.png)
-![Resume Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-resume-dark.png)
 ![Mobile](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile.png)
 ![Mobile Dark](https://raw.githubusercontent.com/ananthb/jughead/main/images/screenshot-mobile-dark.png)
 
@@ -23,7 +21,6 @@ It features a Resume page, Giscus comments, Mermaid diagrams, and KaTeX formulae
 
 ## Features
 
-- [JSON Resume](https://jsonresume.org) support.
 - Comments powered by [giscus](https://giscus.app).
 - [MermaidJS](https://mermaid.js.org) diagrams.
 - [KaTeX](https://katex.org) for rendering math formulae.
@@ -58,40 +55,17 @@ Configure your theme in `hugo.toml`:
   themeMode = "auto"   # "auto", "light", or "dark"
 ```
 
-## Features
+### Custom Homepage
 
-### JSON Resume
-
-Render your JSON resume by configuring your unique
-[JSON Resume Registry](https://registry.jsonresume.org) slug in the
-`params` section of your site configuration file.
-The slug is the string that appears after `registry.jsonresume.org/` in your
-resume's URL.
-`qr` enables a QR code for your resume.
-
-```toml
-[params]
-[params.jsonResume]
-slug = "your-github-username"
-qr = true
-```
-
-You can also render a local `resume.json` file by placing it in the
-`data` directory of your site.
-
-The local `resume.json` file will take precedence over the JSON Resume Registry.
-
-This will add a basic portfolio section from your resume to your site's
-homepage.
-
-You can also render your resume in any page in your site
-by creating a new empty page and setting its layout to `resume` in frontmatter.
+By default the homepage shows featured and recent posts.
+To add custom content above the post listings, create `content/_index.md`:
 
 ```markdown
-+++
-layout = "resume"
-date = "2025-01-01"
-+++
+---
+title: "Home"
+---
+
+Welcome to my blog!
 ```
 
 ### Write Posts
@@ -122,5 +96,3 @@ Fork of [archie](https://github.com/athul/archie) which is MIT licensed.
 
 This work is dual licensed under the terms of the MIT license for contributions up to January 2026
 and under the terms of the GPL 3.0 for later contributions.
-
-

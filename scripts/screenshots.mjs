@@ -5,7 +5,7 @@
  * Generates screenshots of the theme in different configurations:
  * - Light and dark modes
  * - Desktop and mobile viewports
- * - Home, blog post, and resume pages
+ * - Home and blog post pages
  *
  * Prerequisites: npx playwright install chromium
  * Usage: node scripts/screenshots.mjs [--serve]
@@ -38,10 +38,6 @@ const SCREENSHOTS = [
   // Mobile screenshots
   { name: 'screenshot-mobile.png', path: '/', viewport: MOBILE, themeMode: 'light' },
   { name: 'screenshot-mobile-dark.png', path: '/', viewport: MOBILE, themeMode: 'dark' },
-
-  // Resume screenshots
-  { name: 'screenshot-resume.png', path: '/resume/', viewport: DESKTOP, themeMode: 'light' },
-  { name: 'screenshot-resume-dark.png', path: '/resume/', viewport: DESKTOP, themeMode: 'dark' },
 
   // Theme preview (used for Hugo themes site)
   { name: 'tn.png', path: '/', viewport: { width: 900, height: 600 }, themeMode: 'light' },

@@ -1,7 +1,0 @@
-{{ with .languages }}
-  <h2>{{ T "language" | title }}</h2>
-  <hr />
-  {{ range . }}
-    <p><strong>{{ .language }}</strong>: {{ .fluency }}</p>
-  {{ end }}
-{{ end }}

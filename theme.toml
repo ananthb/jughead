@@ -1,8 +1,8 @@
 name = "Jughead"
 license = "MIT"
 licenselink = "https://github.com/ananthb/jughead/blob/main/LICENSE"
-description = """Jughead is a simple and powerful portfolio and blog theme for Hugo.
-It features a Resume page, Giscus comments, Mermaid diagrams, and KaTeX formulae."""
+description = """Jughead is a simple and powerful blog theme for Hugo.
+It features Giscus comments, Mermaid diagrams, and KaTeX formulae."""
 homepage = "https://github.com/ananthb/jughead"
 demosite = "https://ananthb.github.io/jughead/"
 tags = [
@@ -15,7 +15,7 @@ tags = [
   "clean",
   "shortcodes",
 ]
-features = ["resume", "blog", "responsive", "comments", "Syntax highlighting"]
+features = ["blog", "responsive", "comments", "Syntax highlighting"]
 min_version = "0.120.0"
 
 [author]
