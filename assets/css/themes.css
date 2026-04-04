@@ -40,6 +40,10 @@ html:root[data-theme="ink-light"] {
 html:root[data-theme="ink-dark"] {
   --pico-background-color: #000;
   --pico-color: #b8bcc4;
+  --pico-h1-color: #c8ccd4;
+  --pico-h2-color: #c0c4cc;
+  --pico-h3-color: #b8bcc4;
+  --pico-h4-color: #b0b4bc;
   --pico-muted-color: #6b7280;
   --pico-muted-border-color: #1f2328;
   --pico-primary: #9ca3af;
@@ -63,6 +67,10 @@ html:root[data-theme="ink-dark"] {
   html:root[data-theme="ink"] {
     --pico-background-color: #000;
     --pico-color: #b8bcc4;
+    --pico-h1-color: #c8ccd4;
+    --pico-h2-color: #c0c4cc;
+    --pico-h3-color: #b8bcc4;
+    --pico-h4-color: #b0b4bc;
     --pico-muted-color: #6b7280;
     --pico-muted-border-color: #1f2328;
     --pico-primary: #9ca3af;
@@ -113,6 +121,10 @@ html:root[data-theme="earth-light"] {
 html:root[data-theme="earth-dark"] {
   --pico-background-color: #0f172a;
   --pico-color: #cbd5e1;
+  --pico-h1-color: #b4c0d0;
+  --pico-h2-color: #acb8c8;
+  --pico-h3-color: #a4b0c0;
+  --pico-h4-color: #9ca8b8;
   --pico-muted-color: #64748b;
   --pico-muted-border-color: #1e293b;
   --pico-primary: #7c9bb8;
@@ -136,6 +148,10 @@ html:root[data-theme="earth-dark"] {
   html:root[data-theme="earth"] {
     --pico-background-color: #0f172a;
     --pico-color: #cbd5e1;
+    --pico-h1-color: #b4c0d0;
+    --pico-h2-color: #acb8c8;
+    --pico-h3-color: #a4b0c0;
+    --pico-h4-color: #9ca8b8;
     --pico-muted-color: #64748b;
     --pico-muted-border-color: #1e293b;
     --pico-primary: #7c9bb8;
