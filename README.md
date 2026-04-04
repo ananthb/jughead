@@ -115,6 +115,9 @@ Enable them when necessary.
 
 ## [License](LICENSE)
 
-Fork of [archie](https://github.com/athul/archie).
+Fork of [archie](https://github.com/athul/archie) which is MIT licensed.
 
-Jughead is available under the terms of the MIT License.
+This work is dual licensed under the terms of the MIT license for contributions up to January 2026
+and under the terms of the GPL 3.0 for later contributions.
+
+
