@@ -10,7 +10,14 @@
   letter-spacing: -0.02em;
 }
 
-/* Logo image replacing text title */
+/* Logo + title together */
+#site-nav > ul:first-child > li:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Logo image */
 #site-logo img {
   height: 3rem;
   width: auto;

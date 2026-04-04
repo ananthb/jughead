@@ -35,10 +35,10 @@ themeMode = "auto"
 # Set to "precache" to cache all pages on first load.
 # serviceWorker = "precache"
 
-subtitle = "Portfolio and blog theme for Hugo."
-description = "Demo site for Jughead, a portfolio and blog theme for Hugo."
+subtitle = "Blog theme for Hugo."
+description = "Demo site for Jughead, a blog theme for Hugo."
 
-mainSections = ["blog", "links"]
+mainSections = ["articles", "links"]
 
 # Display a link to the commit that built this site in your footer.
 # Requires enableGitInfo = true, and for your website to be public on GitHub.
@@ -86,6 +86,6 @@ icon = "matrix"
 url = "https://matrix.org"
 
 [[menu.main]]
-name = "Blog"
-url = "/blog"
+name = "Articles"
+url = "/articles"
 weight = 1

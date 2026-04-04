@@ -4,7 +4,7 @@
     <time datetime="{{ dateFormat "2006-01-02 15:04" .Date }}">
       {{ dateFormat "Jan 2, 2006" .Date }}
     </time>
-    {{ if in .Section "blog" }}
+    {{ if in site.Params.mainSections .Section }}
       &middot; {{ .ReadingTime }} min read
     {{ end }}
     {{ if .Draft }}
