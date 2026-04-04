@@ -21,7 +21,7 @@ pygmentscodefencesguesssyntax = true
 [params]
 # Add a logo to your site by placing an image in the assets directory
 # and setting the path here. Preferably a square png image.
-logo = "logo.png"
+logo = "logo.svg"
 
 # Theme: "ink" (newspaper/OLED) or "earth" (rust/slate)
 theme = "ink"

@@ -1,114 +1,35 @@
 {{- if isset .Site.Params "logo" -}}
   {{- $original := resources.Get site.Params.logo }}
 
+  {{- if strings.HasSuffix site.Params.logo ".svg" }}
+    {{/* SVG logos: serve directly as SVG favicon */}}
+    <link rel="icon" type="image/svg+xml" href="{{ $original.RelPermalink }}" />
+    <link rel="apple-touch-icon" href="{{ $original.RelPermalink }}" />
+  {{- else }}
+    {{/* Raster logos: generate multiple sizes */}}
+    <link rel="icon" href="{{ $original.RelPermalink }}" />
 
-  <link rel="icon" href="{{ $original.RelPermalink }}" />
+    {{- $fav16 := $original.Fit "16x16 png" }}
+    {{- $fav32 := $original.Fit "32x32 png" }}
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ $fav16.RelPermalink }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ $fav32.RelPermalink }}" />
 
-  {{- $fav16 := $original.Fit "16x16 png" }}
-  {{- $fav32 := $original.Fit "32x32 png" }}
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="16x16"
-    href="{{ $fav16.RelPermalink }}"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="32x32"
-    href="{{ $fav32.RelPermalink }}"
-  />
+    {{- $apple76 := $original.Fit "76x76 png" }}
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ $apple76.RelPermalink }}" />
 
-  {{- $apple_icon := $original.Fit "76x76 png" }}
-  <link
-    rel="apple-touch-icon-76x76"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
-  <link
-    rel="apple-touch-icon-76x76-precomposed"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
+    {{- $apple120 := $original.Fit "120x120 png" }}
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ $apple120.RelPermalink }}" />
 
-  {{- $apple_icon := $original.Fit "114x114 png" }}
-  <link rel="apple-touch-icon" href="{{ $apple_icon.RelPermalink | relURL }}" />
-  <link
-    rel="apple-touch-icon-precomposed"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
+    {{- $android128 := $original.Fit "128x128 png" }}
+    <link rel="icon" type="image/png" sizes="128x128" href="{{ $android128.RelPermalink }}" />
 
-  {{- $apple_icon := $original.Fit "120x120 png" }}
-  <link
-    rel="apple-touch-icon-120x120"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
-  <link
-    rel="apple-touch-icon-120x120-precomposed"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
+    {{- $apple152 := $original.Fit "152x152 png" }}
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ $apple152.RelPermalink }}" />
 
-  {{- $apple_icon := $original.Fit "128x128 png" }}
-  <!-- For android Chrome -->
-  <link
-    rel="icon"
-    type="image/png"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-    sizes="128x128"
-  />
+    {{- $apple180 := $original.Fit "180x180 png" }}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ $apple180.RelPermalink }}" />
 
-  {{- $apple_icon := $original.Fit "152x152 png" }}
-  <link
-    rel="apple-touch-icon-152x152"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
-  <link
-    rel="apple-touch-icon-152x152-precomposed"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
-
-  {{- $apple_icon := $original.Fit "160x160 png" }}
-  <link
-    rel="apple-touch-icon-160x160"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
-  <link
-    rel="apple-touch-icon-160x160-precomposed"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
-  <!-- Pour android Chrome -->
-  <link
-    rel="icon"
-    type="image/png"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-    sizes="160x160"
-  />
-
-  {{- $apple_icon := $original.Fit "167x167 png" }}
-  <link
-    rel="apple-touch-icon-167x167"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
-  <link
-    rel="apple-touch-icon-167x167-precomposed"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
-
-  {{- $apple_icon := $original.Fit "180x180 png" }}
-  <link
-    rel="apple-touch-icon-180x180"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
-  <link
-    rel="apple-touch-icon-180x180-precomposed"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
-
-  {{- $apple_icon := $original.Fit "196x196 png" }}
-  <link
-    rel="apple-touch-icon-196x196"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
-  <link
-    rel="apple-touch-icon-196x196-precomposed"
-    href="{{ $apple_icon.RelPermalink | relURL }}"
-  />
+    {{- $android192 := $original.Fit "196x196 png" }}
+    <link rel="icon" type="image/png" sizes="196x196" href="{{ $android192.RelPermalink }}" />
+  {{- end }}
 {{- end }}

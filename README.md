@@ -1,6 +1,9 @@
 # Jughead - Portfolio & Blog Theme for Hugo
 
-<img src="https://raw.githubusercontent.com/ananthb/jughead/main/images/logo-small.png" alt="logo" width="100">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ananthb/jughead/main/images/logo-light.svg">
+  <img src="https://raw.githubusercontent.com/ananthb/jughead/main/images/logo.svg" alt="Jughead" width="64">
+</picture>
 
 Jughead is a simple and powerful portfolio and blog theme for Hugo.
 It features a Resume page, Giscus comments, Mermaid diagrams, and KaTeX formulae.
