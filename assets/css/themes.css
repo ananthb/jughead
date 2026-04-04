@@ -184,6 +184,7 @@ html:root[data-theme="earth-dark"] {
    ============================================ */
 
 html:root[data-theme] {
+  --pico-card-sectioning-background-color: var(--pico-card-background-color);
   --pico-blockquote-border-color: var(--pico-muted-border-color);
   --pico-blockquote-footer-color: var(--pico-muted-color);
   --pico-table-border-color: var(--pico-muted-border-color);
