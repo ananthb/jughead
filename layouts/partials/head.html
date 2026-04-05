@@ -5,9 +5,30 @@
 
 {{ partial "favicons.html" . }}
 
-{{ with or .Description .Summary .Site.Params.description | plainify | htmlUnescape }}
+{{- $description := or .Description .Summary .Site.Params.description | plainify | htmlUnescape | truncate 160 -}}
+{{- $url := .Permalink -}}
+{{- $title := partial "title" . | default .Site.Title -}}
+{{- $image := "" -}}
+{{- with .Params.image -}}
+  {{- $image = (resources.Get .).Permalink -}}
+{{- else -}}
+  {{- with .Params.thumbnail -}}
+    {{- $image = (resources.Get .).Permalink -}}
+  {{- else -}}
+    {{- with $.Site.Params.headerLogo -}}
+      {{- $image = (resources.Get .).Permalink -}}
+    {{- else -}}
+      {{- with $.Site.Params.logo -}}
+        {{- $image = (resources.Get .).Permalink -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{ with $description }}
   <meta name="description" content="{{ . }}" />
 {{ end }}
+<link rel="canonical" href="{{ $url }}" />
 
 {{- range .Translations }}
   <link
@@ -43,11 +64,30 @@ if (navigator.serviceWorker) {
 
 
 <!-- Open Graph: https://ogp.me/ -->
-{{ template "_internal/opengraph.html" . }}
-
+<meta property="og:title" content="{{ $title }}" />
+<meta property="og:description" content="{{ $description }}" />
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+<meta property="og:url" content="{{ $url }}" />
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+{{- with $image }}
+<meta property="og:image" content="{{ . }}" />
+{{- end }}
+{{- if .IsPage }}
+{{- with .Date }}
+<meta property="article:published_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}" />
+{{- end }}
+{{- with .Lastmod }}
+<meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}" />
+{{- end }}
+{{- end }}
 
 <!-- Twitter Cards: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards -->
-{{ template "_internal/twitter_cards.html" . }}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="{{ $title }}" />
+<meta name="twitter:description" content="{{ $description }}" />
+{{- with $image }}
+<meta name="twitter:image" content="{{ . }}" />
+{{- end }}
 
 
 <!-- Feather Icons -->
