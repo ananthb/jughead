@@ -1,14 +1,15 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>{{ with partial "title" . }}{{ if ne . site.Title }}{{ . }} | {{ end }}{{ end }}{{ .Site.Title }}</title>
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
 
 {{ partial "favicons.html" . }}
 
-{{- $description := or .Description .Summary .Site.Params.description | plainify | htmlUnescape | truncate 160 -}}
+{{- $description := (.Description | default .Site.Params.description) | plainify | htmlUnescape | truncate 160 -}}
 {{- $url := .Permalink -}}
-{{- $title := partial "title" . | default .Site.Title -}}
+{{- $title := if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end -}}
 {{- $image := "" -}}
+
 {{- with .Params.image -}}
   {{- $image = (resources.Get .).Permalink -}}
 {{- else -}}
