@@ -7,7 +7,7 @@
 
 {{- $description := (.Description | default .Site.Params.description) | plainify | htmlUnescape | truncate 160 -}}
 {{- $url := .Permalink -}}
-{{- $title := if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end -}}
+{{- $title := cond .IsHome .Site.Title .Title -}}
 {{- $image := "" -}}
 
 {{- with .Params.image -}}
